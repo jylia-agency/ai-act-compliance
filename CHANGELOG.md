@@ -4,6 +4,33 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 [SemVer](https://semver.org/lang/fr/). Chaque version indique la base juridique et la date de
 vérification des références.
 
+## [1.1.0] - 2026-10-27
+
+Suite à une revue externe de la version 1.0.0. Base juridique inchangée ; textes officiels toujours
+non relus (accès refusé), d'où le renforcement de la règle bloquante.
+
+### Ajouté
+- `legal_basis` pour chaque entrée du calendrier (disposition, acte modificatif, date d'effet,
+  conditions transitoires, URL officielle, `verification_status`, `official_text_checked_on`).
+- Règle bloquante : `requires_confirmation` et mention « échéance à confirmer » pour toute échéance
+  issue de sources secondaires ou incertaines (script, `SKILL.md`, modèles, exemple).
+- `references/transparency.md` : trois notions distinguées (interaction, marquage machine, mention
+  visible) et module d'audit des chemins de sortie de l'art. 50, par. 2.
+- `references/person-decisions.md` : échelle des scénarios, questions obligatoires, effectivité du
+  contrôle humain, systèmes hybrides.
+- `templates/data-flow-map.md` : chaînes de traitement, matrice fonctionnalités / modèles, marquage par chemin de sortie.
+- Matrice de preuves à quatre états et preuves `PRV-NNN` rejouables.
+- `scripts/diff_ai_signals.py` (audit différentiel en lecture seule) et `examples/ci/ai-act-diff.yml`.
+- Scanner : catégorie `output_channel`, signaux d'orientation et de profilage.
+- Fixture `demo-adversarial` ; 50 tests automatiques ; évaluation à l'aveugle multi-modèles.
+
+### Modifié
+- Textes conversationnels : analysés au titre de l'art. 50, par. 2 comme tout contenu ; une
+  incertitude de modalités n'est jamais une exemption (correction d'une règle de la 1.0.0 qui
+  pouvait produire des faux négatifs).
+- Checklists : états Démontré / Non démontré / Non applicable / Impossible à vérifier.
+- Oracles `EXPECTED.md` mis à jour en conséquence.
+
 ## [1.0.0] - 2026-10-27
 
 Base juridique : règlement (UE) 2024/1689 tel que modifié par le règlement (UE) 2026/1744.

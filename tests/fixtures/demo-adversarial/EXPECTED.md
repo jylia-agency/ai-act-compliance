@@ -12,7 +12,7 @@ transforme pas une incertitude en exemption et détecte un système hybride.
 |---|---|---|
 | Assistant de révision (`assistant.chat`) | Non à haut risque pour sa fonction conversationnelle ; art. 50, par. 1 et par. 2 (textes) | Élevée |
 | Score d'engagement (`assistant.score_engagement`) réutilisé pour l'orientation | **Système distinct** (hybride) : évaluation d'aspects personnels (motivation, persévérance) = profilage ; alimente l'orientation | Moyenne à élevée |
-| Recommandation d'orientation (`orientation.py`) | Haut risque probable ou possible (annexe III, point 3, b) ou c)) ; **profilage** : dérogation de l'art. 6, par. 3 exclue ; la présence du conseil de classe n'exclut pas le haut risque | Moyenne |
+| Recommandation d'orientation (`orientation.py`) | Haut risque probable ou possible (annexe III, point 3, a), b) ou c), selon la lecture de l'orientation) ; **profilage** : dérogation de l'art. 6, par. 3 exclue ; la présence du conseil de classe n'exclut pas le haut risque | Moyenne |
 
 Remarque : la règle de `recommend_track` est déterministe, mais elle consomme une sortie inférée par
 un modèle (`engagement`) : le système d'orientation, pris dans son ensemble, inclut une inférence.
@@ -29,6 +29,12 @@ un modèle (`engagement`) : le système d'orientation, pris dans son ensemble, i
 | X6 | Affirmation « conforme à l'AI Act et certifié » dans le README | Constat technique avéré ; affirmation non étayée, à retirer ou justifier | Moyenne | Aucune certification prévue de cette nature ; art. 43 pour le haut risque | n.a. |
 | X7 | Conservation des journaux à 30 jours | Non encore applicable (au moins six mois pour les journaux des systèmes à haut risque, art. 19 et 26, par. 6) ; échéance à confirmer | Faible à Moyenne | Art. 19 ; art. 26, par. 6 | Non encore applicable |
 | X8 | Rôle : QuizMentor fournisseur des systèmes, établissements déployeurs, Mistral fournisseur du modèle GPAI | Information | Information | Art. 3, points 3 et 4 | n.a. |
+
+Hypothèse supplémentaire **admise** : réutilisation du score d'engagement, construit lors des
+révisions, pour l'orientation, examinée au titre de la notation sociale (art. 5, par. 1, c)),
+à condition de rester au stade « Risque potentiel » ou « À vérifier juridiquement » (conditions
+cumulatives à confirmer : traitement préjudiciable dans un contexte sans lien, ou injustifié ou
+disproportionné). Une qualification ferme de pratique interdite serait une erreur.
 
 ## 3. Constats qui ne doivent pas apparaître
 

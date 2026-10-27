@@ -69,4 +69,50 @@ Aucun système d'IA identifié. Les faux positifs `model`, `predict`, `score`, �
 | Marquage des textes conversationnels qualifié avec trop d'assurance (demo-ai-secure, S8) | `SKILL.md`, section 5 : une portée incertaine (`[AV]`) donne la nature « À vérifier ». `references/transparency.md`, section 4 : règle explicite. Oracle : tolérance documentée. | Non |
 | Métadonnées PNG non standard non anticipées par l'oracle | `references/transparency.md`, section 4 : qualification des métadonnées « maison ». Oracle S2 enrichi, constats supplémentaires admis listés. | Non |
 
-Ces corrections n'ont pas fait l'objet d'une nouvelle exécution par agent : une évaluation de contrôle est recommandée.
+Mise à jour : les deux premières corrections ont été revérifiées par agent en version 1.1.0 (section 4.2 : demo-no-ai avec Haiku, demo-ai-secure avec Sonnet). La règle sur les textes conversationnels a entre-temps été remplacée (section 4).
+
+---
+
+## 4. Version 1.1.0 (2026-10-27) : revue externe et évaluation de contrôle
+
+### 4.1 Tests automatiques
+
+| Date | Commande | Environnement | Résultat |
+|---|---|---|---|
+| 2026-10-27 | `python3 tests/run_tests.py` | Python 3.13, Git, Linux | **50 tests, 50 réussis** |
+
+Nouveaux contrôles : base juridique complète par entrée, règle bloquante des échéances non relues,
+mention « échéance à confirmer », chemins de sortie, fixture adversariale, audit différentiel
+(dépôt Git temporaire, lecture seule vérifiée). Rappel : ces tests ne valident pas le contenu juridique.
+
+### 4.2 Évaluation par agent à l'aveugle, plusieurs modèles
+
+Même protocole (fixtures sans `EXPECTED.md`, skill sans `examples/`). Rapports bruts dans
+`tests/agent-runs/2026-10-27-v1.1/` ; seule normalisation appliquée : remplacement des tirets
+cadratins de cellules vides par « n.a. » dans un rapport.
+
+| Fixture | Modèle | Faux négatifs | Faux positifs | Erreurs de calendrier | Écarts de qualification | Verdict |
+|---|---|---|---|---|---|---|
+| demo-adversarial | Modèle par défaut de la session | 0 | 0 | 0 | Annexe III, point 3, a) retenu (oracle : b) ou c)) : lecture admise | Conforme |
+| demo-adversarial | Sonnet | 0 | 0 | 0 | Art. 5, par. 1, c) en Risque potentiel Critique : hypothèse non prévue, défendable, admise dans l'oracle tant qu'elle reste au stade du risque | Conforme, gravité élevée |
+| demo-ai-secure | Sonnet | 0 | 0 | 0 | Aucun ; textes du tuteur : Non encore applicable, échéance à confirmer (correction 1.1.0 vérifiée) | Conforme |
+| demo-no-ai | Haiku | 0 | 0 | 0 | Aucun ; plus de série de constats « Non applicable » (correction 1.0.x vérifiée) | Conforme |
+
+Points vérifiés sur la fixture adversariale (deux modèles) : dates erronées de la documentation non
+reprises ; aucune exemption des textes conversationnels ; argument « un humain décide » rejeté ;
+contradiction entre la procédure documentée et l'application automatique détectée ; champ
+`ai_generated` jugé insuffisant et falsifiable ; perte du marquage dans les exports PDF et CSV ;
+aucun délai transitoire pour une mise en service au 2026-10-15 ; « certifié » non repris ; système
+hybride et profilage identifiés ; mention « échéance à confirmer » appliquée aux dates issues de 2026/1744.
+
+Constats supplémentaires pertinents relevés par les agents : note `None` publiable et image sauvegardée
+avant la signature C2PA (demo-ai-secure) ; injection de prompt via les messages dans le calcul du
+score d'engagement (demo-adversarial).
+
+### 4.3 Ce qui reste non vérifié
+
+- **Contenu juridique** : aucune disposition relue sur EUR-Lex ou l'AI Act Explorer (accès refusé par
+  la politique réseau de l'environnement). Les entrées issues de 2026/1744 restent bloquantes.
+- Une exécution par couple (fixture, modèle) : pas de mesure de variance.
+- demo-ai-vulnerable et demo-insufficient-info n'ont pas été réévalués avec la version 1.1.0.
+- `skills-ref validate` et installation réelle dans Claude Code et Codex : non exécutés.
