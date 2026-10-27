@@ -24,6 +24,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import check_legal_updates as watch  # noqa: E402
 import diff_ai_signals as differ  # noqa: E402
 import obligation_timeline as timeline  # noqa: E402
 import scan_ai_signals as scanner  # noqa: E402
@@ -40,6 +41,8 @@ REQUIRED_FILES = [
     "references/audit-checklist.md", "references/person-decisions.md",
     "scripts/diff_ai_signals.py", "examples/ci/ai-act-diff.yml", "templates/data-flow-map.md",
     "tests/fixtures/demo-adversarial/EXPECTED.md",
+    "references/official-verification-worksheet.md", "scripts/check_legal_updates.py",
+    "data/legal-watch.json", ".github/workflows/legal-watch.yml",
     "templates/audit-report.md", "templates/ai-system-inventory.md",
     "templates/risk-classification.md", "templates/compliance-matrix.md",
     "templates/remediation-plan.md", "templates/unverifiable-register.md",
@@ -373,6 +376,42 @@ class ScannerFixtureTests(unittest.TestCase):
             scanner.scan(FIXTURES / name)
         after = {p: p.stat().st_mtime_ns for p in FIXTURES.rglob("*") if p.is_file()}
         self.assertEqual(before, after)
+
+
+class LegalWatchTests(unittest.TestCase):
+    """Veille automatisée : analyse d'une réponse SPARQL fictive, sans réseau."""
+
+    SAMPLE = ROOT / "tests" / "data" / "sparql-response-fictive.json"
+
+    def test_detects_unknown_acts_only(self):
+        found = watch.parse(json.loads(self.SAMPLE.read_text(encoding="utf-8")))
+        new = [a["celex"] for a in watch.compare(found, watch.load_watch())]
+        self.assertNotIn("32026R1744", new, "acte connu signalé à tort")
+        self.assertIn("32099R0001", new)
+        self.assertIn("32024R1689R(01)", new)
+
+    def test_exit_codes_and_no_write(self):
+        before = {p: p.stat().st_mtime_ns for p in (ROOT / "data").iterdir()}
+        out = subprocess.run([sys.executable, str(ROOT / "scripts" / "check_legal_updates.py"),
+                              "--offline-response", str(self.SAMPLE)], capture_output=True, text=True)
+        self.assertEqual(out.returncode, 1)
+        self.assertIn("revue humaine requise", out.stdout)
+        broken = subprocess.run([sys.executable, str(ROOT / "scripts" / "check_legal_updates.py"),
+                                 "--offline-response", str(ROOT / "tests" / "data" / "absent.json")],
+                                capture_output=True, text=True)
+        self.assertEqual(broken.returncode, 2)
+        self.assertIn("Échec du contrôle automatique", broken.stdout)
+        after = {p: p.stat().st_mtime_ns for p in (ROOT / "data").iterdir()}
+        self.assertEqual(before, after, "la veille ne doit jamais modifier les données juridiques")
+
+    def test_query_targets_base_act(self):
+        self.assertIn('"32024R1689"', watch.build_query("32024R1689"))
+
+    def test_worksheet_covers_every_blocking_entry(self):
+        sheet = (ROOT / "references" / "official-verification-worksheet.md").read_text(encoding="utf-8")
+        for e in timeline.load_calendar()["entries"]:
+            if timeline.requires_confirmation(e):
+                self.assertIn(f"| {e['id']} |", sheet, f"{e['id']} absent de la fiche de vérification")
 
 
 class DiffAuditTests(unittest.TestCase):

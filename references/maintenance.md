@@ -11,6 +11,20 @@
   d'un code de bonnes pratiques.
 - **Avant chaque version majeure** du skill : revue complète (section 4).
 
+## 1 bis. Veille automatisée (complément, jamais substitut)
+
+`.github/workflows/legal-watch.yml` exécute chaque mois `scripts/check_legal_updates.py`, qui
+interroge le point SPARQL public de l'Office des publications pour lister les actes liés au
+règlement (modificatifs, rectificatifs, consolidations, actes fondés sur lui) et les compare à
+`data/legal-watch.json`. Tout acte inconnu, ou un échec de la requête, ouvre une issue de **revue
+humaine**. Une issue de rappel est aussi ouverte chaque trimestre. Le script ne modifie aucune règle ;
+après revue, un humain met à jour `known_celex` et, si nécessaire, le calendrier (section 4) en
+suivant `official-verification-worksheet.md`.
+
+Limite : la requête SPARQL n'a pas pu être testée contre le service réel depuis l'environnement de
+rédaction (accès réseau refusé) ; seule l'analyse d'une réponse fictive est testée. Le premier
+passage du workflow doit être surveillé : un échec ouvre une issue dédiée.
+
 ## 2. Sources à surveiller
 
 | Source | Objet |

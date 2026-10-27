@@ -1,0 +1,14 @@
+{
+  "meta": {
+    "description": "Référentiel de la veille automatisée des sources de l'AI Act. Mis à jour UNIQUEMENT par un humain après revue juridique.",
+    "baseline_reviewed_on": "2026-10-27",
+    "reviewed_by": "mainteneurs du dépôt",
+    "note": "La liste known_celex recense les actes déjà pris en compte. Tout acte détecté hors de cette liste déclenche une demande de revue humaine ; il n'est jamais intégré automatiquement."
+  },
+  "sparql_endpoint": "https://publications.europa.eu/webapi/rdf/sparql",
+  "base_celex": "32024R1689",
+  "known_celex": {
+    "32024R1689": "Règlement (UE) 2024/1689 (AI Act), texte initial",
+    "32026R1744": "Règlement (UE) 2026/1744 (Digital Omnibus on AI), modificatif ; texte officiel non relu au 2026-10-27"
+  }
+}

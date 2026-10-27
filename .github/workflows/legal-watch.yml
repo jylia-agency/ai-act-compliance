@@ -1,0 +1,69 @@
+# Veille juridique de CE dépôt (skill ia-compliance).
+# - Mensuel : détection automatique des actes liés au règlement (UE) 2024/1689 (modificatifs,
+#   rectificatifs, consolidations, actes d'exécution) via le point SPARQL public de l'Office des
+#   publications. Tout acte inconnu ouvre une issue de revue humaine.
+# - Trimestriel : issue de rappel de la revue manuelle (lignes directrices, codes de bonnes
+#   pratiques, normes, relecture des entrées « échéance à confirmer »).
+# Aucune règle juridique n'est jamais modifiée automatiquement.
+
+name: Veille juridique AI Act
+
+on:
+  schedule:
+    - cron: "17 6 3 * *"   # le 3 de chaque mois, 06:17 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  detection:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Interroger les sources officielles
+        id: watch
+        run: |
+          set +e
+          python3 scripts/check_legal_updates.py --output veille.md
+          echo "code=$?" >> "$GITHUB_OUTPUT"
+          cat veille.md >> "$GITHUB_STEP_SUMMARY"
+      - name: Ouvrir une issue de revue humaine
+        if: steps.watch.outputs.code != '0'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          if [ "${{ steps.watch.outputs.code }}" = "1" ]; then
+            TITLE="Veille juridique : nouveaux actes à examiner ($(date -u +%Y-%m))"
+          else
+            TITLE="Veille juridique : contrôle automatique en échec ($(date -u +%Y-%m))"
+          fi
+          if ! gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq '.[0].number' | grep -q .; then
+            gh issue create --title "$TITLE" --body-file veille.md
+          fi
+
+  rappel-trimestriel:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Ouvrir l'issue de revue trimestrielle (janvier, avril, juillet, octobre)
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          MONTH=$(date -u +%-m)
+          case "$MONTH" in 1|4|7|10) ;; *) [ "${{ github.event_name }}" = "workflow_dispatch" ] || exit 0 ;; esac
+          TITLE="Revue juridique trimestrielle ($(date -u +%Y-%m))"
+          if gh issue list --state open --search "\"$TITLE\" in:title" --json number --jq '.[0].number' | grep -q .; then exit 0; fi
+          {
+            echo "Revue manuelle prévue par references/maintenance.md (section 3)."
+            echo
+            echo "Entrées du calendrier encore « échéance à confirmer » :"
+            python3 -c "import json;c=json.load(open('data/ai-act-calendar.json'));[print('- ' + e['id'] + ' : ' + e['label']) for e in c['entries'] if e['legal_basis']['verification_status'] in ('sources_secondaires','incertaine')]"
+            echo
+            sed -n '/## 3. Revue de veille/,/## 4./p' references/maintenance.md | sed '$d'
+          } > revue.md
+          gh issue create --title "$TITLE" --body-file revue.md

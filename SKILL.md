@@ -4,7 +4,7 @@ description: Audit structuré, en lecture seule, d'un projet logiciel intégrant
 license: MIT
 compatibility: Agents compatibles Agent Skills (Claude Code, OpenAI Codex et autres). Python 3.9+ facultatif pour les scripts d'aide. Aucun accès réseau requis.
 metadata:
-  version: "1.1.0"
+  version: "1.1.1"
   legal-baseline: "Règlement (UE) 2024/1689 modifié par le règlement (UE) 2026/1744"
   legal-references-last-verified: "2026-10-27"
   language: fr
@@ -299,3 +299,4 @@ et le registre des éléments non vérifiables. Un exemple complet figure dans `
 | `references/audit-checklist.md` | Checklists conditionnelles A à G |
 | `references/findings-methodology.md` | Natures, gravité, confiance, rédaction |
 | `references/maintenance.md` | Procédure de mise à jour juridique |
+| `references/official-verification-worksheet.md` | Fiche de levée des « échéances à confirmer » sur le texte officiel |
