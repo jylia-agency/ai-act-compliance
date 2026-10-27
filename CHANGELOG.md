@@ -16,6 +16,8 @@ de la revue des rectificatifs. Base juridique inchangée.
   `@xenova/transformers`, pgvector, `tool_calls`, `new Blob`, jetons JWT ; fichiers listés par signal.
 - `ScannerRegressionTests` (3 tests) ; audit différentiel : alerte sur l'ajout d'un `transparency_risk`.
 - `tests/agent-runs/2026-10-27-v1.2.0/real-repo-chatbot-ui.md` : synthèse de l'essai et vérification.
+- Évaluation à l'aveugle rejouée en 1.2.1 sur `demo-ai-vulnerable` et `demo-insufficient-info` (deux modèles) :
+  conforme (`tests/agent-runs/2026-10-27-v1.2.1/`).
 
 ### Modifié
 - `SKILL.md` : commandes Git en lecture (`rev-parse`, `show`, `grep`) autorisées ; critères de

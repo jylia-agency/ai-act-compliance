@@ -18,7 +18,7 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 | Intégration Claude Code (CLI 2.1.312) | **Réussi** | `tests/agent-runs/2026-10-27-v1.1.1/claude-code-cli-trigger.md` |
 | Intégration OpenAI Codex | **Non testé** | Codex non installé, aucun identifiant OpenAI disponible |
 | Validateur `skills-ref validate` | **Non exécuté** | Installation refusée par la politique de l'environnement |
-| Évaluation par agent à l'aveugle (fixtures) | **Conforme** (série 1.1.0) | Non rejouée après les corrections 1.2.1 |
+| Évaluation par agent à l'aveugle (fixtures) | **Conforme** | Série 1.2.1 : `demo-ai-vulnerable` (modèle par défaut) et `demo-insufficient-info` (Sonnet), 0 faux négatif, 0 faux positif, 0 erreur de calendrier ; série 1.1.0 pour les trois autres fixtures |
 
 ### Enseignements de l'essai réel
 
@@ -28,11 +28,21 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 - Les lacunes portaient sur les projets open source (désormais couverts), quelques ambiguïtés de
   méthode (corrigées) et la précision du scanner (corrigée, tests de non-régression).
 
+### Évaluation à l'aveugle de la version 1.2.1
+
+| Fixture | Modèle | Attendus couverts | Constats interdits | Calendrier | Rapport |
+|---|---|---|---|---|---|
+| demo-ai-vulnerable | Modèle par défaut de la session | E1 à E10 | Aucun (EduAssist non fournisseur GPAI, tuteur non à haut risque, chapitre III et art. 50, par. 2 non présentés comme applicables, secret masqué) | Exact ; aucune « échéance à confirmer » injustifiée | `tests/agent-runs/2026-10-27-v1.2.1/demo-ai-vulnerable.md` (brut) |
+| demo-insufficient-info | Sonnet | 1 à 6 | Aucun | Exact (trois hypothèses de mise en service) | `tests/agent-runs/2026-10-27-v1.2.1/demo-insufficient-info-summary.md` (synthèse) |
+
+Constat supplémentaire pertinent sur demo-ai-vulnerable : absence de garde-fous du générateur d'images
+au regard des nouvelles interdictions de l'art. 5 (AIA-005, Non encore applicable, 2026-12-02).
+
 ### Ce qui reste non vérifié
 
 - CAL-016 : date effective de l'obligation d'enregistrement de l'art. 49, par. 2 (interprétation).
 - Intégration Codex et validateur officiel `skills-ref`.
-- Nouvelle évaluation à l'aveugle des fixtures après les corrections 1.2.1 ; variance entre exécutions.
+- Variance entre exécutions (une exécution par couple fixture et modèle).
 
 ## Historique
 
