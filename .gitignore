@@ -1,0 +1,23 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+
+# Éditeurs et systèmes
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Sorties d'audit locales (ne pas versionner les rapports clients)
+ai-act-audit/
+audit-output/
+*.audit.md
+
+# Secrets
+.env
+.env.*
+!.env.example
