@@ -4,7 +4,7 @@ description: Audit structuré, en lecture seule, d'un projet logiciel intégrant
 license: MIT
 compatibility: Agents compatibles Agent Skills (Claude Code, OpenAI Codex et autres). Python 3.9+ facultatif pour les scripts d'aide. Aucun accès réseau requis.
 metadata:
-  version: "1.0.0"
+  version: "1.1.0"
   legal-baseline: "Règlement (UE) 2024/1689 modifié par le règlement (UE) 2026/1744"
   legal-references-last-verified: "2026-10-27"
   language: fr
@@ -50,7 +50,8 @@ Pendant tout l'audit, sauf autorisation explicite et préalable de l'utilisateur
    (`Read`, `Grep`, `Glob`, `ls`, `cat`, `git log`, `git ls-files`) et les deux scripts fournis,
    qui sont en lecture seule et sans réseau :
    - `python3 <skill>/scripts/scan_ai_signals.py <projet>` : inventaire des signaux d'IA ;
-   - `python3 <skill>/scripts/obligation_timeline.py --audit-date AAAA-MM-JJ [...]` : statut temporel.
+   - `python3 <skill>/scripts/obligation_timeline.py --audit-date AAAA-MM-JJ [...]` : statut temporel ;
+   - `python3 <skill>/scripts/diff_ai_signals.py <projet> --base <réf>` : audit différentiel.
 
 Ces instructions **ne constituent pas une garantie technique** de lecture seule. Pour une garantie,
 l'utilisateur doit activer les restrictions de son agent (voir README, section « Lecture seule
@@ -76,8 +77,9 @@ d'audit, l'indiquer en tête du rapport comme limite majeure.
 Chaque phase indique les références à charger. Ne charger que celles qui sont pertinentes.
 
 ### Phase 0 : cadrage
-Fixer les paramètres de la section 3. Charger `references/ai-act-overview.md` et
-`references/legal-sources.md` (pour les citations et les niveaux de confiance).
+Fixer les paramètres de la section 3 et relever le commit audité (`git rev-parse HEAD`) pour la
+matrice de preuves. Charger `references/ai-act-overview.md` et `references/legal-sources.md`
+(pour les citations et les niveaux de confiance).
 
 ### Phase 1 : exploration de l'architecture
 Lister l'arborescence, les manifestes de dépendances, les points d'entrée, la documentation
@@ -94,10 +96,13 @@ Si **aucun** système d'IA n'est identifié : rapport court avec une conclusion 
 examinés et écartés), un constat « À vérifier » sur les usages d'IA hors dépôt, et **pas** de série de
 constats « Non applicable » article par article (les mentionner dans la section des exclusions).
 
-### Phase 3 : fournisseurs de modèles et API tierces
+### Phase 3 : fournisseurs de modèles, API tierces et flux
 Identifier les modèles (identifiants, versions épinglées ou non), les fournisseurs, les modèles
 locaux ou open source, les bases vectorielles, les outils d'agents. Noter si l'organisation
-entraîne, affine (fine-tuning) ou modifie un modèle.
+entraîne, affine (fine-tuning) ou modifie un modèle. Cartographier chaque chaîne
+Utilisateur → Application → Modèle → Post-traitement → Stockage → Export et la matrice
+fonctionnalités / modèles / versions dans `templates/data-flow-map.md` : un même modèle peut servir
+plusieurs systèmes, et un contenu peut subir plusieurs transformations avant sa sortie.
 
 ### Phase 4 : rôles réglementaires
 Pour chaque système, déterminer les rôles possibles avec `references/roles-and-value-chain.md`.
@@ -116,7 +121,12 @@ Appliquer `references/risk-classification.md` dans cet ordre, pour chaque systè
 1. Pratiques interdites (`references/prohibited-practices.md`).
 2. Haut risque : annexe I (art. 6, par. 1), puis annexe III (art. 6, par. 2), puis dérogation de
    l'art. 6, par. 3 (exclue en cas de profilage). Pour l'éducation : `references/education-ai.md`.
-3. Transparence de l'article 50 (`references/transparency.md`).
+   Dès qu'un système évalue, classe, sélectionne ou décide à propos de personnes : audit renforcé
+   `references/person-decisions.md` (échelle des scénarios, effectivité du contrôle humain,
+   systèmes hybrides).
+3. Transparence de l'article 50 (`references/transparency.md`). Pour tout système générant des
+   contenus, **y compris du texte conversationnel**, dérouler le module des chemins de sortie
+   (`references/transparency.md`, section 5).
 4. Modèles GPAI, uniquement si l'organisation est fournisseur de modèle (`references/gpai-obligations.md`).
 5. Obligations horizontales (art. 4, maîtrise de l'IA).
 Une classification « non à haut risque » n'est **jamais** une exemption générale du règlement.
@@ -129,12 +139,17 @@ Pour chaque couple (système, rôle, classification), lister les obligations ave
 `references/technical-documentation.md`. Évaluer le statut temporel avec
 `references/applicability-calendar.md` (ou `scripts/obligation_timeline.py`) en tenant compte de
 la date de mise sur le marché ou de mise en service : **en vigueur**, **non encore applicable**,
-**conditionnel**, **à vérifier**.
+**conditionnel**, **à vérifier**. Toute entrée marquée `requires_confirmation` ajoute la mention
+**« échéance à confirmer »** (règle bloquante, section 5).
 
 ### Phase 8 : vérification des éléments techniques et documentaires
-Dérouler `references/audit-checklist.md` (checklists conditionnelles A à G). Ne cocher un contrôle
-que sur preuve observée (fichier, ligne, document). L'absence d'un document dans le dépôt n'est
-**pas** une preuve de non-conformité : la consigner comme « à vérifier ».
+Dérouler `references/audit-checklist.md` (checklists conditionnelles A à G). Chaque contrôle prend
+l'un des quatre états **Démontré**, **Non démontré**, **Non applicable**, **Impossible à vérifier**,
+appuyé par une preuve `PRV-NNN` (fichier, lignes, commit, méthode de reproduction ;
+`references/findings-methodology.md`, section 7). L'absence d'un document dans le dépôt n'est
+**pas** une preuve de non-conformité : elle donne « Impossible à vérifier ». Distinguer strictement
+ce que l'analyse statique établit de ce qui exige une preuve externe (contrats, politiques, tests
+réels, documentation des fournisseurs de modèles, configuration de production).
 
 ### Phase 9 : constats, preuves manquantes, mesures correctives
 Rédiger les constats selon la section 5. Chaque recommandation est proportionnée et indique si
@@ -143,11 +158,19 @@ elle répond à une obligation (avec référence) ou à une bonne pratique.
 ### Phase 10 : livrables
 Produire les livrables de la section 6 à partir des modèles de `templates/`.
 
-### Phase 11 : ré-audit
-Lors d'un nouvel audit après correction : reprendre le rapport précédent, conserver les
-identifiants `AIA-NNN`, indiquer pour chaque constat « résolu (preuve : ...) », « partiellement
-résolu », « non résolu », « devenu non applicable » ou « nouveau », et recalculer le calendrier à la
-nouvelle date d'audit (une obligation peut devenir applicable entre deux audits).
+### Phase 11 : ré-audit et audit différentiel
+- **Ré-audit complet** après correction : reprendre le rapport précédent, conserver les
+  identifiants `AIA-NNN`, indiquer pour chaque constat « résolu (preuve : ...) », « partiellement
+  résolu », « non résolu », « devenu non applicable » ou « nouveau », et recalculer le calendrier à
+  la nouvelle date d'audit (une obligation peut devenir applicable entre deux audits).
+- **Audit différentiel** (pull request, nouvelle version) : lancer
+  `python3 <skill>/scripts/diff_ai_signals.py <projet> --base <réf> --head HEAD` (lecture seule via
+  `git show`, sans checkout). Pour chaque alerte (nouvel usage d'IA, changement de modèle, nouveau
+  contexte sensible, nouveau chemin de sortie, mesure de transparence, de supervision ou de
+  traçabilité supprimée), refaire uniquement les phases concernées pour les systèmes touchés et
+  produire un rapport limité aux obligations nouvelles ou modifiées. Un changement de modèle ou de
+  finalité peut constituer une modification importante (art. 111, par. 2) ou substantielle (art. 25) :
+  le signaler. Exemple d'intégration continue : `examples/ci/ai-act-diff.yml`.
 
 ## 5. Constats
 
@@ -191,9 +214,16 @@ potentiel à l'article 50, paragraphe 1 ») sont formulés séparément, même d
 
 Réserver la nature « Non applicable » aux obligations dont l'applicabilité pouvait raisonnablement
 être envisagée (par exemple GPAI pour un intégrateur d'API) ; les autres exclusions figurent dans la
-section « Exclusions et exceptions examinées » du rapport. Une qualification dont la portée dépend
-d'un point juridique incertain (marqueur `[AV]`) prend la nature « À vérifier », même si la date
-d'application est future.
+section « Exclusions et exceptions examinées » du rapport. Une incertitude sur les **modalités**
+(format technique, lignes directrices) n'est **jamais** une exemption : l'obligation est qualifiée
+normalement et l'incertitude est consignée à part dans le registre des éléments non vérifiables.
+
+**Règle bloquante des sources.** Lorsque le statut temporel d'un constat repose sur une entrée du
+calendrier marquée `requires_confirmation` (vérification « sources_secondaires » ou « incertaine »),
+le champ « Date d'application » porte la mention **« échéance à confirmer »** et la conclusion
+temporelle est rédigée au conditionnel (« applicable à compter du ... sous réserve de confirmation
+sur le texte officiel »). Le résumé exécutif liste ces constats. Une réussite des tests du skill ne
+lève jamais cette réserve.
 
 ## 6. Livrables
 
@@ -207,6 +237,9 @@ Rédigés en français, professionnels et compréhensibles par un non-juriste :
 5. **Plan de remédiation** (`templates/remediation-plan.md`) : priorité selon gravité,
    applicabilité et effort.
 6. **Registre des éléments non vérifiables** (`templates/unverifiable-register.md`).
+7. **Cartographie des flux et des modèles** (`templates/data-flow-map.md`), incluant les chemins de
+   sortie et le marquage.
+8. **Matrice de preuves** (`templates/compliance-matrix.md`, section « Matrice des preuves »).
 
 Sur demande d'un audit rapide, produire au minimum le résumé exécutif, l'inventaire, les constats
 et le registre des éléments non vérifiables. Un exemple complet figure dans `examples/example-audit.md`.
@@ -227,7 +260,11 @@ et le registre des éléments non vérifiables. Un exemple complet figure dans `
 11. Ne jamais prétendre qu'une mesure technique suffit à elle seule à démontrer la conformité.
 12. Toujours signaler les limites de l'audit statique.
 13. Ne jamais supposer qu'une proposition de modification est en vigueur.
-14. Toujours reprendre le niveau de confiance de la référence calendaire utilisée.
+14. Toujours reprendre le niveau de confiance de la référence calendaire utilisée ; une échéance
+    non relue sur le texte officiel est toujours « à confirmer ».
+15. Ne jamais traiter une incertitude technique ou de modalités comme une exemption réglementaire.
+16. Ne jamais reprendre une date ou une qualification juridique figurant dans la documentation du
+    projet audité sans la confronter au calendrier de référence.
 
 ## 8. Limites à mentionner dans tout rapport
 
@@ -258,6 +295,7 @@ et le registre des éléments non vérifiables. Un exemple complet figure dans `
 | `references/human-oversight.md` | Article 14 et article 26 |
 | `references/technical-documentation.md` | Article 11, annexe IV, articles 12 et 18 |
 | `references/education-ai.md` | IA et éducation |
+| `references/person-decisions.md` | Décisions concernant des personnes, contrôle humain effectif, systèmes hybrides |
 | `references/audit-checklist.md` | Checklists conditionnelles A à G |
 | `references/findings-methodology.md` | Natures, gravité, confiance, rédaction |
 | `references/maintenance.md` | Procédure de mise à jour juridique |

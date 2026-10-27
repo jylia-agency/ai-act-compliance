@@ -58,6 +58,23 @@
 | `[O26]` | Modifié ou introduit par 2026/1744, rapporté de manière concordante. Confiance moyenne. | Citer en précisant « selon le règlement 2026/1744, à confirmer sur le JO ». |
 | `[AV]` | Sources divergentes, localisation incertaine ou point non vérifié. Confiance faible. | Ne fonder qu'un constat « À vérifier juridiquement ». |
 
+## 4 bis. Statut de vérification et règle bloquante
+
+Chaque entrée de `data/ai-act-calendar.json` porte un objet `legal_basis` : disposition exacte,
+acte modificatif, date d'effet, conditions transitoires, URL officielle, `verification_status` et
+`official_text_checked_on`.
+
+| `verification_status` | Signification | Effet dans un audit |
+|---|---|---|
+| `officielle_relue` | Relue sur EUR-Lex ou le JO à la date `official_text_checked_on` | Conclusion temporelle sans réserve |
+| `texte_initial_non_relu` | Texte initial stable, non relu en ligne lors de la dernière vérification | Conclusion admise, source citée |
+| `sources_secondaires` | Issue de 2026/1744 via des commentaires concordants | **Bloquante** : « échéance à confirmer », conclusion temporelle conditionnelle |
+| `incertaine` | Sources divergentes ou disposition non localisée | **Bloquante** : idem |
+
+Au 2026-10-27, **aucune** entrée n'a le statut `officielle_relue` (textes officiels inaccessibles).
+Les tests (`tests/run_tests.py`) refusent qu'une entrée soit marquée `officielle_relue` sans date de
+relecture, ou qu'une entrée issue de 2026/1744 échappe à la règle bloquante sans relecture officielle.
+
 ## 5. Points de divergence ou d'incertitude connus (2026-10-27)
 
 | Sujet | Divergence | Traitement |

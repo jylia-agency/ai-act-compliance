@@ -12,6 +12,10 @@ Tous les outils pédagogiques utilisant l'IA ne sont **pas** à haut risque. Seu
 l'annexe III, point 3, le sont (sous réserve de l'art. 6, par. 3), et la reconnaissance des
 émotions dans les établissements d'enseignement est **interdite** (art. 5, par. 1, f)).
 
+Pour l'échelle des scénarios (entraînement, notation indicative, classement, décision assistée,
+décision automatisée), les questions obligatoires et l'effectivité du contrôle humain, appliquer
+également `person-decisions.md`.
+
 ## 2. Grille d'analyse par fonctionnalité
 
 | Fonctionnalité | Qualification à examiner en priorité | Qualification par défaut si les faits sont confirmés | Points de vigilance |

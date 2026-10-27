@@ -8,6 +8,10 @@ Le résultat est une aide au raisonnement, pas une qualification juridique :
 chaque ligne renvoie à une entrée du calendrier dont la source et le niveau de
 confiance doivent être repris dans le rapport.
 
+Règle bloquante : une entrée dont la base juridique n'est pas vérifiée
+(verification_status « sources_secondaires » ou « incertaine ») produit
+requires_confirmation=True et un statut assorti de « échéance à confirmer ».
+
 Exemples :
     python3 scripts/obligation_timeline.py --audit-date 2026-10-27
     python3 scripts/obligation_timeline.py --audit-date 2026-10-27 \
@@ -29,6 +33,9 @@ STATUS_APPLICABLE = "applicable"
 STATUS_FUTURE = "non_encore_applicable"
 STATUS_CONDITIONAL = "conditionnel"
 STATUS_UNKNOWN = "a_verifier"
+
+BLOCKING_VERIFICATION_STATUSES = {"sources_secondaires", "incertaine"}
+CONFIRMATION_SUFFIX = " (échéance à confirmer)"
 
 STATUS_LABELS = {
     STATUS_APPLICABLE: "En vigueur à la date d'audit",
@@ -93,6 +100,10 @@ def evaluate_entry(
                 )
         else:
             reason = "Mise sur le marché à partir de la date de référence : pas de régime transitoire."
+            status = STATUS_APPLICABLE if effective <= audit_date else STATUS_FUTURE
+            if status == STATUS_FUTURE:
+                reason += f" Applicable dans {(effective - audit_date).days} jour(s)."
+            return _result(entry, status, effective, reason, used_legacy=False)
 
     status = STATUS_APPLICABLE if effective <= audit_date else STATUS_FUTURE
     if status == STATUS_FUTURE:
@@ -101,13 +112,33 @@ def evaluate_entry(
     return _result(entry, status, effective, reason.strip())
 
 
-def _result(entry: dict, status: str, effective: dt.date | None, reason: str) -> dict:
+def verification_status(entry: dict, used_legacy: bool = True) -> str:
+    """Statut de vérification de la règle effectivement utilisée pour conclure.
+
+    Si la date retenue est la date de base et que celle-ci a son propre statut
+    (base_verification_status), c'est ce statut qui s'applique.
+    """
+    basis = entry.get("legal_basis", {})
+    if not used_legacy and basis.get("base_verification_status"):
+        return basis["base_verification_status"]
+    return basis.get("verification_status", "incertaine")
+
+
+def requires_confirmation(entry: dict, used_legacy: bool = True) -> bool:
+    return verification_status(entry, used_legacy) in BLOCKING_VERIFICATION_STATUSES
+
+
+def _result(entry: dict, status: str, effective: dt.date | None, reason: str, used_legacy: bool = True) -> dict:
+    blocked = requires_confirmation(entry, used_legacy)
+    label = STATUS_LABELS[status] + (CONFIRMATION_SUFFIX if blocked and status != STATUS_UNKNOWN else "")
     return {
         "id": entry["id"],
         "label": entry["label"],
         "articles": entry.get("articles", []),
         "status": status,
-        "status_label": STATUS_LABELS[status],
+        "status_label": label,
+        "requires_confirmation": blocked,
+        "verification_status": verification_status(entry, used_legacy),
         "effective_date": effective.isoformat() if effective else None,
         "confidence": entry.get("confidence"),
         "source_url": entry.get("source_url"),
@@ -135,18 +166,20 @@ def to_markdown(results: list[dict], audit_date: dt.date, last_verified: str) ->
     lines = [
         f"Date d'audit : {audit_date.isoformat()} | Calendrier vérifié le : {last_verified}",
         "",
-        "| ID | Obligation | Statut | Date effective | Confiance | Motif |",
-        "|---|---|---|---|---|---|",
+        "| ID | Obligation | Statut | Date effective | Confiance | Vérification | Motif |",
+        "|---|---|---|---|---|---|---|",
     ]
     for item in results:
         lines.append(
             f"| {item['id']} | {item['label']} | {item['status_label']} | "
-            f"{item['effective_date'] or 'n.d.'} | {item['confidence']} | {item['reason']} |"
+            f"{item['effective_date'] or 'n.d.'} | {item['confidence']} | "
+            f"{item['verification_status']} | {item['reason']} |"
         )
     lines += [
         "",
         "Avertissement : statut calculé à partir d'un calendrier de référence daté. "
-        "Les entrées de confiance « moyenne » ou « faible » doivent être confirmées sur le texte officiel.",
+        "Les lignes « échéance à confirmer » reposent sur une base juridique non relue sur le texte "
+        "officiel : elles ne peuvent fonder qu'une conclusion temporelle conditionnelle.",
     ]
     return "\n".join(lines)
 

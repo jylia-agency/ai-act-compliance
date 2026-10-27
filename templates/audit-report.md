@@ -8,7 +8,9 @@
 | Paramètre | Valeur |
 |---|---|
 | Date d'audit | {{AAAA-MM-JJ}} |
-| Périmètre | {{dépôt, branche, commit, dossiers exclus}} |
+| Périmètre | {{dépôt, branche, dossiers exclus}} |
+| Commit audité | {{empreinte complète, `git rev-parse HEAD`, ou « non versionné »}} |
+| Mode | {{complet / différentiel depuis <réf. de base>}} |
 | Base juridique | Règlement (UE) 2024/1689 tel que modifié par le règlement (UE) 2026/1744 |
 | Références vérifiées le | {{meta.last_verified}} (voir `references/legal-sources.md`) |
 | Contexte fourni par le demandeur | {{finalités, utilisateurs, dates de mise sur le marché, statut de l'organisation, ou « aucun »}} |
@@ -22,6 +24,7 @@
 - **Obligations en vigueur concernées** : {{art. 4, 5, 50...}}.
 - **Échéances à venir** : {{dates et articles}}.
 - **Principales incertitudes** : {{informations manquantes, références à confirmer}}.
+- **Constats dont l'échéance est à confirmer** (base juridique non relue sur le texte officiel) : {{AIA-NNN et CAL-NNN}}.
 - **Synthèse des constats** :
 
 | Nature | Critique | Élevée | Moyenne | Faible | Information |
@@ -103,7 +106,12 @@ Voir `remediation-plan.md`. Synthèse des actions P1 et P2.
 - Lignes directrices, normes harmonisées et actes d'exécution évolutifs.
 - {{Autres limites spécifiques}}.
 
-## 12. Suivi (ré-audit)
+## 12. Matrice des preuves
+
+Voir `compliance-matrix.md`, section « Matrice des preuves ». Les preuves externes (contrats,
+politiques, tests réels, documentation des fournisseurs, configuration de production) sont listées à part.
+
+## 13. Suivi (ré-audit)
 
 | Constat | Statut précédent | Statut actuel | Preuve |
 |---|---|---|---|

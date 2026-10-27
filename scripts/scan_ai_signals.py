@@ -110,20 +110,28 @@ PATTERNS: dict[str, list[tuple[str, str]]] = {
         ("ai-api-key-env", r"\b(OPENAI_API_KEY|ANTHROPIC_API_KEY|GOOGLE_API_KEY|GEMINI_API_KEY|MISTRAL_API_KEY|COHERE_API_KEY|HF_TOKEN|HUGGINGFACEHUB_API_TOKEN|REPLICATE_API_TOKEN|ELEVENLABS_API_KEY)\b"),
     ],
     "sensitive_context": [
-        ("education", r"(\bgrade\b|\bgrading\b|\bnotation\b|\bnote finale\b|\bexam\b|\bexamen\b|proctor|surveillance d'examen|\badmission\b|\bstudent\b|étudiant|élève|apprenant|copies? d'examen|correction de copies)"),
+        ("education", r"(\bgrade\b|\bgrading\b|\bnotation\b|\bnote finale\b|\bexam\b|\bexamen\b|proctor|surveillance d'examen|\badmission\b|\bstudent\b|étudiant|élève|apprenant|copies? d'examen|correction de copies|orientation|filière|conseil de classe)"),
         ("employment", r"(\brecruit|recrutement|\bhiring\b|\bcandidate|candidat|\bresume\b|\bcv\b|\bemployee\b|salarié|performance review|licenciement)"),
         ("essential-services", r"(credit[_ ]?scor|creditworth|solvabilit|\bloan\b|\bprêt\b|insurance|assurance vie|assurance santé|prestation sociale|\bbenefits? eligibility)"),
         ("health", r"(\bpatient\b|diagnos|\btriage\b|medical|médical)"),
         ("law-enforcement-migration-justice", r"(\bpolice\b|recidiv|récidiv|\bcriminal\b|asylum|\basile\b|border control|tribunal|\bjudge\b|élection|election|\bvoter?\b)"),
-        ("person-scoring", r"(\brisk_score\b|\btrust_score\b|social[_ ]scor|\bscoring\b|\brank_candidates\b|profiling|profilage)"),
+        ("person-scoring", r"(\brisk_score\b|\btrust_score\b|social[_ ]scor|\bscoring\b|\brank_candidates\b|profiling|profilage|score_engagement|engagement_score|motivation|persévérance)"),
         ("emotion-inference", r"(\bemotions?\b|émotions?|\bstress\b|anxiété|anxiety|attention_score)"),
     ],
     "transparency_marker": [
-        ("ai-disclosure", r"(généré par (l'|une )?ia|genere par ia|ai[- ]generated|generated (by|with) ai|contenu généré|assistant (d'|virtuel )?ia|vous (échangez|discutez|parlez) avec|you are (talking|chatting) (to|with) an ai|ai_disclosure|AI_DISCLOSURE)"),
+        ("ai-disclosure", r"(généré par (l'|une )?ia|genere par ia|ai[- _]generated|generated (by|with) ai|contenu généré|assistant (d'|virtuel )?ia|vous (échangez|discutez|parlez) avec|you are (talking|chatting) (to|with) an ai|ai_disclosure|AI_DISCLOSURE)"),
         ("content-provenance", r"(c2pa|content[_ ]credentials|synthid|watermark|filigrane|trainedAlgorithmicMedia|DigitalSourceType|iptc)"),
     ],
     "oversight_marker": [
         ("human-review", r"(human[_ ]review|validation humaine|revue humaine|manual[_ ]review|requires_review|pending_review|needs_review|approve[d]?_by|reviewer_id|validated_by|override|annuler la décision|kill[_ ]switch)"),
+    ],
+    "output_channel": [
+        ("pdf-export", r"\b(reportlab|weasyprint|fpdf|pdfkit|xhtml2pdf)\b"),
+        ("spreadsheet-export", r"(\bopenpyxl\b|\bxlsxwriter\b|\.to_csv\(|\.to_excel\(|csv\.writer|csv\.DictWriter)"),
+        ("email", r"(\bsmtplib\b|send_mail\(|sendgrid|EmailMessage\()"),
+        ("file-write", r"(\.write_bytes\(|\.write_text\(|Image\.save\(|\.save\(output|FileResponse|StreamingResponse|Content-Disposition)"),
+        ("clipboard", r"(navigator\.clipboard|pyperclip|copy_to_clipboard)"),
+        ("svg-html", r"(\.svg['\"]|image/svg\+xml|render_template|HTMLResponse)"),
     ],
     "logging_marker": [
         ("traceability", r"(audit_log|audit log|journal d'audit|model_version|prompt_version|inference_log|log_inference|retention_days|conservation des journaux|trace_id)"),
@@ -177,21 +185,40 @@ def iter_files(root: Path, exclude: list[str] | None = None):
                 yield path
 
 
+def is_scannable(rel: str, exclude: list[str] | None = None) -> bool:
+    """Indique si un chemin relatif doit être analysé (mêmes règles que le parcours disque)."""
+    parts = rel.split("/")
+    name = parts[-1]
+    if any(part in SKIP_DIRS for part in parts[:-1]):
+        return False
+    if any(fnmatch.fnmatch(rel, pat) or fnmatch.fnmatch(name, pat) for pat in exclude or []):
+        return False
+    return name in MANIFEST_NAMES or Path(name).suffix.lower() in TEXT_EXTENSIONS or name.startswith(".env")
+
+
 def scan(root: Path, max_hits: int = 400, exclude: list[str] | None = None) -> dict:
     root = root.resolve()
+
+    def items():
+        for path in iter_files(root, exclude):
+            try:
+                yield path.relative_to(root).as_posix(), path.read_text(encoding="utf-8", errors="replace")
+            except OSError:
+                continue
+
+    return scan_items(items(), root.name, max_hits)
+
+
+def scan_items(items, root_name: str, max_hits: int = 400) -> dict:
+    """Analyse des couples (chemin relatif, contenu), quelle que soit leur provenance."""
     hits: list[dict] = []
     summary: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     files_by_category: dict[str, set] = defaultdict(set)
     secret_locations: list[dict] = []
     files_scanned = 0
 
-    for path in iter_files(root, exclude):
-        try:
-            content = path.read_text(encoding="utf-8", errors="replace")
-        except OSError:
-            continue
+    for rel, content in items:
         files_scanned += 1
-        rel = path.relative_to(root).as_posix()
         for lineno, line in enumerate(content.splitlines(), start=1):
             masked, has_secret = mask_secrets(line)
             if has_secret:
@@ -212,7 +239,7 @@ def scan(root: Path, max_hits: int = 400, exclude: list[str] | None = None) -> d
 
     ai_detected = any(cat in summary for cat in AI_CATEGORIES)
     return {
-        "root": root.name,
+        "root": root_name,
         "files_scanned": files_scanned,
         "ai_signals_detected": ai_detected,
         "summary": {cat: dict(sig) for cat, sig in sorted(summary.items())},

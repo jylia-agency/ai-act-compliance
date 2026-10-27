@@ -51,9 +51,25 @@ produit des livrables d'audit en français, exploitables dans des projets profes
   référence juridique et méthode de vérification.
 - **Livrables** : rapport d'audit, inventaire des systèmes, analyse de classification, matrice des
   obligations, plan de remédiation, registre des éléments non vérifiables.
+- **Règle bloquante des sources** : toute échéance dont la base juridique n'a pas été relue sur le
+  texte officiel (sources secondaires ou incertaines) est restituée « échéance à confirmer » et ne
+  fonde qu'une conclusion temporelle conditionnelle. Chaque entrée du calendrier porte sa base
+  juridique complète (disposition, acte modificatif, date d'effet, conditions transitoires, URL
+  officielle, statut de vérification).
+- **Module article 50, paragraphe 2** : inventaire obligatoire des chemins de sortie (interface, API,
+  copier-coller, PDF, tableur, texte, courriel, HTML, SVG, médias) et contrôle du marquage à chaque
+  étape ; textes conversationnels analysés comme tout autre contenu.
+- **Cartographie des flux** Utilisateur → Application → Modèle → Post-traitement → Stockage → Export,
+  avec matrice fonctionnalités / modèles / versions.
+- **Audit renforcé des décisions concernant des personnes** : échelle de scénarios, effectivité du
+  contrôle humain, systèmes hybrides.
+- **Matrice de preuves** : quatre états (démontré, non démontré, non applicable, impossible à vérifier)
+  et preuves `PRV-NNN` rejouables (fichier, lignes, commit, méthode de reproduction).
+- **Audit différentiel** des pull requests, avec exemple d'intégration continue.
 - **Scripts d'aide sans dépendance** (Python 3.9+, bibliothèque standard, sans réseau, lecture seule) :
-  - `scripts/scan_ai_signals.py` : inventaire des signaux d'IA, secrets masqués ;
-  - `scripts/obligation_timeline.py` : statut temporel des obligations à une date donnée.
+  - `scripts/scan_ai_signals.py` : inventaire des signaux d'IA et des chemins de sortie, secrets masqués ;
+  - `scripts/obligation_timeline.py` : statut temporel des obligations à une date donnée ;
+  - `scripts/diff_ai_signals.py` : comparaison de deux états Git (via `git show`, sans checkout).
 
 ## Installation pour Claude Code
 
@@ -147,7 +163,11 @@ Utilisation directe des scripts :
 python3 scripts/scan_ai_signals.py /chemin/du/projet            # Markdown
 python3 scripts/scan_ai_signals.py /chemin/du/projet --json     # JSON
 python3 scripts/obligation_timeline.py --audit-date 2026-10-27 --placed-on-market 2026-03-01 --scope transparency
+python3 scripts/diff_ai_signals.py /chemin/du/projet --base origin/main --head HEAD
 ```
+
+Intégration continue : `examples/ci/ai-act-diff.yml` (GitHub Actions, permissions en lecture seule,
+aucun envoi de données à un service externe).
 
 Un rapport complet d'exemple figure dans [`examples/example-audit.md`](examples/example-audit.md).
 
@@ -174,17 +194,21 @@ ai-act-compliance/
 │   ├── human-oversight.md
 │   ├── technical-documentation.md
 │   ├── education-ai.md
+│   ├── person-decisions.md
 │   ├── audit-checklist.md
 │   ├── findings-methodology.md
 │   └── maintenance.md
 ├── templates/                   # Modèles de livrables
 │   ├── audit-report.md, ai-system-inventory.md, risk-classification.md
 │   ├── compliance-matrix.md, remediation-plan.md, unverifiable-register.md
+│   └── data-flow-map.md
 ├── scripts/
 │   ├── scan_ai_signals.py
-│   └── obligation_timeline.py
+│   ├── obligation_timeline.py
+│   └── diff_ai_signals.py
 ├── examples/
-│   └── example-audit.md
+│   ├── example-audit.md
+│   └── ci/ai-act-diff.yml       # Exemple de workflow d'audit différentiel
 └── tests/
     ├── README.md                # Procédure de test (automatique et par agent)
     ├── RESULTS.md               # Résultats réellement obtenus
@@ -194,7 +218,8 @@ ai-act-compliance/
         ├── demo-ai-vulnerable/  # EduAssist avec défauts volontaires + EXPECTED.md
         ├── demo-ai-secure/      # EduAssist corrigé + docs + EXPECTED.md
         ├── demo-no-ai/          # Projet sans IA (faux positifs) + EXPECTED.md
-        └── demo-insufficient-info/  # Contexte insuffisant + EXPECTED.md
+        ├── demo-insufficient-info/  # Contexte insuffisant + EXPECTED.md
+        └── demo-adversarial/    # Documentation trompeuse, système hybride, marquage falsifiable
 ```
 
 ## Sources juridiques
@@ -237,10 +262,11 @@ concordantes. Les entrées concernées sont marquées de confiance « moyenne »
 python3 tests/run_tests.py
 ```
 
-Les tests automatiques (bibliothèque standard uniquement) vérifient la structure du skill, le
-frontmatter, la synchronisation du calendrier, 18 scénarios calendaires, le scanner sur les quatre
-fixtures (faux positifs, faux négatifs, masquage des secrets, lecture seule) et le format des
-constats. L'évaluation du raisonnement par un agent, à l'aveugle sur les fixtures, est décrite dans
+Les tests automatiques (bibliothèque standard et Git uniquement) vérifient la structure du skill,
+le frontmatter, la complétude des bases juridiques et la règle bloquante, des scénarios calendaires,
+le scanner sur les cinq fixtures (faux positifs, faux négatifs, chemins de sortie, masquage des
+secrets, lecture seule), l'audit différentiel et le format des constats. **La réussite de ces tests
+ne valide pas le contenu juridique** : elle ne lève jamais la mention « échéance à confirmer ». L'évaluation du raisonnement par un agent, à l'aveugle sur les fixtures, est décrite dans
 [`tests/README.md`](tests/README.md) ; les résultats réellement obtenus sont consignés dans
 [`tests/RESULTS.md`](tests/RESULTS.md).
 

@@ -38,7 +38,9 @@
 ## 4. Mise à jour du dépôt
 
 1. Modifier `data/ai-act-calendar.json` (source machine) : date, articles, `source_url`,
-   `confidence`, `verified_on`, `notes`.
+   `confidence`, `verified_on`, `notes` et l'objet `legal_basis`. Après relecture effective sur
+   EUR-Lex : `verification_status` = `officielle_relue`, `official_text_checked_on` = date de
+   relecture, disposition exacte de l'acte modificatif dans `amending_act`, confiance relevée.
 2. Répercuter dans `references/applicability-calendar.md` (même identifiant `CAL-NNN`).
 3. Mettre à jour les références concernées, leur en-tête « Dernière vérification » et les marqueurs
    `[TI]`, `[O26]`, `[AV]`.

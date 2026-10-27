@@ -25,6 +25,12 @@
    sources), au niveau du type et du modèle pour l'article 111, paragraphe 2.
 4. Ne jamais appliquer une proposition de modification non adoptée.
 5. Le script `scripts/obligation_timeline.py` applique ces règles au fichier JSON.
+6. **Règle bloquante** : une entrée dont la base juridique n'a pas été relue sur le texte officiel et
+   provient de sources secondaires ou incertaines (`verification_status`, voir `legal-sources.md`,
+   section 4 bis) produit la mention **« échéance à confirmer »**. Au 2026-10-27, cela concerne
+   CAL-003, CAL-004, CAL-010 (délai transitoire uniquement), CAL-011, CAL-012, CAL-013, CAL-015 et CAL-016.
+7. Ne jamais reprendre une date figurant dans la documentation du projet audité sans la confronter
+   à ce calendrier.
 
 ## 2. Tableau de référence
 

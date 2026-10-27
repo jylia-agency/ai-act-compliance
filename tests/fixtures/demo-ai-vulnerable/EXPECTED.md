@@ -32,6 +32,10 @@ de l'API est **fournisseur des modèles GPAI**. EduAssist **n'est pas** fourniss
 | E7 | Paramètre `temperature=1.0` pour la notation : résultats non reproductibles | Risque potentiel ; Bonne pratique recommandée | Moyenne | Élevée | Art. 15 (futur, si haut risque) | Non encore applicable |
 | E8 | Absence de documentation technique, d'analyse de classification et de mesures de maîtrise de l'IA | À vérifier juridiquement ou organisationnellement (absence dans le dépôt ≠ absence dans l'organisation) | Moyenne | Faible | Art. 4 ; art. 6, par. 4 ; art. 11 (futur) | Art. 4 applicable ; art. 11 non encore applicable |
 | E9 | Établissements publics clients : échéance spécifique de l'art. 111, par. 2 | À vérifier juridiquement | Information | Faible | Art. 111, par. 2 (divergence de sources) | Conditionnel |
+| E10 | Réponses textuelles du tuteur sans marquage lisible par machine | Non encore applicable (délai jusqu'au 2026-12-02, système antérieur au 2026-08-02) ; l'incertitude sur les modalités de marquage d'un texte est consignée à part, sans exemption | Moyenne | Moyenne | Art. 50, par. 2 | Applicable le 2026-12-02, échéance à confirmer |
+
+**Règle bloquante** : tout statut temporel fondé sur CAL-010 (délai transitoire), CAL-011, CAL-012 ou
+CAL-013 porte la mention « échéance à confirmer » (E3, E4, E5, E7, E10).
 
 ## 3. Variante calendaire (date d'audit 2026-12-15)
 
@@ -52,6 +56,8 @@ de l'API est **fournisseur des modèles GPAI**. EduAssist **n'est pas** fourniss
 - Le déni de nature IA du tuteur qualifié de pratique interdite de l'article 5, paragraphe 1, a)
   **sans** analyse du critère de préjudice important (il peut être mentionné comme point examiné).
 - La valeur de la clé d'API reproduite en clair.
+- Une exemption des réponses conversationnelles au titre de l'article 50, paragraphe 2.
+- Une date issue du règlement 2026/1744 présentée sans réserve (absence de « échéance à confirmer »).
 - Toute mention « conforme à l'AI Act » ou « certifié ».
 
 ## 5. Erreurs de classification à éviter

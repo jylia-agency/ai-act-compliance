@@ -3,13 +3,14 @@
 > Dernière vérification : **2026-10-27**. Chaque contrôle indique sa **condition d'activation**, sa
 > **base** (obligation avec référence, ou bonne pratique) et son **statut temporel** à apprécier à la
 > date d'audit avec `applicability-calendar.md`.
-> Statuts de contrôle : `OK (preuve)`, `KO (preuve)`, `Partiel`, `Non observable`, `N/A (motif)`,
-> `Non encore applicable`.
+> États de contrôle (voir `findings-methodology.md`, section 7) : **Démontré**, **Non démontré**,
+> **Non applicable** (motif), **Impossible à vérifier**. Le statut temporel est noté à part.
+> Chaque état est appuyé par une preuve `PRV-NNN` (fichier, lignes, commit, méthode de reproduction).
 
 Règles :
-- Ne marquer `KO` que sur preuve positive (code, configuration, document). L'absence de document
-  dans le dépôt donne `Non observable`, jamais `KO`.
-- Un contrôle `OK` ne démontre pas la conformité juridique : il atteste de la présence d'une mesure.
+- Ne marquer « Non démontré » que si le dépôt contient l'emplacement où la mesure devrait figurer ou
+  une preuve de son absence. L'absence d'un document organisationnel donne « Impossible à vérifier ».
+- Un contrôle « Démontré » ne démontre pas la conformité juridique : il atteste de la présence d'une mesure.
 - Une ligne « Bonne pratique » ne doit jamais être rédigée comme une obligation.
 
 ## A. Transparence (art. 50) : activer si le système interagit avec des personnes, génère des contenus, ou réalise de la reconnaissance des émotions ou de la catégorisation biométrique

@@ -27,7 +27,7 @@ fournisseur d'images : fournisseurs de modèles. EduAssist n'est pas fournisseur
 | S5 | Feuille de route haut risque incomplète (notice d'utilisation, SGQ, évaluation de la conformité) | Non encore applicable (2027-12-02) ; plan de remédiation à moyen terme | Moyenne | Moyenne |
 | S6 | Risque de biais non évalué (copies manuscrites, élèves allophones, style rédactionnel) | Risque potentiel (limites connues documentées) | Moyenne | Moyenne |
 | S7 | Plan de maîtrise de l'IA documenté ; registre RH hors dépôt | À vérifier organisationnellement (art. 4) | Faible | Moyenne |
-| S8 | Textes générés par le tuteur et art. 50, par. 2 (marquage des textes) | À vérifier juridiquement (portée pour les textes conversationnels, lignes directrices du 20 juillet 2026) ; délai jusqu'au 2026-12-02 pour ce système antérieur au 2026-08-02. « Non encore applicable » est toléré s'il mentionne l'incertitude de portée | Faible | Faible |
+| S8 | Réponses textuelles du tuteur (et justifications de notes) sans marquage lisible par machine | Non encore applicable (délai jusqu'au 2026-12-02 pour ce système antérieur au 2026-08-02, échéance à confirmer). Les textes conversationnels relèvent de l'art. 50, par. 2 ; l'incertitude sur les modalités (lignes directrices du 20.7.2026) est consignée dans le registre, **sans exemption** | Moyenne | Moyenne |
 | S9 | Changement de version du modèle par le fournisseur tiers | Risque potentiel partiellement maîtrisé (journalisation) ; tests de non-régression à formaliser | Faible | Moyenne |
 
 Constats supplémentaires **admis** (pertinents, non exigés) : injection de prompt via la copie et
@@ -47,6 +47,8 @@ applicables le 2026-12-02 (Non encore applicable) ; justification non journalis�
 - Aucune obligation du chapitre III présentée comme applicable à la date d'audit.
 - Aucun délai de grâce de l'article 50, paragraphe 2, accordé au module d'illustrations (mis sur le
   marché après le 2026-08-02).
+- Aucune exemption des réponses conversationnelles au titre de l'article 50, paragraphe 2.
+- Aucune date issue du règlement 2026/1744 présentée sans la mention « échéance à confirmer ».
 
 ## 4. Erreurs de classification à éviter
 

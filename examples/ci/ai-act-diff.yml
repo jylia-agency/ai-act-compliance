@@ -1,0 +1,38 @@
+# Exemple de workflow GitHub Actions pour le projet AUDITÉ (pas pour ce dépôt).
+# Copier ce fichier dans .github/workflows/ du projet et adapter SKILL_PATH.
+#
+# Il exécute l'audit différentiel en lecture seule à chaque pull request et publie les alertes
+# dans le résumé du job. Il n'envoie aucune donnée à un service externe et n'appelle aucune API d'IA.
+# Les alertes indiquent ce qu'il faut réauditer avec le skill ; elles ne qualifient rien juridiquement.
+
+name: Audit differentiel AI Act
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  ai-act-diff:
+    runs-on: ubuntu-latest
+    env:
+      # Emplacement du skill dans le projet (sous-module, copie vendorisée ou dossier .claude/skills).
+      SKILL_PATH: .claude/skills/ia-compliance
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Audit differentiel des signaux d'IA
+        run: |
+          python3 "$SKILL_PATH/scripts/diff_ai_signals.py" . \
+            --base "origin/${{ github.base_ref }}" --head HEAD \
+            --exclude "$SKILL_PATH/*" > ai-act-diff.md
+          cat ai-act-diff.md >> "$GITHUB_STEP_SUMMARY"
+      # Facultatif : faire échouer le job si des mesures de transparence, de supervision ou de
+      # traçabilité ont été supprimées. Décommenter pour l'activer.
+      # - name: Bloquer en cas de mesure supprimee
+      #   run: "! grep -q 'Mesure supprimée' ai-act-diff.md"

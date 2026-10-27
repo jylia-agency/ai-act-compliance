@@ -14,14 +14,17 @@ from __future__ import annotations
 import datetime as dt
 import json
 import re
+import shutil
 import subprocess
 import sys
+import tempfile
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT / "scripts"))
 
+import diff_ai_signals as differ  # noqa: E402
 import obligation_timeline as timeline  # noqa: E402
 import scan_ai_signals as scanner  # noqa: E402
 
@@ -34,7 +37,9 @@ REQUIRED_FILES = [
     "references/deployer-obligations.md", "references/gpai-obligations.md",
     "references/transparency.md", "references/human-oversight.md",
     "references/technical-documentation.md", "references/education-ai.md",
-    "references/audit-checklist.md",
+    "references/audit-checklist.md", "references/person-decisions.md",
+    "scripts/diff_ai_signals.py", "examples/ci/ai-act-diff.yml", "templates/data-flow-map.md",
+    "tests/fixtures/demo-adversarial/EXPECTED.md",
     "templates/audit-report.md", "templates/ai-system-inventory.md",
     "templates/risk-classification.md", "templates/compliance-matrix.md",
     "templates/remediation-plan.md", "templates/unverifiable-register.md",
@@ -169,6 +174,39 @@ class CalendarDataTests(unittest.TestCase):
             if e["source_text"] == "2026/1744":
                 self.assertNotEqual(e["confidence"], "elevee", f"{e['id']} : 2026/1744 non relu, confiance élevée injustifiée")
 
+    def test_every_entry_has_complete_legal_basis(self):
+        required = ("provision", "amending_act", "effective_date", "transitional_conditions",
+                    "official_url", "verification_status", "official_text_checked_on")
+        statuses = set(self.cal["meta"]["verification_status_scale"])
+        for e in self.cal["entries"]:
+            basis = e.get("legal_basis")
+            self.assertIsNotNone(basis, f"{e['id']} : legal_basis manquant")
+            for key in required:
+                self.assertIn(key, basis, f"{e['id']} : legal_basis.{key} manquant")
+            self.assertIn(basis["verification_status"], statuses)
+            self.assertRegex(basis["official_url"], r"^https://eur-lex\.europa\.eu/")
+            self.assertEqual(basis["effective_date"], e["date"], f"{e['id']} : date d'effet divergente")
+            self.assertTrue(basis["provision"].strip(), f"{e['id']} : disposition vide")
+
+    def test_official_status_requires_reading_date(self):
+        for e in self.cal["entries"]:
+            basis = e["legal_basis"]
+            if basis["verification_status"] == "officielle_relue":
+                self.assertIsNotNone(basis["official_text_checked_on"], f"{e['id']} : relecture officielle non datée")
+                D(basis["official_text_checked_on"])
+            else:
+                self.assertIsNone(basis["official_text_checked_on"], f"{e['id']} : date de relecture sans statut officiel")
+
+    def test_unverified_amendments_are_blocking(self):
+        """Une échéance issue de 2026/1744 non relue officiellement doit être bloquante."""
+        for e in self.cal["entries"]:
+            basis = e["legal_basis"]
+            from_omnibus = "2026/1744" in (basis["amending_act"] or "")
+            if from_omnibus and basis["verification_status"] != "officielle_relue":
+                self.assertTrue(timeline.requires_confirmation(e), f"{e['id']} : échéance non vérifiée non bloquante")
+            if e["confidence"] != "elevee" and basis["verification_status"] != "officielle_relue":
+                self.assertTrue(timeline.requires_confirmation(e), f"{e['id']} : confiance {e['confidence']} non bloquante")
+
     def test_markdown_calendar_in_sync(self):
         md = (ROOT / "references" / "applicability-calendar.md").read_text(encoding="utf-8")
         for e in self.cal["entries"]:
@@ -243,6 +281,20 @@ class TimelineScenarioTests(unittest.TestCase):
     def test_unknown_date_entry(self):
         self.assertEqual(status_of("CAL-016", "2026-10-27")["status"], timeline.STATUS_UNKNOWN)
 
+    def test_blocking_rule_labels_unverified_deadlines(self):
+        r = status_of("CAL-011", "2026-10-27")
+        self.assertTrue(r["requires_confirmation"])
+        self.assertIn("échéance à confirmer", r["status_label"])
+        r = status_of("CAL-010", "2026-10-27", "2026-03-01")
+        self.assertTrue(r["requires_confirmation"], "délai transitoire issu de 2026/1744 : bloquant")
+
+    def test_initial_text_base_date_not_blocked(self):
+        r = status_of("CAL-010", "2026-10-27", "2026-09-15")
+        self.assertFalse(r["requires_confirmation"], "date de base du texte initial : non bloquante")
+        self.assertNotIn("échéance à confirmer", r["status_label"])
+        self.assertFalse(status_of("CAL-009", "2026-10-27")["requires_confirmation"])
+        self.assertFalse(status_of("CAL-002", "2026-10-27")["requires_confirmation"])
+
     def test_cli_runs(self):
         out = subprocess.run([sys.executable, str(ROOT / "scripts" / "obligation_timeline.py"),
                               "--audit-date", "2026-10-27", "--json"], capture_output=True, text=True, check=True)
@@ -257,7 +309,8 @@ class ScannerFixtureTests(unittest.TestCase):
     def setUpClass(cls):
         # EXPECTED.md est l'oracle du test : il est exclu de l'analyse comme il le serait d'un audit réel.
         cls.reports = {name: scanner.scan(FIXTURES / name, exclude=["EXPECTED.md"]) for name in
-                       ("demo-ai-vulnerable", "demo-ai-secure", "demo-no-ai", "demo-insufficient-info")}
+                       ("demo-ai-vulnerable", "demo-ai-secure", "demo-no-ai", "demo-insufficient-info",
+                        "demo-adversarial")}
 
     def test_vulnerable_detects_expected_signals(self):
         r = self.reports["demo-ai-vulnerable"]
@@ -301,12 +354,82 @@ class ScannerFixtureTests(unittest.TestCase):
         self.assertIn("employment", r["summary"]["sensitive_context"])
         self.assertNotIn("provider_api", r["summary"])
 
+    def test_output_channels_detected(self):
+        r = self.reports["demo-adversarial"]
+        self.assertIn("pdf-export", r["summary"]["output_channel"])
+        self.assertIn("spreadsheet-export", r["summary"]["output_channel"])
+        self.assertIn("file-write", self.reports["demo-ai-vulnerable"]["summary"]["output_channel"])
+        self.assertNotIn("output_channel", self.reports["demo-no-ai"]["summary"])
+
+    def test_adversarial_signals(self):
+        r = self.reports["demo-adversarial"]
+        self.assertIn("mistral", r["summary"]["provider_api"])
+        self.assertIn("person-scoring", r["summary"]["sensitive_context"])
+        self.assertIn("ai-disclosure", r["summary"]["transparency_marker"])  # champ ai_generated (falsifiable)
+
     def test_scanner_is_read_only(self):
         before = {p: p.stat().st_mtime_ns for p in FIXTURES.rglob("*") if p.is_file()}
         for name in self.reports:
             scanner.scan(FIXTURES / name)
         after = {p: p.stat().st_mtime_ns for p in FIXTURES.rglob("*") if p.is_file()}
         self.assertEqual(before, after)
+
+
+class DiffAuditTests(unittest.TestCase):
+    """Audit différentiel : version corrigée -> version vulnérable dans un dépôt Git temporaire."""
+
+    @classmethod
+    def setUpClass(cls):
+        if shutil.which("git") is None:
+            raise unittest.SkipTest("git indisponible")
+        cls.tmp = Path(tempfile.mkdtemp(prefix="ia-compliance-diff-"))
+        def run(*args):
+            subprocess.run(["git", "-C", str(cls.tmp), *args], check=True, capture_output=True)
+        def copy_fixture(name):
+            for item in cls.tmp.iterdir():
+                if item.name != ".git":
+                    shutil.rmtree(item) if item.is_dir() else item.unlink()
+            for item in (FIXTURES / name).iterdir():
+                if item.name == "EXPECTED.md":
+                    continue
+                dest = cls.tmp / item.name
+                shutil.copytree(item, dest) if item.is_dir() else shutil.copy(item, dest)
+        run("init", "-q")
+        run("config", "user.email", "test@example.invalid")
+        run("config", "user.name", "test")
+        copy_fixture("demo-ai-secure")
+        run("add", "-A"); run("commit", "-q", "-m", "base")
+        copy_fixture("demo-ai-vulnerable")
+        run("add", "-A"); run("commit", "-q", "-m", "head")
+        cls.head_before = subprocess.run(["git", "-C", str(cls.tmp), "status", "--porcelain"],
+                                         capture_output=True, text=True).stdout
+        cls.report = differ.diff(cls.tmp, "HEAD~1", "HEAD")
+
+    @classmethod
+    def tearDownClass(cls):
+        shutil.rmtree(cls.tmp, ignore_errors=True)
+
+    def test_detects_new_biometric_use(self):
+        self.assertTrue(any("biometric" in a for a in self.report["alerts"]))
+
+    def test_detects_removed_measures(self):
+        alerts = " ".join(self.report["alerts"])
+        for category in ("transparency_marker", "oversight_marker", "logging_marker"):
+            self.assertIn(f"Mesure supprimée ou modifiée ({category}", alerts)
+
+    def test_detects_model_change_and_secret(self):
+        alerts = " ".join(self.report["alerts"])
+        self.assertIn("Identifiant de modèle", alerts)
+        self.assertIn("Nouveau secret potentiel", alerts)
+        self.assertNotIn("sk-FAKE", json.dumps(self.report, ensure_ascii=False) + differ.to_markdown(self.report))
+
+    def test_diff_is_read_only(self):
+        after = subprocess.run(["git", "-C", str(self.tmp), "status", "--porcelain"],
+                               capture_output=True, text=True).stdout
+        self.assertEqual(self.head_before, after)
+
+    def test_identical_states_have_no_alert(self):
+        self.assertEqual(differ.diff(self.tmp, "HEAD", "HEAD")["alerts"], [])
 
 
 class ExampleReportTests(unittest.TestCase):
@@ -335,7 +458,8 @@ class ExampleReportTests(unittest.TestCase):
 
 class ExpectedFilesTests(unittest.TestCase):
     def test_expected_files_have_required_sections(self):
-        for name in ("demo-ai-vulnerable", "demo-ai-secure", "demo-no-ai", "demo-insufficient-info"):
+        for name in ("demo-ai-vulnerable", "demo-ai-secure", "demo-no-ai", "demo-insufficient-info",
+                     "demo-adversarial"):
             text = (FIXTURES / name / "EXPECTED.md").read_text(encoding="utf-8")
             for section in ("Constats attendus", "ne doivent pas apparaître", "Erreurs de classification"):
                 self.assertIn(section, text, f"{name}/EXPECTED.md : section « {section} » absente")

@@ -75,3 +75,39 @@ Score indicatif : priorité **P1** si (Critique ou Élevée) et obligation en vi
 ou Moyenne et échéance dans moins de 6 mois, ou risque potentiel significatif ; **P3** si obligation
 future à plus de 6 mois ou bonne pratique à fort bénéfice ; **P4** sinon. Effort estimé : S (moins
 d'une semaine), M (1 à 4 semaines), L (plus d'un mois). Ajuster au contexte et le dire.
+
+## 7. Matrice de preuves
+
+Objectif : permettre à un auditeur externe de retrouver et de rejouer exactement la justification
+de chaque constat.
+
+### 7.1 États d'un contrôle
+
+| État | Définition | Ne pas confondre avec |
+|---|---|---|
+| **Démontré** | Une preuve positive observée établit la présence de la mesure contrôlée | Une obligation satisfaite (la mesure peut être insuffisante) |
+| **Non démontré** | Le dépôt contient l'emplacement où la mesure devrait figurer et elle n'y figure pas, ou une preuve établit son absence (par exemple publication directe sans validation) | Une absence de document organisationnel (voir « Impossible à vérifier ») |
+| **Non applicable** | Le contrôle est sans objet, avec motif (classification, rôle, date) | Un contrôle non effectué |
+| **Impossible à vérifier** | La preuve relève de l'organisation, de contrats, de tests réels, de la documentation des fournisseurs de modèles ou de la configuration de production | Un manquement |
+
+Le statut temporel (en vigueur, non encore applicable, conditionnel, à vérifier, échéance à
+confirmer) est **indépendant** de l'état du contrôle et figure dans une colonne distincte.
+
+### 7.2 Enregistrement de preuve `PRV-NNN`
+
+| Champ | Contenu |
+|---|---|
+| Identifiant | `PRV-NNN` |
+| Contrôle | Identifiant de la checklist (par exemple `A4`) |
+| Constat(s) | `AIA-NNN` liés |
+| Fichier | Chemin relatif à la racine du dépôt |
+| Lignes | Plage `début-fin` |
+| Commit | Empreinte complète du commit audité (`git rev-parse HEAD`) ; « non versionné » sinon |
+| Date | Date de collecte |
+| Nature | Statique (code, configuration, document du dépôt) ou externe (fournie par l'organisation) |
+| Méthode de reproduction | Commande ou démarche exacte, par exemple `git show <commit>:app/grading.py \| sed -n '19,29p'` ou `python3 scripts/scan_ai_signals.py . --json` |
+| État établi | Démontré / Non démontré / Non applicable / Impossible à vérifier |
+
+Les preuves externes (contrats, politiques, résultats de tests réels, attestations des fournisseurs)
+sont listées séparément : elles ne peuvent pas être établies par analyse statique et sont
+identifiées comme telles dans le rapport.
