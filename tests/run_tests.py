@@ -151,6 +151,29 @@ class StructureTests(unittest.TestCase):
                 self.assertIsNone(forbidden.search(line), f"{path.name}:{lineno} affirme une conformité")
 
 
+class ConsistencyTests(unittest.TestCase):
+    """Cohérence entre la version annoncée, le CHANGELOG et les résultats publiés."""
+
+    def skill_version(self) -> str:
+        return parse_frontmatter((ROOT / "SKILL.md").read_text(encoding="utf-8"))["metadata"]["version"]
+
+    def test_changelog_documents_current_version_first(self):
+        changelog = (ROOT / "CHANGELOG.md").read_text(encoding="utf-8")
+        versions = re.findall(r"^## \[(\d+\.\d+\.\d+)\]", changelog, re.M)
+        self.assertTrue(versions, "aucune version dans le CHANGELOG")
+        self.assertEqual(versions[0], self.skill_version(),
+                         "la version de SKILL.md doit être la première entrée du CHANGELOG")
+
+    def test_results_header_matches_version_and_test_count(self):
+        results = (ROOT / "tests" / "RESULTS.md").read_text(encoding="utf-8")
+        header = results.split("\n## ", 2)[1] if "\n## " in results else results
+        self.assertIn(f"Version {self.skill_version()}", header,
+                      "la première section de RESULTS.md doit porter sur la version courante")
+        count = unittest.defaultTestLoader.loadTestsFromModule(sys.modules[__name__]).countTestCases()
+        self.assertIn(f"{count} tests", header,
+                      f"la première section de RESULTS.md doit annoncer {count} tests")
+
+
 class CalendarDataTests(unittest.TestCase):
     def setUp(self):
         self.cal = timeline.load_calendar()

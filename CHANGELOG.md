@@ -4,6 +4,44 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 [SemVer](https://semver.org/lang/fr/). Chaque version indique la base juridique et la date de
 vérification des références.
 
+## [1.1.1] - 2026-10-27
+
+Version de fiabilisation, sans nouvelle fonctionnalité d'audit. Base juridique inchangée ; statut
+de vérification des sources renforcé.
+
+### Ajouté
+- Statut de vérification `officielle_extraits` : extrait textuel du texte officiel (JO du 24.7.2026
+  ou version consolidée 02024R1689-20260727 sur EUR-Lex) recopié avec son URL dans
+  `data/ai-act-calendar.json` (`official_extracts`), et confirmations externes consignées à part
+  (`external_confirmations`).
+- `references/official-verification-worksheet.md` : fiche de levée des réserves, entrée par entrée.
+- Veille automatisée des sources : `scripts/check_legal_updates.py`, `data/legal-watch.json` et
+  `.github/workflows/legal-watch.yml` (détection mensuelle des actes liés au règlement et rappel
+  trimestriel ; ouverture d'issues de revue humaine, aucune règle modifiée automatiquement).
+- Test d'intégration Claude Code (CLI) : découverte, déclenchement automatique, lecture seule
+  (`tests/agent-runs/2026-10-27-v1.1.1/`).
+- `ConsistencyTests` : version de `SKILL.md` alignée sur le CHANGELOG, en-tête de `tests/RESULTS.md`
+  aligné sur la version et le nombre de tests. 58 tests automatiques.
+
+### Modifié
+- Calendrier : CAL-003, CAL-004, CAL-010, CAL-011, CAL-012 et CAL-015 confirmées par extraits
+  officiels (plus de mention « échéance à confirmer ») ; CAL-013 (art. 111, par. 2, autorités
+  publiques) et CAL-016 (art. 49, par. 2) restent bloquantes.
+- Art. 5 : numérotation des nouvelles interdictions confirmée (points (ba) et (bb), par. 1 bis et
+  1 ter) et conditions côté fournisseur et côté déployeur ajoutées.
+- Art. 4 : libellé officiel (« prennent des mesures pour favoriser le développement de la maîtrise
+  de l'IA »).
+- `references/legal-sources.md` : existence de la version consolidée du 27.7.2026, conditions de
+  vérification, état par entrée.
+- `tests/RESULTS.md` réorganisé : état de la version courante en tête, historique ensuite.
+- Fixtures `EXPECTED.md` et exemple de rapport alignés sur le nouveau statut des échéances.
+
+### Textes et sources consultés (2026-10-27)
+- Règlement (UE) 2026/1744 (JO L du 24.7.2026) et version consolidée 02024R1689-20260727 : extraits
+  obtenus par recherche restreinte au domaine eur-lex.europa.eu (accès direct refusé).
+- Revue externe transmise par l'utilisateur, indiquant avoir lu sur EUR-Lex les échéances du
+  2.12.2026, 2.12.2027 et 2.8.2028.
+
 ## [1.1.0] - 2026-10-27
 
 Suite à une revue externe de la version 1.0.0. Base juridique inchangée ; textes officiels toujours
