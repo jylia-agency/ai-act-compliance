@@ -1,7 +1,7 @@
 # Obligations de transparence (article 50)
 
 > Base : art. 50 du règlement (UE) 2024/1689 `[TI]` ; délai pour le par. 2 introduit par le règlement
-> (UE) 2026/1744 `[O26]`. Dernière vérification : **2026-10-27**.
+> (UE) 2026/1744 `[O26]` (art. 111, par. 4 ; art. 50, par. 7 remplacé). Texte officiel relu. Dernière vérification : **2026-10-27**.
 > Sources : [EUR-Lex 2024/1689](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689),
 > [AI Act Explorer, art. 50](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-50),
 > lignes directrices de la Commission sur l'article 50 (20.7.2026, selon les sources),
@@ -12,7 +12,7 @@
 | Par. | Débiteur | Situation | Obligation | Exceptions principales | Date |
 |---|---|---|---|---|---|
 | 1 | **Fournisseur** | Système destiné à **interagir directement** avec des personnes physiques | Concevoir et développer le système de sorte que les personnes soient **informées** qu'elles interagissent avec un système d'IA | Évident pour une personne raisonnablement informée, attentive et avisée, compte tenu des circonstances et du contexte ; systèmes autorisés par la loi à des fins répressives (sauf mise à disposition du public pour signaler une infraction) | 2026-08-02 |
-| 2 | **Fournisseur** (y compris de systèmes d'IA à usage général) | Système **générant** des contenus synthétiques audio, image, vidéo ou **texte** | Sorties **marquées dans un format lisible par machine** et **détectables** comme générées ou manipulées artificiellement ; solutions techniques efficaces, interopérables, robustes et fiables dans la mesure du techniquement possible, compte tenu des types de contenus, des coûts et de l'état de l'art | Fonction d'assistance à la mise en forme standard ; absence de modification substantielle des données d'entrée ou de leur sémantique ; usages répressifs autorisés | 2026-08-02 ; **2026-12-02** pour les systèmes mis sur le marché avant le 2026-08-02 `[O26]` |
+| 2 | **Fournisseur** (y compris de systèmes d'IA à usage général) | Système **générant** des contenus synthétiques audio, image, vidéo ou **texte** | Sorties **marquées dans un format lisible par machine** et **détectables** comme générées ou manipulées artificiellement ; solutions techniques efficaces, interopérables, robustes et fiables dans la mesure du techniquement possible, compte tenu des types de contenus, des coûts et de l'état de l'art | Fonction d'assistance à la mise en forme standard ; absence de modification substantielle des données d'entrée ou de leur sémantique ; usages répressifs autorisés | 2026-08-02 ; **2026-12-02** pour les systèmes mis sur le marché avant le 2026-08-02 (art. 111, par. 4, ajouté par 2026/1744 ; texte officiel relu) |
 | 3 | **Déployeur** | Système de **reconnaissance des émotions** ou de **catégorisation biométrique** | **Informer** les personnes exposées du fonctionnement du système | Usages répressifs autorisés ; le traitement de données sous-jacent relève d'autres textes (hors périmètre) | 2026-08-02 |
 | 4, al. 1 | **Déployeur** | Système générant ou manipulant des **hypertrucages** (image, audio, vidéo) | **Déclarer** que le contenu a été généré ou manipulé artificiellement | Usages répressifs autorisés ; œuvre manifestement **artistique, créative, satirique, fictionnelle** ou analogue : obligation limitée à la divulgation de l'existence du contenu, de manière appropriée qui n'entrave pas l'affichage ou la jouissance de l'œuvre | 2026-08-02 |
 | 4, al. 2 | **Déployeur** | **Texte** généré ou manipulé **publié dans le but d'informer le public sur des questions d'intérêt public** | Déclarer que le texte a été généré ou manipulé artificiellement | Usages répressifs autorisés ; contenu ayant fait l'objet d'un **examen humain ou d'un contrôle éditorial** et dont une personne assume la **responsabilité éditoriale** | 2026-08-02 |
@@ -129,7 +129,8 @@ chemin concerné, pas une conclusion favorable sur le système.
   l'interopérabilité et la détectabilité.
 - **Textes, y compris conversationnels** : tout système générant des contenus textuels fait l'objet
   d'une analyse de l'art. 50, par. 2, y compris lorsqu'il s'agit de réponses conversationnelles. Le
-  paragraphe vise expressément les contenus synthétiques textuels. Toute exception (assistance à la
+  paragraphe vise expressément les contenus synthétiques textuels, et l'art. 111, par. 4 (délai
+  transitoire) vise lui aussi les contenus « audio, image, vidéo ou texte ». Toute exception (assistance à la
   mise en forme standard, absence de modification substantielle des données d'entrée ou de leur
   sémantique, usage répressif autorisé) doit être motivée. Une incertitude sur les modalités
   techniques (format de marquage d'un texte, lignes directrices) **n'équivaut pas à une exemption** :

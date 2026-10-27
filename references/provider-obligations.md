@@ -17,7 +17,8 @@
 ## 2. Obligations du fournisseur d'un système à haut risque
 
 **Non encore applicables** à la date du 2026-10-27 : annexe III à partir du **2027-12-02**, annexe I
-à partir du **2028-08-02** `[O26]` ; systèmes antérieurs : art. 111, par. 2 `[AV]`. À traiter comme
+à partir du **2028-08-02** `[O26]` ; systèmes antérieurs : art. 111, par. 2 (importantes
+modifications de la conception ; autorités publiques : 2 août 2030). À traiter comme
 feuille de route, sauf si la date d'audit est postérieure.
 
 ### 2.1 Exigences applicables au système (chapitre III, section 2)
@@ -25,7 +26,7 @@ feuille de route, sauf si la date d'audit est postérieure.
 | Article | Exigence | Preuves observables dans un dépôt |
 |---|---|---|
 | 9 | Système de gestion des risques, processus itératif sur tout le cycle de vie : identification et analyse des risques connus et raisonnablement prévisibles pour la santé, la sécurité et les droits fondamentaux, estimation, mesures de gestion, essais | Registre des risques, rapports de tests, critères d'acceptation |
-| 10 | Données et gouvernance des données (entraînement, validation, test) : pratiques de gestion, pertinence, représentativité, examen des biais possibles ; par. 5 : traitement exceptionnel de données sensibles pour la détection et la correction des biais, sous stricte nécessité `[AV]` | Fiches de jeux de données, scripts de préparation, analyses de biais |
+| 10 | Données et gouvernance des données (entraînement, validation, test) : pratiques de gestion, pertinence, représentativité, examen des biais possibles ; le par. 5 a été supprimé par le règlement 2026/1744 et remplacé par l'art. 4 bis (cadre du traitement de catégories particulières de données pour la détection des biais, analyse hors périmètre) | Fiches de jeux de données, scripts de préparation, analyses de biais |
 | 11 | Documentation technique établie avant la mise sur le marché, tenue à jour, contenu de l'annexe IV (forme simplifiée possible pour les PME) | Voir `technical-documentation.md` |
 | 12 | Enregistrement automatique des événements (journaux) tout au long de la durée de vie, assurant la traçabilité appropriée à la destination | Code de journalisation, schéma des journaux |
 | 13 | Transparence et fourniture d'informations aux déployeurs : notice d'utilisation (identité du fournisseur, caractéristiques, capacités et limites, niveau d'exactitude, risques, mesures de supervision humaine, ressources nécessaires, journaux) | Notice, guide utilisateur |
@@ -58,7 +59,8 @@ Dates des art. 49, 72 et 73 au regard du report : `[AV]` (voir `applicability-ca
 
 - Documenter l'évaluation avant la mise sur le marché ou la mise en service (art. 6, par. 4).
 - Fournir cette documentation aux autorités sur demande.
-- Enregistrement (art. 49, par. 2) maintenu avec contenu réduit selon les sources `[AV]`.
+- Enregistrement (art. 49, par. 2, non modifié) ; informations de l'annexe VIII, section B, réduites
+  (points 7 et 9 supprimés). Date effective : interprétation à valider (CAL-016).
 
 ## 4. Points d'attention pour l'audit
 

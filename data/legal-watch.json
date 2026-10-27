@@ -3,12 +3,31 @@
     "description": "Référentiel de la veille automatisée des sources de l'AI Act. Mis à jour UNIQUEMENT par un humain après revue juridique.",
     "baseline_reviewed_on": "2026-10-27",
     "reviewed_by": "mainteneurs du dépôt",
-    "note": "La liste known_celex recense les actes déjà pris en compte. Tout acte détecté hors de cette liste déclenche une demande de revue humaine ; il n'est jamais intégré automatiquement."
+    "note": "La liste known_celex recense les actes déjà pris en compte. Tout acte détecté hors de cette liste déclenche une demande de revue humaine ; il n'est jamais intégré automatiquement.",
+    "first_live_run": "2026-10-27 : requête exécutée avec succès contre le point SPARQL public ; 27 actes remontés, revus manuellement (voir notes ci-dessous)."
   },
   "sparql_endpoint": "https://publications.europa.eu/webapi/rdf/sparql",
   "base_celex": "32024R1689",
   "known_celex": {
     "32024R1689": "Règlement (UE) 2024/1689 (AI Act), texte initial",
-    "32026R1744": "Règlement (UE) 2026/1744 (Digital Omnibus on AI), modificatif ; texte officiel non relu au 2026-10-27"
+    "32026R1744": "Règlement (UE) 2026/1744 (Digital Omnibus on AI), modificatif ; texte officiel relu le 2026-10-27",
+    "02024R1689-20240712": "Version consolidée initiale",
+    "02024R1689-20260727": "Version consolidée intégrant le règlement 2026/1744 ; relue le 2026-10-27",
+    "32024R1689R(01)": "Rectificatif du 9.10.2025 ; recensé, contenu par langue à examiner lors de la prochaine revue",
+    "32024R1689R(02)": "Rectificatif ; recensé, contenu par langue à examiner lors de la prochaine revue",
+    "32024R1689R(03)": "Rectificatif ; recensé, contenu par langue à examiner lors de la prochaine revue",
+    "32024R1689R(04)": "Rectificatif ; recensé, contenu par langue à examiner lors de la prochaine revue",
+    "32025R0454": "Règlement d'exécution (UE) 2025/454 : groupe scientifique d'experts indépendants ; pas d'obligation pour les opérateurs audités",
+    "32026R1755": "Règlement d'exécution (UE) 2026/1755 : procédures de la Commission ; pas d'obligation nouvelle pour les systèmes audités",
+    "52025PC0836": "Proposition COM(2025) 836, adoptée sous la forme du règlement 2026/1744 ; exclue en tant que proposition",
+    "52025PC1023": "Proposition COM(2025) 1023 (dispositifs médicaux) visant aussi le règlement 2024/1689 ; NON adoptée au 2026-10-27, exclue ; à surveiller (annexe I)",
+    "52026DC0234": "Rapport de la Commission au titre de l'art. 112, par. 1 (réexamen des listes) ; sans effet juridique",
+    "52025IP0198": "Document du Parlement européen ; sans effet juridique",
+    "52025IP0278": "Document du Parlement européen ; sans effet juridique",
+    "52025IP0286": "Document du Parlement européen ; sans effet juridique",
+    "52025IP0299": "Document du Parlement européen ; sans effet juridique",
+    "52025IP0337": "Document du Parlement européen ; sans effet juridique",
+    "52026IP0022": "Document du Parlement européen ; sans effet juridique",
+    "52026IP0066": "Document du Parlement européen ; sans effet juridique"
   }
 }

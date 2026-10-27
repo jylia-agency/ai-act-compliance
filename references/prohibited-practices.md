@@ -1,7 +1,8 @@
 # Pratiques d'IA interdites (article 5)
 
 > Base : art. 5 du règlement (UE) 2024/1689 `[TI]`, complété par le règlement (UE) 2026/1744 `[O26]`.
-> Applicable depuis le **2025-02-02** (art. 113, al. 3, a)) ; nouvelles interdictions le **2026-12-02** `[O26]`.
+> Applicable depuis le **2025-02-02** (art. 113, al. 3, a)) ; nouvelles interdictions le **2026-12-02** `[O26]`
+> (texte officiel relu le 2026-10-27).
 > Dernière vérification : **2026-10-27**.
 > Sources : [EUR-Lex 2024/1689](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689),
 > [AI Act Explorer, art. 5](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-5),
@@ -32,27 +33,27 @@
 
 ## 3. Nouvelles interdictions introduites par le règlement 2026/1744 `[O26]`
 
-Applicables le **2026-12-02** : art. 113, troisième alinéa, point a), tel que modifié (extrait
-officiel : « with the exception of Article 5(1), first subparagraph, points (ba) and (bb), and
-Article 5(1a) and (1b) which shall apply from 2 December 2026 » ; voir CAL-004).
+Texte officiel relu le 2026-10-27 (art. 1, point 7, du règlement 2026/1744 ; version consolidée).
+Applicables le **2026-12-02** (art. 113, troisième alinéa, point a), modifié ; CAL-004).
 
-- **Point (ba)** : mise sur le marché, mise en service ou utilisation d'un système d'IA qui génère ou
-  manipule des images, vidéos, sons ou contenus similaires **réalistes** représentant les parties
-  intimes d'une **personne physique identifiable** ou sa participation à des activités sexuellement
-  explicites, **sans son consentement** (extrait officiel du point (ba), version anglaise) ;
-- **Point (bb)** : systèmes d'IA générant ou manipulant du **matériel pédopornographique** ; selon
-  les considérants, un moyen de défense « sans droit » prévu par le droit national (art. 5,
-  par. 1, de la directive 2011/93/UE) n'est pas affecté.
-- **Paragraphes 1 bis et 1 ter** (selon la version consolidée, libellé exact à relire `[AV]`) :
-  côté **fournisseur**, l'interdiction ne joue que si la génération de tels contenus est la
-  destination du système ou un **résultat raisonnablement prévisible et reproductible** ; côté
-  **déployeur**, que s'il utilise le système pour générer ou manipuler de tels contenus.
+| Disposition | Contenu (texte officiel, résumé fidèle) |
+|---|---|
+| Art. 5, par. 1, point b bis) | Mise sur le marché, mise en service ou utilisation d'un système d'IA qui génère ou manipule des images, vidéos, contenus audio ou tout autre matériel similaire **réalistes** représentant les parties intimes d'une **personne identifiable**, ou une personne identifiable se livrant à des activités sexuellement explicites, **sans son consentement libre, spécifique, éclairé, univoque et explicite** pour cette production ou manipulation |
+| Art. 5, par. 1, point b ter) | Systèmes d'IA générant ou manipulant tout matériel ou spectacle au sens de l'art. 2, points c) et e), de la directive 2011/93/UE (abus sexuels sur enfants), sauf lorsqu'une défense « sans droit » s'applique en vertu du droit national |
+| Art. 5, par. 1 bis, a) (**fournisseur**) | La mise sur le marché ou la mise en service n'est interdite que lorsque : i) cette production ou manipulation est la **destination** du système ; ou ii) la conception, l'entraînement, l'architecture, les capacités ou les fonctionnalités en font un **résultat raisonnablement prévisible et reproductible**, sans modification technique importante, **et** le système ne dispose pas de **mesures de sécurité techniques raisonnables et adéquates** et d'autres garanties pour empêcher de manière fiable cette production (compte tenu d'une mauvaise utilisation raisonnablement prévisible) ni pour corriger une mauvaise utilisation observée ou signalée |
+| Art. 5, par. 1 bis, b) (**déployeur**) | L'utilisation n'est interdite que lorsque le déployeur utilise le système **dans le but** de générer ou de manipuler ce matériel |
+| Art. 5, par. 1 ter | Une manipulation qui n'accroît pas la visibilité des parties intimes ni ne modifie la nature des activités sexuellement explicites représentées ne constitue pas une manipulation au sens du point b bis) |
 
-Un système génératif généraliste peut donc être concerné si un tel résultat est raisonnablement
-prévisible et reproductible, notamment en l'absence de garde-fous. Contrôles d'audit : filtres de
-prompts et de sorties, politique d'usage, détection de personnes réelles, signalement. Avant le
-2026-12-02, un défaut de garde-fou est « Non encore applicable » au titre de l'article 5 (il peut
-relever d'autres législations, hors périmètre).
+Conséquences pour l'audit d'un **générateur généraliste** (images, vidéo, audio) :
+
+- rechercher les **garde-fous** (filtres de prompts et de sorties, détection de personnes réelles,
+  refus, signalement, correction des usages signalés) : leur absence, combinée à un résultat
+  raisonnablement prévisible et reproductible, est l'élément déterminant côté fournisseur ;
+- avant le 2026-12-02 : constat « Non encore applicable » ; à partir de cette date : « Risque
+  potentiel » de pratique interdite si les garde-fous font défaut (qualification à confirmer
+  juridiquement), gravité Critique ;
+- la présence de garde-fous est consignée comme mesure (état « Démontré ») sans conclure à leur
+  caractère « raisonnable et adéquat », qui relève d'une appréciation juridique et de tests réels.
 
 ## 4. Points de vigilance par domaine
 

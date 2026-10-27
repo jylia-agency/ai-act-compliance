@@ -57,4 +57,4 @@ disproportionné). Une qualification ferme de pratique interdite serait une erre
 
 - Faits techniques (absence de mention, auto-application, perte du marquage) : élevée.
 - Classification de l'orientation : moyenne (finalité exacte, usage par le conseil de classe à confirmer).
-- Dates du haut risque : confirmées par extrait officiel d'un considérant (CAL-011) ; régime de l'art. 111, par. 2 : échéance à confirmer (CAL-013).
+- Dates du haut risque (CAL-011) et régime de l'art. 111, par. 2 (CAL-013) : texte officiel relu, confiance élevée.

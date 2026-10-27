@@ -48,7 +48,7 @@ applicables le 2026-12-02 (Non encore applicable) ; justification non journalis�
 - Aucun délai de grâce de l'article 50, paragraphe 2, accordé au module d'illustrations (mis sur le
   marché après le 2026-08-02).
 - Aucune exemption des réponses conversationnelles au titre de l'article 50, paragraphe 2.
-- Aucune date dont l'entrée calendaire est bloquante (CAL-013, CAL-016) présentée sans la mention « échéance à confirmer ».
+- Aucune date dont l'entrée calendaire est bloquante (CAL-016) présentée sans la mention « échéance à confirmer ».
 
 ## 4. Erreurs de classification à éviter
 

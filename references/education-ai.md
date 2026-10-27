@@ -37,7 +37,7 @@ décision automatisée), les questions obligatoires et l'effectivité du contrô
 - **Éditeur EdTech** qui commercialise la solution sous sa marque : fournisseur du système d'IA.
 - **Établissement** (lycée, université, organisme de formation) qui l'utilise : déployeur.
   Les établissements **publics** peuvent être des autorités publiques au sens de l'article 111,
-  paragraphe 2 (échéance spécifique, `[AV]`) et de l'article 27 (analyse d'impact sur les droits
+  paragraphe 2 (échéance du 2 août 2030 pour les systèmes destinés aux autorités publiques) et de l'article 27 (analyse d'impact sur les droits
   fondamentaux pour les organismes de droit public).
 - **Enseignant** : personne chargée de la supervision humaine (art. 26, par. 2), pas un opérateur
   distinct.
@@ -48,7 +48,8 @@ décision automatisée), les questions obligatoires et l'effectivité du contrô
 - Art. 50 : par. 1, 3, 4, 5 depuis le 2026-08-02 ; par. 2 avec délai au 2026-12-02 pour les systèmes
   antérieurs au 2026-08-02 `[O26]`.
 - Exigences du haut risque (annexe III, point 3) : **2027-12-02** `[O26]` ; systèmes antérieurs :
-  art. 111, par. 2 `[AV]`.
+  art. 111, par. 2 (seulement en cas d'importantes modifications de la conception ; autorités
+  publiques : 2 août 2030).
 - Art. 4 : applicable (rédaction modifiée `[O26]`).
 
 ## 5. Contrôles spécifiques

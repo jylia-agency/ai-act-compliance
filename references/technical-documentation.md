@@ -35,7 +35,8 @@ respect de l'art. 50 ou l'évaluation de l'art. 6, par. 4).
 9. Description du système d'évaluation des performances après commercialisation (art. 72).
 
 Forme simplifiée possible pour les PME et jeunes pousses (art. 11, par. 1), selon un formulaire de la
-Commission ; extension aux petites entreprises de taille intermédiaire par le règlement 2026/1744 `[AV]`.
+Commission ; étendue aux petites entreprises à moyenne capitalisation par le règlement 2026/1744
+(art. 1, point 10 ; définitions à l'art. 3, points 14 bis et 14 ter).
 
 ## 3. Checklist documentaire (conditionnelle)
 

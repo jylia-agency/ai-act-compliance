@@ -1,8 +1,52 @@
 {
-  "head": {"vars": ["celex", "relation"]},
-  "results": {"bindings": [
-    {"celex": {"type": "literal", "value": "32026R1744"}, "relation": {"type": "uri", "value": "http://publications.europa.eu/ontology/cdm#resource_legal_amends_resource_legal"}},
-    {"celex": {"type": "literal", "value": "32024R1689R(01)"}, "relation": {"type": "uri", "value": "http://publications.europa.eu/ontology/cdm#resource_legal_corrects_resource_legal"}},
-    {"celex": {"type": "literal", "value": "32099R0001"}, "relation": {"type": "uri", "value": "http://publications.europa.eu/ontology/cdm#resource_legal_based_on_resource_legal"}}
-  ]}
+  "head": {
+    "vars": [
+      "celex",
+      "relation"
+    ]
+  },
+  "results": {
+    "bindings": [
+      {
+        "celex": {
+          "type": "literal",
+          "value": "32026R1744"
+        },
+        "relation": {
+          "type": "uri",
+          "value": "http://publications.europa.eu/ontology/cdm#resource_legal_amends_resource_legal"
+        }
+      },
+      {
+        "celex": {
+          "type": "literal",
+          "value": "32024R1689R(09)"
+        },
+        "relation": {
+          "type": "uri",
+          "value": "http://publications.europa.eu/ontology/cdm#resource_legal_corrects_resource_legal"
+        }
+      },
+      {
+        "celex": {
+          "type": "literal",
+          "value": "32099R0001"
+        },
+        "relation": {
+          "type": "uri",
+          "value": "http://publications.europa.eu/ontology/cdm#resource_legal_based_on_resource_legal"
+        }
+      },
+      {
+        "celex": {
+          "type": "literal",
+          "value": "02099R0001-20990101"
+        },
+        "relation": {
+          "type": "uri",
+          "value": "http://publications.europa.eu/ontology/cdm#act_consolidated_consolidates_resource_legal"
+        }
+      }
+    ]
+  }
 }

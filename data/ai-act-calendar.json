@@ -1,9 +1,9 @@
 {
   "meta": {
     "title": "Calendrier d'application du règlement (UE) 2024/1689 (AI Act), tel que modifié par le règlement (UE) 2026/1744",
-    "schema_version": "1.2",
+    "schema_version": "1.3",
     "last_verified": "2026-10-27",
-    "verification_note": "Le 2026-10-27, l'accès direct à EUR-Lex était refusé depuis l'environnement de rédaction ; le texte officiel (JO L du 24.7.2026 et version consolidée 02024R1689-20260727) a été consulté par extraits, au moyen d'une recherche restreinte au domaine eur-lex.europa.eu. Les entrées « officielle_extraits » reposent sur un extrait textuel officiel cité dans official_extracts ; une relecture intégrale reste recommandée (references/official-verification-worksheet.md).",
+    "verification_note": "Le 2026-10-27, le texte officiel a été relu : règlement (UE) 2026/1744 (JO L du 24.7.2026, version française) et version consolidée 02024R1689-20260727, récupérés depuis Cellar (Office des publications) ; empreintes dans data/official-sources.json. Chaque entrée cite l'extrait exact relu. La version consolidée est un outil de documentation : en cas de doute, seul le JO fait foi.",
     "texts": {
       "ai_act": {
         "reference": "Règlement (UE) 2024/1689 du Parlement européen et du Conseil du 13 juin 2024",
@@ -45,19 +45,26 @@
       "date": "2024-08-01",
       "kind": "entree_en_vigueur",
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "L'entrée en vigueur ne rend pas les obligations applicables : voir les dates d'application ci-dessous.",
       "legal_basis": {
-        "provision": "Art. 113, premier alinéa",
+        "provision": "Art. 113, premier alinéa (date calculée : publication au JO le 12.7.2024, entrée en vigueur le vingtième jour suivant)",
         "amending_act": null,
         "effective_date": "2024-08-01",
         "transitional_conditions": null,
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "Le présent règlement entre en vigueur le vingtième jour suivant celui de sa publication au Journal officiel de l’Union européenne .",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -77,19 +84,26 @@
       "date": "2025-02-02",
       "kind": "application",
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Les interdictions de l'article 5, paragraphe 1, points a) à h) s'appliquent depuis cette date, quelle que soit la date de mise sur le marché du système.",
       "legal_basis": {
         "provision": "Art. 113, troisième alinéa, point a)",
-        "amending_act": null,
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40 (point a) remplacé ; date du 2.2.2025 inchangée)",
         "effective_date": "2025-02-02",
         "transitional_conditions": "Aucune : s'applique aux systèmes déjà sur le marché.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "les chapitres I et II s'appliquent à partir du 2 février 2025, à l'exception de l'article 5, paragraphe 1, premier alinéa, points b bis ) et b ter ), et de l'article 5, paragraphes 1 bis et 1 ter , qui s'appliquent à partir du 2 décembre 2026",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -106,29 +120,29 @@
       "date": "2026-07-27",
       "kind": "modification",
       "source_text": "2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
-      "notes": "Nouvelle rédaction (extrait officiel) : obligation de prendre des mesures pour favoriser le développement de la maîtrise de l'IA, sans garantie d'un niveau déterminé ; par. 2 : soutien de la Commission et des États membres, notamment aux PME. Pas de date d'application propre : effet à l'entrée en vigueur du règlement 2026/1744.",
+      "notes": "Texte officiel relu : obligation de prendre des mesures pour favoriser le développement de la maîtrise de l'IA, sans garantie d'un niveau déterminé ; par. 2 : soutien de la Commission et des États membres, notamment aux PME ; par. 3 : recommandations du Comité IA.",
       "legal_basis": {
-        "provision": "Art. 4 (nouvelle rédaction)",
-        "amending_act": "Règlement (UE) 2026/1744, art. 1 (remplacement de l'art. 4) ; aucune date d'application propre : effet à l'entrée en vigueur (27.7.2026)",
+        "provision": "Art. 4, par. 1 à 3 (nouvelle rédaction)",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 5 ; effet à l'entrée en vigueur (art. 4 du règlement 2026/1744)",
         "effective_date": "2026-07-27",
         "transitional_conditions": null,
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "Les fournisseurs et les déployeurs de systèmes d'IA prennent des mesures pour favoriser le développement de la maîtrise de l'IA par leur personnel",
-            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+            "text": "Les fournisseurs et les déployeurs de systèmes d'IA prennent des mesures pour favoriser le développement de la maîtrise de l'IA par leur personnel et les autres personnes s'occupant du fonctionnement et de l'utilisation des systèmes d'IA pour leur compte",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
             "language": "fr"
           },
           {
-            "text": "This obligation does not require providers or deployers to guarantee any specific level of AI literacy of any individual.",
-            "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng",
-            "language": "en"
+            "text": "Cette obligation ne contraint pas les fournisseurs ou les déployeurs à garantir un niveau spécifique de maîtrise de l'IA par un individu.",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
           }
         ]
       }
@@ -150,24 +164,29 @@
       "date": "2026-12-02",
       "kind": "application",
       "source_text": "2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Points (ba) : systèmes générant ou manipulant des images, vidéos, sons ou contenus similaires réalistes des parties intimes ou d'activités sexuellement explicites d'une personne physique identifiable sans son consentement ; (bb) : matériel pédopornographique. Selon la version consolidée, l'interdiction côté fournisseur ne vaut que si cette génération est la destination ou un résultat raisonnablement prévisible et reproductible, et côté déployeur que s'il utilise le système à cette fin (par. 1 bis et 1 ter, libellé exact à relire).",
       "legal_basis": {
-        "provision": "Art. 5, par. 1, nouveaux points (ba) et (bb) (numérotation à confirmer)",
-        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40 (art. 113, troisième alinéa, point a), remplacé) ; nouveaux points (ba) et (bb) de l'art. 5, par. 1, premier alinéa, et nouveaux par. 1 bis et 1 ter de l'art. 5",
+        "provision": "Art. 5, par. 1, premier alinéa, points b bis) et b ter) ; art. 5, par. 1 bis et 1 ter ; art. 113, troisième alinéa, point a)",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 7 (art. 5) et point 40 (art. 113)",
         "effective_date": "2026-12-02",
         "transitional_conditions": "Date d'application différée au 2026-12-02 (selon les sources).",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "Chapters I and II shall apply from 2 February 2025, with the exception of Article 5(1), first subparagraph, points (ba) and (bb), and Article 5(1a) and (1b) which shall apply from 2 December 2026",
-            "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj/eng",
-            "language": "en"
+            "text": "qui s'appliquent à partir du 2 décembre 2026",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          },
+          {
+            "text": "cette production ou manipulation constitue la destination du système d'IA; ou",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
           }
         ]
       }
@@ -186,7 +205,7 @@
       "date": "2025-08-02",
       "kind": "application",
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "S'applique aux modèles GPAI mis sur le marché à partir de cette date. Pour les modèles antérieurs, voir CAL-006.",
@@ -196,9 +215,16 @@
         "effective_date": "2025-08-02",
         "transitional_conditions": "Modèles antérieurs : voir CAL-006.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "le chapitre III, section 4, le chapitre V, le chapitre VII, le chapitre XII et l’article 78 s’appliquent à partir du 2 août 2025, à l’exception de l’article 101",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -219,7 +245,7 @@
         "note": "Les fournisseurs de modèles GPAI mis sur le marché avant le 2 août 2025 prennent les mesures nécessaires pour se conformer au plus tard le 2 août 2027."
       },
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Concerne uniquement le fournisseur du modèle GPAI, jamais le simple intégrateur d'une API.",
@@ -229,9 +255,16 @@
         "effective_date": "2025-08-02",
         "transitional_conditions": "Modèles mis sur le marché avant le 2025-08-02 : conformité au plus tard le 2027-08-02.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "Les fournisseurs de modèles d’IA à usage général qui ont été mis sur le marché avant le 2 août 2025 prennent les mesures nécessaires pour se conformer aux obligations prévues par le présent règlement au plus tard le 2 août 2027.",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -247,19 +280,31 @@
       "date": "2026-08-02",
       "kind": "application",
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "L'article 101 est expressément exclu du point b) de l'article 113 et suit donc la date générale.",
       "legal_basis": {
-        "provision": "Art. 113, troisième alinéa, point b) (exclusion de l'art. 101) et deuxième alinéa",
+        "provision": "Art. 113, deuxième alinéa, et troisième alinéa, point b) (exclusion de l'art. 101)",
         "amending_act": null,
         "effective_date": "2026-08-02",
         "transitional_conditions": null,
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "Il est applicable à partir du 2 août 2026.",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          },
+          {
+            "text": "le chapitre XII et l’article 78 s’appliquent à partir du 2 août 2025, à l’exception de l’article 101",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -274,7 +319,7 @@
       "date": "2026-08-02",
       "kind": "application",
       "source_text": "2024/1689 (texte initial)",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Les obligations relatives aux systèmes à haut risque ont été reportées par le règlement 2026/1744 : voir CAL-011 et CAL-012.",
@@ -284,9 +329,16 @@
         "effective_date": "2026-08-02",
         "transitional_conditions": "Haut risque reporté : voir CAL-011 et CAL-012.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "Il est applicable à partir du 2 août 2026.",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -303,20 +355,27 @@
       ],
       "date": "2026-08-02",
       "kind": "application",
-      "source_text": "2024/1689 (texte initial), date non modifiée par 2026/1744 selon les sources consultées",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_text": "2024/1689 (texte initial), non modifié par 2026/1744 (texte officiel relu)",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Aucun délai de grâce rapporté pour ces paragraphes. Lignes directrices de la Commission sur l'article 50 publiées le 20 juillet 2026 (C(2026) 5054, selon les sources) et code de bonnes pratiques sur le marquage et l'étiquetage publié le 10 juin 2026.",
       "legal_basis": {
-        "provision": "Art. 50, par. 1, 3, 4 et 5 ; art. 113, deuxième alinéa",
+        "provision": "Art. 50, par. 1, 3, 4 et 5 (non modifiés ; seul le par. 7 est remplacé par l'art. 1, point 20, du règlement 2026/1744) ; art. 113, deuxième alinéa",
         "amending_act": null,
         "effective_date": "2026-08-02",
         "transitional_conditions": "Aucune (non modifié par 2026/1744 selon les sources).",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "Les fournisseurs veillent à ce que les systèmes d’IA destinés à interagir directement avec des personnes physiques soient conçus et développés de manière que les personnes physiques concernées soient informées qu’elles interagissent avec un système d’IA",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -324,7 +383,7 @@
       "label": "Article 50, paragraphe 2 : marquage lisible par machine et détectabilité des contenus synthétiques (fournisseurs)",
       "articles": [
         "Art. 50, par. 2",
-        "Disposition transitoire introduite par le règlement 2026/1744 (localisation exacte à confirmer)"
+        "Art. 111, par. 4 (ajouté par le règlement 2026/1744)"
       ],
       "scope": [
         "provider",
@@ -337,27 +396,25 @@
         "param": "placed_on_market",
         "placed_before": "2026-08-02",
         "effective_date": "2026-12-02",
-        "note": "Selon les sources consultées, les systèmes génératifs mis sur le marché avant le 2 août 2026 disposent d'un délai jusqu'au 2 décembre 2026. Les systèmes mis sur le marché à partir du 2 août 2026 n'en bénéficient pas."
+        "note": "Art. 111, par. 4 : fournisseurs de systèmes d'IA, y compris à usage général, générant des contenus de synthèse audio, image, vidéo ou texte, mis sur le marché avant le 2 août 2026 : conformité à l'art. 50, par. 2 d'ici au 2 décembre 2026."
       },
       "source_text": "2024/1689 et 2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
-      "notes": "Le délai ne concerne que le paragraphe 2. Les contenus déjà en circulation avant le 2 août 2026 n'auraient pas à être marqués rétroactivement selon une source : à confirmer.",
+      "notes": "Texte officiel relu. Le délai couvre expressément les contenus textuels. Les systèmes mis sur le marché à partir du 2 août 2026 n'en bénéficient pas.",
       "legal_basis": {
-        "provision": "Art. 50, par. 2 ; disposition transitoire insérée par 2026/1744",
-        "amending_act": "Règlement (UE) 2026/1744 (disposition transitoire relative à l'art. 50, par. 2 ; période de quatre mois, considérant 38)",
+        "provision": "Art. 50, par. 2 ; art. 111, par. 4 (délai transitoire)",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 39 (ajout de l'art. 111, par. 4)",
         "effective_date": "2026-08-02",
         "transitional_conditions": "Systèmes mis sur le marché avant le 2026-08-02 : jusqu'au 2026-12-02 (selon les sources).",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
-        "base_verification_status": "texte_initial_non_relu",
-        "note": "La date de base (2026-08-02, art. 50, par. 2 et art. 113) relève du texte initial ; seul le délai transitoire relève de 2026-1744 (sources secondaires).",
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "qui ont été mis sur le marché avant le 2 août 2026 prennent les mesures nécessaires pour se conformer à l'article 50, paragraphe 2, d'ici au 2 décembre 2026",
+            "text": "Les fournisseurs de systèmes d'IA, y compris les systèmes d'IA à usage général, qui génèrent des contenus de synthèse de type audio, image, vidéo ou texte, qui ont été mis sur le marché avant le 2 août 2026 prennent les mesures nécessaires pour se conformer à l'article 50, paragraphe 2, d'ici au 2 décembre 2026.",
             "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
             "language": "fr"
           }
@@ -388,23 +445,28 @@
       "kind": "application",
       "previous_date": "2026-08-02",
       "source_text": "2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
-      "confidence": "moyenne",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+      "confidence": "elevee",
       "verified_on": "2026-10-27",
-      "notes": "Date initiale : 2 août 2026. Report rapporté de manière concordante. Les obligations liées au haut risque situées hors du chapitre III (art. 49, 72, 73, 86) doivent faire l'objet d'une vérification de leur date effective sur le texte consolidé.",
+      "notes": "Texte officiel relu (art. 113, al. 3, c) i)). Date initiale : 2 août 2026. Les art. 49, 72, 73 et 86 ne figurent pas au chapitre III : ils suivent la date générale, mais ne visent que des systèmes à haut risque dont la classification relève du chapitre III ; à apprécier au cas par cas.",
       "legal_basis": {
-        "provision": "Art. 113 modifié ; art. 6, par. 2 ; chapitre III, sections 1 à 3",
-        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40 (art. 113 modifié) ; motif au considérant correspondant",
+        "provision": "Art. 113, troisième alinéa, point c) i) ; art. 6, par. 2 ; chapitre III, sections 1 à 3, sauf art. 6, par. 5",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40",
         "effective_date": "2027-12-02",
         "transitional_conditions": "Systèmes antérieurs : voir CAL-013.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "Il convient donc de fixer la date d'entrée en application des sections 1, 2 et 3 du chapitre III au 2 décembre 2027, et du 2 août 2028 en ce qui concerne les systèmes d'IA classés à haut risque en vertu de l'article 6, paragraphe 1, et de l'annexe I",
-            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+            "text": "le chapitre III, sections 1, 2 et 3, à l'exception de l'article 6, paragraphe 5, s'applique à partir:",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          },
+          {
+            "text": "du 2 décembre 2027 en ce qui concerne les systèmes d'IA classés comme étant à haut risque en vertu de l'article 6, paragraphe 2, et de l'annexe III",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
             "language": "fr"
           }
         ],
@@ -434,23 +496,23 @@
       "kind": "application",
       "previous_date": "2027-08-02",
       "source_text": "2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
-      "confidence": "moyenne",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+      "confidence": "elevee",
       "verified_on": "2026-10-27",
-      "notes": "Date initiale : 2 août 2027. Selon une source, les machines ont été déplacées de la section A vers la section B de l'annexe I : à vérifier pour tout produit concerné.",
+      "notes": "Texte officiel relu (art. 113, al. 3, c) ii)). Date initiale : 2 août 2027. Les machines (règlement (UE) 2023/1230) passent de la section A à la section B de l'annexe I (art. 1, point 41, du règlement 2026/1744).",
       "legal_basis": {
-        "provision": "Art. 113 modifié ; art. 6, par. 1 ; annexe I",
-        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40 (art. 113 modifié) ; motif au considérant correspondant",
+        "provision": "Art. 113, troisième alinéa, point c) ii) ; art. 6, par. 1 ; annexe I",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 40",
         "effective_date": "2028-08-02",
         "transitional_conditions": "Systèmes antérieurs : voir CAL-013.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "et du 2 août 2028 en ce qui concerne les systèmes d'IA classés à haut risque en vertu de l'article 6, paragraphe 1, et de l'annexe I",
-            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+            "text": "du 2 août 2028 en ce qui concerne les systèmes d'IA classés à haut risque en vertu de l'article 6, paragraphe 1, et de l'annexe I",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
             "language": "fr"
           }
         ],
@@ -481,25 +543,30 @@
         "placed_before": "2027-12-02",
         "effective_date": null,
         "public_authority_effective_date": "2030-08-02",
-        "note": "Le règlement ne s'applique à ces systèmes que s'ils font l'objet de modifications importantes de leur conception après cette date. Exception : les fournisseurs et déployeurs de systèmes destinés à être utilisés par des autorités publiques doivent se conformer au plus tard le 2 août 2030. Date de référence pour l'annexe I : 2 août 2028."
+        "note": "Soumis seulement en cas d'importantes modifications de la conception à compter de la date d'application du chapitre III ; systèmes destinés aux autorités publiques : au plus tard le 2 août 2030 (art. 111, par. 2, texte officiel)."
       },
       "source_text": "2024/1689 et 2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
-      "confidence": "faible",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+      "confidence": "elevee",
       "verified_on": "2026-10-27",
-      "notes": "Condition de modification importante confirmée par extrait officiel ; appréciation au niveau du type et du modèle (considérant 39). L'échéance du 2 août 2030 pour les systèmes destinés aux autorités publiques est rapportée par une recherche sur EUR-Lex mais sans extrait textuel : à confirmer (la date du 28 janvier 2028 citée par une source secondaire n'a pas été retrouvée).",
+      "notes": "Texte officiel relu : condition de modification importante de la conception à compter de la date d'application du chapitre III (2.12.2027 pour l'annexe III, 2.8.2028 pour l'annexe I) ; échéance du 2 août 2030 pour les systèmes destinés aux autorités publiques ; délai apprécié par type et modèle (considérant 39). La date du 28 janvier 2028 citée par une source secondaire est infirmée.",
       "legal_basis": {
-        "provision": "Art. 111, par. 2 (rédaction modifiée)",
-        "amending_act": "Règlement (UE) 2026/1744 (disposition exacte et date de référence à confirmer)",
+        "provision": "Art. 111, par. 2 (nouvelle rédaction) ; considérant 39 du règlement 2026/1744 (type et modèle)",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 39, a)",
         "effective_date": "2027-12-02",
         "transitional_conditions": "Soumis seulement en cas de modification importante de la conception ; autorités publiques : 2030-08-02 (une source : 2028-01-28).",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "sources_secondaires",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "uniquement si, à compter de cette date, ces systèmes subissent d'importantes modifications de leurs conceptions",
-            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+            "text": "qui ont été mis sur le marché ou mis en service avant la date d'application du chapitre III visée à l'article 113, uniquement si, à compter de cette date, ces systèmes subissent d'importantes modifications de leurs conceptions",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          },
+          {
+            "text": "les fournisseurs et les déployeurs de systèmes d'IA à haut risque destinés à être utilisés par des autorités publiques prennent les mesures nécessaires pour se conformer aux exigences et obligations prévues dans le présent règlement au plus tard le 2 août 2030",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
             "language": "fr"
           }
         ],
@@ -524,7 +591,7 @@
         "note": "Mise en conformité au plus tard le 31 décembre 2030."
       },
       "source_text": "2024/1689 (texte initial), non modifié selon une source",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2024/1689/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Concerne les systèmes d'information à grande échelle de l'espace de liberté, de sécurité et de justice. Rarement pertinent pour un audit de projet privé.",
@@ -534,9 +601,16 @@
         "effective_date": "2027-08-02",
         "transitional_conditions": "Composants de l'annexe X mis sur le marché avant le 2027-08-02 : conformité au plus tard le 2030-12-31.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689",
-        "verification_status": "texte_initial_non_relu",
-        "official_text_checked_on": null,
-        "official_extracts": []
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
+        "official_extracts": [
+          {
+            "text": "mis sur le marché ou mis en service avant le 2 août 2027 sont mis en conformité avec le présent règlement au plus tard le 31 décembre 2030",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     },
     {
@@ -551,22 +625,22 @@
       "date": "2026-07-27",
       "kind": "entree_en_vigueur",
       "source_text": "2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
       "confidence": "elevee",
       "verified_on": "2026-10-27",
       "notes": "Adoption le 8 juillet 2026, publication au JO le 24 juillet 2026, entrée en vigueur le 27 juillet 2026 selon les sources consultées.",
       "legal_basis": {
-        "provision": "Règlement (UE) 2026/1744, disposition finale (entrée en vigueur)",
+        "provision": "Règlement (UE) 2026/1744, art. 4 (publication au JO le 24.7.2026)",
         "amending_act": "Règlement (UE) 2026/1744, art. 4",
         "effective_date": "2026-07-27",
         "transitional_conditions": null,
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
-        "verification_status": "officielle_extraits",
-        "official_text_checked_on": null,
+        "verification_status": "officielle_relue",
+        "official_text_checked_on": "2026-10-27",
         "official_extracts_collected_on": "2026-10-27",
         "official_extracts": [
           {
-            "text": "Le présent règlement entre en vigueur le troisième jour suivant celui de sa publication au Journal officiel de l'Union européenne.",
+            "text": "Le présent règlement entre en vigueur le troisième jour suivant celui de sa publication au Journal officiel de l'Union européenne .",
             "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
             "language": "fr"
           }
@@ -588,19 +662,31 @@
       "date": null,
       "kind": "a_verifier",
       "source_text": "2024/1689 et 2026/1744",
-      "source_url": "https://eur-lex.europa.eu/eli/reg/2026/1744/oj",
-      "confidence": "faible",
+      "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+      "confidence": "moyenne",
       "verified_on": "2026-10-27",
-      "notes": "Selon les sources, l'obligation d'enregistrement a été maintenue (procédure simplifiée, contenu réduit de l'annexe VIII, section B). L'obligation de documenter l'évaluation avant la mise sur le marché subsiste. Date d'application effective non établie de manière fiable : ne pas qualifier de manquement sans vérification.",
+      "notes": "Textes relus le 2026-10-27 : l'art. 49, par. 2 n'est pas modifié (enregistrement maintenu) ; l'annexe VIII, section B perd ses points 7 (résumé des motifs) et 9 (États membres). Aucune date propre : l'art. 49 relève de la date générale (2.8.2026), mais la qualification au titre de l'art. 6, par. 3 et 4 (chapitre III, section 1) ne s'applique qu'à partir du 2.12.2027 (art. 113, al. 3, c)). Date effective de l'obligation d'enregistrement : interprétation à valider, entrée maintenue bloquante.",
       "legal_basis": {
-        "provision": "Art. 6, par. 4 ; art. 49, par. 2 ; annexe VIII, section B",
-        "amending_act": "Règlement (UE) 2026/1744 (contenu réduit selon les sources)",
+        "provision": "Art. 6, par. 4 ; art. 49, par. 2 (non modifié) ; annexe VIII, section B (points 7 et 9 supprimés)",
+        "amending_act": "Règlement (UE) 2026/1744, art. 1, point 42 (annexe VIII)",
         "effective_date": null,
         "transitional_conditions": "Date effective non établie.",
         "official_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744",
         "verification_status": "incertaine",
         "official_text_checked_on": null,
-        "official_extracts": []
+        "official_extracts": [
+          {
+            "text": "Avant de mettre sur le marché ou de mettre en service un système d’IA à propos duquel le fournisseur a conclu qu’il ne s’agissait pas d’un système à haut risque au titre de l’article 6, paragraphe 3, ce fournisseur ou, selon le cas, le mandataire s’enregistre dans la base de données de l’UE",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+            "language": "fr"
+          },
+          {
+            "text": "À l'annexe VIII, section B, les points 7 et 9 sont supprimés.",
+            "source_url": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+            "language": "fr"
+          }
+        ],
+        "official_extracts_collected_on": "2026-10-27"
       }
     }
   ]

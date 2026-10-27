@@ -4,6 +4,41 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 [SemVer](https://semver.org/lang/fr/). Chaque version indique la base juridique et la date de
 vérification des références.
 
+## [1.2.0] - 2026-10-27
+
+Première version dont le calendrier juridique est **relu sur le texte officiel**.
+
+### Textes et sources consultés (2026-10-27)
+- Règlement (UE) 2026/1744 du 8.7.2026, JO L du 24.7.2026, version française (CELEX 32026R1744).
+- Version consolidée du règlement (UE) 2024/1689 au 27.7.2026 (CELEX 02024R1689-20260727).
+- Récupération depuis Cellar (Office des publications) ; empreintes SHA-256 dans
+  `data/official-sources.json` ; EUR-Lex servait une vérification anti-robot.
+- Point SPARQL public de l'Office des publications (veille) : premier passage réel.
+
+### Modifié
+- Calendrier : 15 entrées sur 16 au statut `officielle_relue`, avec l'extrait exact et la disposition
+  modificative (art. 1, points 5, 7, 39, 40, 41 et 42, et art. 4 du règlement 2026/1744).
+- CAL-013 levée : art. 111, par. 2 confirmé (importantes modifications de la conception ; autorités
+  publiques au **2 août 2030**) ; la date du 28 janvier 2028 rapportée par une source secondaire est infirmée.
+- CAL-010 : délai inscrit à l'**art. 111, par. 4**, qui vise expressément les contenus « audio,
+  image, vidéo ou texte », y compris pour les systèmes d'IA à usage général.
+- CAL-016 reste bloquante : art. 49, par. 2 non modifié, annexe VIII, section B allégée (points 7 et
+  9 supprimés), date effective non fixée par le texte.
+- Art. 5 : texte officiel des points b bis) et b ter) et des par. 1 bis et 1 ter (côté fournisseur,
+  interdiction liée à la destination ou à un résultat raisonnablement prévisible et reproductible
+  **en l'absence de garde-fous raisonnables et adéquats**).
+- Classification : définition remplacée du composant de sécurité (art. 3, point 14), nouveaux
+  par. 1 bis à 1 quater de l'art. 6, machines déplacées en annexe I, section B.
+- Art. 10, par. 5 supprimé et remplacé par l'art. 4 bis (mention, analyse hors périmètre) ;
+  documentation simplifiée étendue aux petites entreprises à moyenne capitalisation (art. 11).
+- Fixtures `EXPECTED.md` et exemple de rapport alignés (plus de réserve sur CAL-013).
+
+### Ajouté
+- `scripts/verify_official_extracts.py` : relecture reproductible (22 extraits vérifiés, 0 introuvable).
+- `data/official-sources.json` : documents officiels relus et empreintes.
+- Veille : filtre du bruit (consolidations d'autres actes) et référentiel revu des 27 actes remontés
+  (rectificatifs, actes d'exécution 2025/454 et 2026/1755, propositions exclues).
+
 ## [1.1.1] - 2026-10-27
 
 Version de fiabilisation, sans nouvelle fonctionnalité d'audit. Base juridique inchangée ; statut

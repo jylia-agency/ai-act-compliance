@@ -66,17 +66,24 @@
 La Commission peut modifier l'annexe III par actes délégués (art. 7) : vérifier la version en vigueur
 à la date d'audit.
 
-## 4. Annexe I `[TI]`, modifiée `[AV]`
+## 4. Annexe I `[TI]`, modifiée `[O26]`
 
 - Section A (nouveau cadre législatif) : notamment jouets, ascenseurs, équipements sous pression,
   équipements radio, équipements de protection individuelle, appareils à gaz, dispositifs médicaux,
   dispositifs médicaux de diagnostic in vitro, bateaux de plaisance, équipements ATEX, installations à
-  câbles. Les **machines** auraient été déplacées en section B par le règlement 2026/1744 `[AV]`.
+  câbles. Les **machines** (règlement (UE) 2023/1230) ont été retirées de la section A et ajoutées
+  à la section B (point 21) par le règlement 2026/1744 (art. 1, point 41).
 - Section B : aviation civile, véhicules à moteur et agricoles, équipements marins, systèmes
   ferroviaires, etc. Pour ces produits, seules certaines dispositions s'appliquent via la
   législation sectorielle (art. 2, par. 2).
-- La définition de « composant de sécurité » (art. 3, point 14) a été modifiée `[O26]` : relire le
-  texte officiel avant toute qualification.
+- « Composant de sécurité » (art. 3, point 14, remplacé) : composant qui remplit une fonction de
+  sécurité, ou dont la défaillance ou le dysfonctionnement met en danger la santé et la sécurité des
+  personnes ou des biens. Art. 6, par. 1 bis à 1 quater (nouveaux) : les systèmes utilisés
+  **uniquement** pour l'assistance aux utilisateurs, l'optimisation des performances, l'efficacité,
+  l'automatisation, la commodité ou le contrôle de la qualité ne sont pas des composants de sécurité,
+  sauf si leur défaillance met en danger la santé et la sécurité ; une évaluation par un tiers imposée
+  uniquement pour d'autres risques (spectre radioélectrique, interférences) ne remplit pas la condition
+  de l'art. 6, par. 1, b).
 
 ## 5. Dérogation de l'article 6, paragraphe 3 `[TI]`
 
@@ -92,8 +99,8 @@ Exclusion : un système de l'annexe III qui effectue un **profilage** de personn
 toujours à haut risque (art. 6, par. 3, dernier alinéa).
 
 Obligations associées : le fournisseur qui invoque la dérogation documente son évaluation **avant**
-la mise sur le marché ou la mise en service (art. 6, par. 4) ; enregistrement (art. 49, par. 2),
-maintenu avec contenu réduit selon les sources `[AV]`.
+la mise sur le marché ou la mise en service (art. 6, par. 4) ; enregistrement (art. 49, par. 2,
+non modifié ; annexe VIII, section B allégée) ; date effective : CAL-016.
 
 Erreurs fréquentes :
 - considérer qu'une validation humaine en aval suffit à appliquer la dérogation (la supervision

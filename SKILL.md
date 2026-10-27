@@ -4,7 +4,7 @@ description: Audit structuré, en lecture seule, d'un projet logiciel intégrant
 license: MIT
 compatibility: Agents compatibles Agent Skills (Claude Code, OpenAI Codex et autres). Python 3.9+ facultatif pour les scripts d'aide. Aucun accès réseau requis.
 metadata:
-  version: "1.1.1"
+  version: "1.2.0"
   legal-baseline: "Règlement (UE) 2024/1689 modifié par le règlement (UE) 2026/1744"
   legal-references-last-verified: "2026-10-27"
   language: fr

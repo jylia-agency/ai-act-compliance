@@ -8,7 +8,7 @@ Mentionner « échéance à confirmer » lorsque l'entrée calendaire porte `req
 
 | Système | Rôle | Obligation | Référence | Base (obligation / bonne pratique) | Statut temporel (CAL) | Contrôle | État du contrôle | Preuves (PRV) | Vérifications restantes | Constat(s) |
 |---|---|---|---|---|---|---|---|---|---|---|
-| SYS-01 | Fournisseur | Maîtrise de l'IA | Art. 4 | Obligation | En vigueur (CAL-002) ; nouvelle rédaction : échéance à confirmer (CAL-003) | G1 | Impossible à vérifier | PRV-0xx | Plan de formation, registre | AIA-0xx |
+| SYS-01 | Fournisseur | Maîtrise de l'IA | Art. 4 | Obligation | En vigueur (CAL-002, CAL-003) | G1 | Impossible à vérifier | PRV-0xx | Plan de formation, registre | AIA-0xx |
 | SYS-01 | Fournisseur | Information sur l'interaction avec une IA | Art. 50, par. 1 et 5 | Obligation | En vigueur (CAL-009) | A1 | | | | |
 
 ## Matrice des preuves

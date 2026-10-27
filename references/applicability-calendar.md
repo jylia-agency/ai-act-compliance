@@ -3,7 +3,9 @@
 > Base : règlement (UE) 2024/1689 (art. 111 et 113), tel que modifié par le règlement (UE) 2026/1744.
 > Dernière vérification : **2026-10-27**. Source machine : `data/ai-act-calendar.json` (faisant foi
 > pour les scripts ; ce fichier doit rester synchronisé, ce que vérifie `tests/run_tests.py`).
-> Marqueurs : `[TI]` texte initial, `[O26]` modifié par 2026/1744 (sources secondaires), `[AV]` à vérifier.
+> Marqueurs : `[TI]` texte initial, `[O26]` introduit ou modifié par 2026/1744, `[AV]` interprétation à vérifier.
+> **Texte officiel relu le 2026-10-27** (JO du 24.7.2026 et version consolidée 02024R1689-20260727) :
+> 15 entrées sur 16 au statut `officielle_relue`, extraits cités dans le JSON.
 > Sources : [EUR-Lex 2024/1689](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689),
 > [EUR-Lex 2026/1744](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744),
 > [AI Act Explorer, art. 113](https://ai-act-service-desk.ec.europa.eu/en/ai-act/article-113).
@@ -27,9 +29,8 @@
 5. Le script `scripts/obligation_timeline.py` applique ces règles au fichier JSON.
 6. **Règle bloquante** : une entrée dont la base juridique n'a pas été relue sur le texte officiel et
    provient de sources secondaires ou incertaines (`verification_status`, voir `legal-sources.md`,
-   section 4 bis) produit la mention **« échéance à confirmer »**. Au 2026-10-27, cela concerne
-   **CAL-013** (art. 111, par. 2) et **CAL-016** (art. 49, par. 2). Les entrées CAL-003, CAL-004,
-   CAL-010, CAL-011, CAL-012 et CAL-015 sont confirmées par extraits officiels (`officielle_extraits`).
+   section 4 bis) produit la mention **« échéance à confirmer »**. Au 2026-10-27, cela ne concerne
+   plus que **CAL-016** (date effective de l'enregistrement de l'art. 49, par. 2 : interprétation).
 7. Ne jamais reprendre une date figurant dans la documentation du projet audité sans la confronter
    à ce calendrier.
 
@@ -37,22 +38,22 @@
 
 | ID | Obligation ou évènement | Article(s) | Date | Régime transitoire | Confiance |
 |---|---|---|---|---|---|
-| CAL-001 | Entrée en vigueur de l'AI Act | Art. 113, al. 1 `[TI]` | 2024-08-01 | n.a. | Élevée |
-| CAL-002 | Chapitres I et II : dispositions générales, **maîtrise de l'IA (art. 4)**, **pratiques interdites (art. 5, points a) à h))** | Art. 113, al. 3, a) `[TI]` | 2025-02-02 | Aucun : s'applique aussi aux systèmes déjà sur le marché | Élevée |
-| CAL-003 | Nouvelle rédaction de l'art. 4 (mesures pour favoriser le développement de la maîtrise de l'IA) | Art. 4 modifié `[O26]` | 2026-07-27 (entrée en vigueur ; pas de date propre) | n.a. | Élevée (extrait officiel) |
-| CAL-004 | **Nouvelles interdictions** : contenus intimes non consentis de personnes identifiables, matériel pédopornographique | Art. 5, par. 1, premier alinéa, points (ba) et (bb), et par. 1 bis et 1 ter `[O26]` ; art. 113, al. 3, a) modifié | 2026-12-02 | Aucun | Élevée (extrait officiel) |
-| CAL-005 | Chapitre V (**modèles GPAI**), chapitre VII (gouvernance), chapitre XII (sanctions, sauf art. 101), chapitre III section 4, art. 78 | Art. 113, al. 3, b) `[TI]` | 2025-08-02 | Voir CAL-006 | Élevée |
-| CAL-006 | Modèles GPAI mis sur le marché **avant le 2025-08-02** | Art. 111, par. 3 `[TI]` | 2025-08-02 | Conformité au plus tard le **2027-08-02** | Élevée |
-| CAL-007 | Amendes applicables aux fournisseurs de modèles GPAI | Art. 101 `[TI]` | 2026-08-02 | n.a. | Élevée |
-| CAL-008 | Date générale d'application | Art. 113, al. 2 `[TI]` | 2026-08-02 | Haut risque reporté (CAL-011, CAL-012) | Élevée |
-| CAL-009 | **Article 50, par. 1, 3, 4 et 5** (interaction avec une IA, émotions et catégorisation biométrique, hypertrucages, textes d'intérêt public, modalités) | Art. 50 `[TI]`, date non modifiée `[O26]` | 2026-08-02 | Aucun | Élevée |
-| CAL-010 | **Article 50, par. 2** (marquage et détectabilité des contenus synthétiques, fournisseurs) | Art. 50, par. 2 `[TI]` + délai `[O26]` | 2026-08-02 | Systèmes mis sur le marché **avant le 2026-08-02** : jusqu'au **2026-12-02** | Élevée (extrait officiel de la version consolidée) |
-| CAL-011 | **Haut risque annexe III** (art. 6, par. 2) : chapitre III, sections 1 à 3 (art. 8 à 27) | Art. 113 modifié `[O26]` | **2027-12-02** (initialement 2026-08-02) | Voir CAL-013 | Moyenne (extrait officiel d'un considérant) |
-| CAL-012 | **Haut risque annexe I** (art. 6, par. 1) | Art. 113 modifié `[O26]` | **2028-08-02** (initialement 2027-08-02) | Voir CAL-013 | Moyenne (extrait officiel d'un considérant) |
-| CAL-013 | Systèmes à haut risque mis sur le marché ou en service **avant** la date d'application du chapitre III | Art. 111, par. 2 modifié `[AV]` | Référence : 2027-12-02 (annexe III) ; 2028-08-02 (annexe I) | Soumis au règlement seulement en cas de **modification importante de la conception** après cette date ; systèmes destinés aux **autorités publiques** : au plus tard le **2030-08-02** (sans extrait textuel : échéance à confirmer) | Faible |
-| CAL-014 | Composants des systèmes d'information à grande échelle (annexe X) mis sur le marché avant le 2027-08-02 | Art. 111, par. 1 `[TI]` | 2027-08-02 | Conformité au plus tard le 2030-12-31 | Élevée |
-| CAL-015 | Entrée en vigueur du règlement 2026/1744 | Art. 4 du règlement 2026/1744 | 2026-07-27 | n.a. | Élevée (extrait officiel) |
-| CAL-016 | Enregistrement (art. 49, par. 2) des systèmes de l'annexe III que le fournisseur estime non à haut risque | Art. 6, par. 4 ; art. 49, par. 2 `[AV]` | Non établie | n.a. | Faible |
+| CAL-001 | Entrée en vigueur de l'AI Act | Art. 113, al. 1 `[TI]` | 2024-08-01 | n.a. | Élevée (texte officiel relu) |
+| CAL-002 | Chapitres I et II : dispositions générales, **maîtrise de l'IA (art. 4)**, **pratiques interdites (art. 5, points a) à h))** | Art. 113, al. 3, a) `[TI]` | 2025-02-02 | Aucun : s'applique aussi aux systèmes déjà sur le marché | Élevée (texte officiel relu) |
+| CAL-003 | Nouvelle rédaction de l'art. 4 (mesures pour favoriser le développement de la maîtrise de l'IA) | Art. 4 modifié `[O26]` | 2026-07-27 (entrée en vigueur ; pas de date propre) | n.a. | Élevée (texte officiel relu) |
+| CAL-004 | **Nouvelles interdictions** : contenus intimes non consentis de personnes identifiables, matériel pédopornographique | Art. 5, par. 1, premier alinéa, points (ba) et (bb), et par. 1 bis et 1 ter `[O26]` ; art. 113, al. 3, a) modifié | 2026-12-02 | Aucun | Élevée (texte officiel relu) |
+| CAL-005 | Chapitre V (**modèles GPAI**), chapitre VII (gouvernance), chapitre XII (sanctions, sauf art. 101), chapitre III section 4, art. 78 | Art. 113, al. 3, b) `[TI]` | 2025-08-02 | Voir CAL-006 | Élevée (texte officiel relu) |
+| CAL-006 | Modèles GPAI mis sur le marché **avant le 2025-08-02** | Art. 111, par. 3 `[TI]` | 2025-08-02 | Conformité au plus tard le **2027-08-02** | Élevée (texte officiel relu) |
+| CAL-007 | Amendes applicables aux fournisseurs de modèles GPAI | Art. 101 `[TI]` | 2026-08-02 | n.a. | Élevée (texte officiel relu) |
+| CAL-008 | Date générale d'application | Art. 113, al. 2 `[TI]` | 2026-08-02 | Haut risque reporté (CAL-011, CAL-012) | Élevée (texte officiel relu) |
+| CAL-009 | **Article 50, par. 1, 3, 4 et 5** (interaction avec une IA, émotions et catégorisation biométrique, hypertrucages, textes d'intérêt public, modalités) | Art. 50 `[TI]`, date non modifiée `[O26]` | 2026-08-02 | Aucun | Élevée (texte officiel relu) |
+| CAL-010 | **Article 50, par. 2** (marquage et détectabilité des contenus synthétiques, fournisseurs) | Art. 50, par. 2 `[TI]` ; délai : art. 111, par. 4 `[O26]` | 2026-08-02 | Systèmes mis sur le marché **avant le 2026-08-02** : jusqu'au **2026-12-02** | Élevée (texte officiel relu ; art. 111, par. 4) |
+| CAL-011 | **Haut risque annexe III** (art. 6, par. 2) : chapitre III, sections 1 à 3 (art. 8 à 27) | Art. 113 modifié `[O26]` | **2027-12-02** (initialement 2026-08-02) | Voir CAL-013 | Élevée (texte officiel relu ; art. 113, al. 3, c)) |
+| CAL-012 | **Haut risque annexe I** (art. 6, par. 1) | Art. 113 modifié `[O26]` | **2028-08-02** (initialement 2027-08-02) | Voir CAL-013 | Élevée (texte officiel relu ; art. 113, al. 3, c)) |
+| CAL-013 | Systèmes à haut risque mis sur le marché ou en service **avant** la date d'application du chapitre III | Art. 111, par. 2 modifié `[O26]` | Référence : 2027-12-02 (annexe III) ; 2028-08-02 (annexe I) | Soumis au règlement seulement en cas d'**importantes modifications de la conception** à compter de cette date ; systèmes destinés aux **autorités publiques** : au plus tard le **2030-08-02** | Élevée (texte officiel relu) |
+| CAL-014 | Composants des systèmes d'information à grande échelle (annexe X) mis sur le marché avant le 2027-08-02 | Art. 111, par. 1 `[TI]` | 2027-08-02 | Conformité au plus tard le 2030-12-31 | Élevée (texte officiel relu) |
+| CAL-015 | Entrée en vigueur du règlement 2026/1744 | Art. 4 du règlement 2026/1744 | 2026-07-27 | n.a. | Élevée (texte officiel relu) |
+| CAL-016 | Enregistrement (art. 49, par. 2) des systèmes de l'annexe III que le fournisseur estime non à haut risque | Art. 6, par. 4 ; art. 49, par. 2 (non modifié) ; annexe VIII, section B `[AV]` | Non établie (texte relu ; date effective = interprétation) | n.a. | Moyenne, **bloquante** |
 
 ## 3. Points d'attention
 

@@ -68,10 +68,18 @@ def parse(response: dict) -> dict[str, set[str]]:
     return found
 
 
+def is_relevant(celex: str, base_celex: str) -> bool:
+    """Écarte les versions consolidées d'AUTRES actes (modifiés par le règlement de base)."""
+    if celex.startswith("0"):
+        return celex[1:].startswith(base_celex[1:])
+    return True
+
+
 def compare(found: dict[str, set[str]], watch: dict) -> list[dict]:
     known = set(watch["known_celex"])
+    base = watch["base_celex"]
     return [{"celex": c, "relations": sorted(r), "eurlex": f"https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:{c}"}
-            for c, r in sorted(found.items()) if c not in known]
+            for c, r in sorted(found.items()) if c not in known and is_relevant(c, base)]
 
 
 def to_markdown(new_acts: list[dict], watch: dict, error: str | None = None) -> str:

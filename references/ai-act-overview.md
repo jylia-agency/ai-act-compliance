@@ -79,7 +79,7 @@ paragraphe 1 `[AV]`. Un rapport d'audit ne chiffre **jamais** une amende.
 ## 5. Ce que le règlement 2026/1744 a changé (synthèse) `[O26]`
 
 Synthèse ; le statut de vérification de chaque date figure dans `legal-sources.md`, section 4 bis
-(extraits officiels relevés le 2026-10-27 pour les dates principales) :
+(texte officiel relu le 2026-10-27) :
 
 - Report des exigences du haut risque : annexe III au 2027-12-02, annexe I au 2028-08-02.
 - Délai jusqu'au 2026-12-02 pour l'article 50, paragraphe 2, pour les systèmes mis sur le marché
@@ -88,12 +88,21 @@ Synthèse ; le statut de vérification de chaque date figure dans `legal-sources
   applicables le 2026-12-02.
 - Article 4 réécrit : obligation de prendre des mesures pour favoriser le développement de la maîtrise de l'IA, sans
   exigence d'un niveau déterminé ; rôle d'appui de la Commission et des États membres.
-- Article 111, paragraphe 2 : date de référence alignée sur l'application du chapitre III ;
-  appréciation au niveau du type et du modèle.
-- Enregistrement des systèmes de l'annexe III jugés non à haut risque maintenu avec contenu réduit.
-- Définition du composant de sécurité (art. 3, point 14) modifiée ; machines déplacées vers
-  l'annexe I, section B `[AV]`.
-- Détection et correction des biais (art. 10, par. 5) : critère de stricte nécessité maintenu,
-  garanties ajoutées `[AV]`.
-- Mesures d'allègement pour les PME et les petites entreprises de taille intermédiaire `[AV]` :
-  vérifier le texte avant de les invoquer.
+- Article 111, paragraphe 2 : les systèmes à haut risque mis sur le marché ou en service avant la
+  date d'application du chapitre III ne sont soumis qu'en cas d'importantes modifications de leur
+  conception à compter de cette date ; échéance du 2 août 2030 pour les systèmes destinés aux
+  autorités publiques ; appréciation par type et modèle (considérant 39).
+- Article 111, paragraphe 4 (nouveau) : délai jusqu'au 2 décembre 2026 pour l'art. 50, par. 2
+  (contenus audio, image, vidéo ou texte) pour les systèmes mis sur le marché avant le 2 août 2026.
+- Article 113, troisième alinéa, point d) (nouveau) : art. 102 à 110 applicables à partir du 27 juillet 2026.
+- Enregistrement des systèmes de l'annexe III jugés non à haut risque (art. 49, par. 2) maintenu ;
+  annexe VIII, section B : points 7 et 9 supprimés.
+- Définition du composant de sécurité (art. 3, point 14) remplacée ; nouveaux paragraphes 1 bis à
+  1 quater de l'art. 6 (aspects non liés à la sécurité exclus, défaillance mettant en danger la
+  santé et la sécurité incluse, évaluation par un tiers pour d'autres risques non prise en compte) ;
+  machines déplacées de la section A vers la section B de l'annexe I.
+- Article 10, paragraphe 5 supprimé ; nouvel article 4 bis encadrant le traitement de catégories
+  particulières de données pour la détection et la correction des biais (son articulation avec
+  d'autres textes est hors périmètre de ce skill).
+- Définitions des PME et des petites entreprises à moyenne capitalisation (art. 3, points 14 bis et
+  14 ter) ; documentation technique simplifiée étendue à ces dernières (art. 11, par. 1).

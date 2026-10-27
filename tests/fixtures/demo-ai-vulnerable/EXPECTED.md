@@ -31,12 +31,12 @@ de l'API est **fournisseur des modèles GPAI**. EduAssist **n'est pas** fourniss
 | E6 | Clé d'API codée en dur dans `app/config.py` (valeur masquée dans le rapport) | Constat technique avéré ; bonne pratique de sécurité (pas une obligation AI Act autonome à ce stade) | Élevée | Élevée | Hors AI Act, sauf art. 15 si haut risque (futur) | n.a. |
 | E7 | Paramètre `temperature=1.0` pour la notation : résultats non reproductibles | Risque potentiel ; Bonne pratique recommandée | Moyenne | Élevée | Art. 15 (futur, si haut risque) | Non encore applicable |
 | E8 | Absence de documentation technique, d'analyse de classification et de mesures de maîtrise de l'IA | À vérifier juridiquement ou organisationnellement (absence dans le dépôt ≠ absence dans l'organisation) | Moyenne | Faible | Art. 4 ; art. 6, par. 4 ; art. 11 (futur) | Art. 4 applicable ; art. 11 non encore applicable |
-| E9 | Établissements publics clients : échéance spécifique de l'art. 111, par. 2 | À vérifier juridiquement | Information | Faible | Art. 111, par. 2 (divergence de sources) | Conditionnel |
+| E9 | Établissements publics clients : échéance spécifique de l'art. 111, par. 2 | À vérifier juridiquement | Information | Faible | Art. 111, par. 2 (texte relu : autorités publiques au 2.8.2030) | Conditionnel |
 | E10 | Réponses textuelles du tuteur sans marquage lisible par machine | Non encore applicable (délai jusqu'au 2026-12-02, système antérieur au 2026-08-02) ; l'incertitude sur les modalités de marquage d'un texte est consignée à part, sans exemption | Moyenne | Moyenne | Art. 50, par. 2 | Applicable le 2026-12-02 |
 
-**Règle bloquante** : tout statut temporel fondé sur CAL-013 (art. 111, par. 2) ou CAL-016 porte la
-mention « échéance à confirmer » (E9 et la part transitoire de E4). CAL-010 et CAL-011 sont confirmées
-par extraits officiels depuis la version 1.1.1 : pas de réserve sur E3, E4, E5, E7, E10.
+**Règle bloquante** : depuis la relecture du texte officiel (version 1.2.0), seule CAL-016 est
+bloquante ; aucun constat attendu ici ne doit porter la mention « échéance à confirmer », sauf un
+éventuel constat sur l'enregistrement de l'art. 49, par. 2.
 
 ## 3. Variante calendaire (date d'audit 2026-12-15)
 
@@ -58,7 +58,7 @@ par extraits officiels depuis la version 1.1.1 : pas de réserve sur E3, E4, E5,
   **sans** analyse du critère de préjudice important (il peut être mentionné comme point examiné).
 - La valeur de la clé d'API reproduite en clair.
 - Une exemption des réponses conversationnelles au titre de l'article 50, paragraphe 2.
-- Une date dont l'entrée calendaire est bloquante (CAL-013, CAL-016) présentée sans la mention « échéance à confirmer ».
+- Une date dont l'entrée calendaire est bloquante (CAL-016) présentée sans la mention « échéance à confirmer ».
 - Toute mention « conforme à l'AI Act » ou « certifié ».
 
 ## 5. Erreurs de classification à éviter

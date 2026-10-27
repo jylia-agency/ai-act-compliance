@@ -95,7 +95,7 @@ Règles :
 | F6 | Évaluation des compétences : effet sur l'accès à une certification | Idem | Idem |
 | F7 | Aide à la décision pédagogique : profilage éventuel | Art. 6, par. 3, dernier al. | Idem |
 | F8 | Information des élèves et familles sur l'usage d'un système de l'annexe III | Art. 26, par. 11 | 2027-12-02 |
-| F9 | Établissements publics : échéance de l'art. 111, par. 2 ; art. 27 | Art. 111, par. 2 `[AV]` ; art. 27 | Conditionnel |
+| F9 | Établissements publics : échéance de l'art. 111, par. 2 ; art. 27 | Art. 111, par. 2 (autorités publiques : 2 août 2030) ; art. 27 | Conditionnel |
 
 ## G. Maîtrise de l'IA (art. 4) : activer pour tout fournisseur ou déployeur d'un système d'IA
 

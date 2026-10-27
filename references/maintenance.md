@@ -21,9 +21,16 @@ humaine**. Une issue de rappel est aussi ouverte chaque trimestre. Le script ne 
 après revue, un humain met à jour `known_celex` et, si nécessaire, le calendrier (section 4) en
 suivant `official-verification-worksheet.md`.
 
-Limite : la requête SPARQL n'a pas pu être testée contre le service réel depuis l'environnement de
-rédaction (accès réseau refusé) ; seule l'analyse d'une réponse fictive est testée. Le premier
-passage du workflow doit être surveillé : un échec ouvre une issue dédiée.
+Premier passage réel le 2026-10-27 : requête exécutée avec succès, 27 actes remontés et revus
+(référentiel `data/legal-watch.json`). Les versions consolidées d'autres actes sont écartées comme bruit.
+
+## 1 ter. Relecture du texte officiel (reproductible)
+
+1. `python3 scripts/verify_official_extracts.py` : retélécharge depuis Cellar les documents de
+   `data/official-sources.json`, compare les empreintes et vérifie chaque extrait cité du calendrier.
+2. Empreinte différente : une nouvelle manifestation du document existe (rectificatif, nouvelle
+   consolidation) : relire les dispositions concernées avant de mettre à jour les empreintes.
+3. Extrait introuvable : la règle correspondante doit être revue avant tout audit.
 
 ## 2. Sources à surveiller
 

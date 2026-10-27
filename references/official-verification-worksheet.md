@@ -1,15 +1,31 @@
 # Fiche de vérification officielle des échéances
 
 > Objet : permettre à une personne disposant d'un accès à EUR-Lex de lever, entrée par entrée, la
-> mention « échéance à confirmer ». Dernière vérification : **2026-10-27** (aucune relecture intégrale à
-> cette date ; six entrées confirmées par extraits officiels, deux entrées encore bloquantes).
+> mention « échéance à confirmer ». Dernière vérification : **2026-10-27** (texte officiel relu à cette
+> date : 15 entrées levées, CAL-016 reste bloquante pour une question d'interprétation).
 > Sources à consulter : [règlement (UE) 2026/1744](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32026R1744),
 > [règlement (UE) 2024/1689 et ses versions consolidées](https://eur-lex.europa.eu/legal-content/FR/TXT/?uri=CELEX:32024R1689),
 > [AI Act Explorer](https://ai-act-service-desk.ec.europa.eu/fr/ai-act-explorer).
 
-Priorité : CAL-013 et CAL-016 (bloquantes). Les entrées `officielle_extraits` sont à relire
-intégralement pour passer à `officielle_relue` (en particulier la disposition opérationnelle de
-l'art. 113 modifié pour CAL-011 et CAL-012, confirmées à ce stade par un considérant).
+## 0. Résultat de la relecture du 2026-10-27
+
+Textes relus : règlement (UE) 2026/1744 (JO L du 24.7.2026, FR) et version consolidée
+02024R1689-20260727, récupérés depuis Cellar (empreintes : `data/official-sources.json`).
+Reproduction : `python3 scripts/verify_official_extracts.py` (22 extraits vérifiés, 0 introuvable).
+
+| ID | Résultat | Disposition exacte |
+|---|---|---|
+| CAL-003 | Confirmé | Art. 4 remplacé par le règlement 2026/1744, art. 1, point 5 |
+| CAL-004 | Confirmé (points b bis et b ter, par. 1 bis et 1 ter) | Art. 1, points 7 et 40 |
+| CAL-010 | Confirmé ; délai inscrit à l'art. 111, par. 4 (textes inclus) | Art. 1, point 39 |
+| CAL-011 | Confirmé : 2.12.2027 | Art. 113, al. 3, c) i), modifié par l'art. 1, point 40 |
+| CAL-012 | Confirmé : 2.8.2028 ; machines déplacées en annexe I, section B | Art. 113, al. 3, c) ii) ; art. 1, point 41 |
+| CAL-013 | Confirmé : importantes modifications de la conception ; autorités publiques au 2.8.2030 (la date du 28.1.2028 est infirmée) | Art. 111, par. 2, remplacé par l'art. 1, point 39, a) |
+| CAL-015 | Confirmé : entrée en vigueur au 27.7.2026 | Règlement 2026/1744, art. 4 |
+| CAL-016 | Textes relus, date effective non fixée par le texte : **reste bloquante** | Art. 49, par. 2 (non modifié) ; annexe VIII, section B (art. 1, point 42) |
+
+Reste à faire : trancher l'interprétation de CAL-016 (avis juridique) ; examiner les rectificatifs
+32024R1689R(01) à R(04) ; relire les lignes directrices de la Commission.
 
 ## 1. Mode opératoire
 

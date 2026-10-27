@@ -42,7 +42,7 @@ REQUIRED_FILES = [
     "scripts/diff_ai_signals.py", "examples/ci/ai-act-diff.yml", "templates/data-flow-map.md",
     "tests/fixtures/demo-adversarial/EXPECTED.md",
     "references/official-verification-worksheet.md", "scripts/check_legal_updates.py",
-    "data/legal-watch.json", ".github/workflows/legal-watch.yml",
+    "data/legal-watch.json", ".github/workflows/legal-watch.yml", "data/official-sources.json",
     "templates/audit-report.md", "templates/ai-system-inventory.md",
     "templates/risk-classification.md", "templates/compliance-matrix.md",
     "templates/remediation-plan.md", "templates/unverifiable-register.md",
@@ -205,7 +205,7 @@ class CalendarDataTests(unittest.TestCase):
     def test_official_extracts_are_quoted_and_sourced(self):
         for e in self.cal["entries"]:
             basis = e["legal_basis"]
-            if basis["verification_status"] == "officielle_extraits":
+            if basis["verification_status"] in OFFICIAL_STATUSES:
                 self.assertTrue(basis.get("official_extracts"), f"{e['id']} : aucun extrait officiel cité")
                 D(basis["official_extracts_collected_on"])
                 for extract in basis["official_extracts"]:
@@ -320,13 +320,17 @@ class TimelineScenarioTests(unittest.TestCase):
         self.assertEqual(status_of("CAL-016", "2026-10-27")["status"], timeline.STATUS_UNKNOWN)
 
     def test_blocking_rule_labels_unverified_deadlines(self):
-        r = status_of("CAL-013", "2026-10-27", "2026-03-01", public=True)
-        self.assertTrue(r["requires_confirmation"], "échéance des autorités publiques non confirmée : bloquante")
+        cal = timeline.load_calendar()
+        entry = dict(next(e for e in cal["entries"] if e["id"] == "CAL-011"))
+        entry["legal_basis"] = dict(entry["legal_basis"], verification_status="sources_secondaires")
+        r = timeline.evaluate_entry(entry, D("2026-10-27"))
+        self.assertTrue(r["requires_confirmation"], "une échéance non vérifiée doit être bloquante")
         self.assertIn("échéance à confirmer", r["status_label"])
         self.assertTrue(status_of("CAL-016", "2026-10-27")["requires_confirmation"])
 
     def test_officially_extracted_deadlines_not_blocked(self):
-        for entry_id, args in (("CAL-011", ()), ("CAL-012", ()), ("CAL-004", ()), ("CAL-010", ("2026-03-01",))):
+        for entry_id, args in (("CAL-011", ()), ("CAL-012", ()), ("CAL-004", ()), ("CAL-010", ("2026-03-01",)),
+                               ("CAL-013", ("2026-03-01",))):
             r = status_of(entry_id, "2026-10-27", *args)
             self.assertFalse(r["requires_confirmation"], f"{entry_id} : confirmé par extrait officiel")
             self.assertNotIn("échéance à confirmer", r["status_label"])
@@ -428,7 +432,8 @@ class LegalWatchTests(unittest.TestCase):
         new = [a["celex"] for a in watch.compare(found, watch.load_watch())]
         self.assertNotIn("32026R1744", new, "acte connu signalé à tort")
         self.assertIn("32099R0001", new)
-        self.assertIn("32024R1689R(01)", new)
+        self.assertIn("32024R1689R(09)", new)
+        self.assertNotIn("02099R0001-20990101", new, "consolidation d'un autre acte : bruit à écarter")
 
     def test_exit_codes_and_no_write(self):
         before = {p: p.stat().st_mtime_ns for p in (ROOT / "data").iterdir()}
@@ -446,6 +451,8 @@ class LegalWatchTests(unittest.TestCase):
 
     def test_query_targets_base_act(self):
         self.assertIn('"32024R1689"', watch.build_query("32024R1689"))
+        self.assertTrue(watch.is_relevant("02024R1689-20260727", "32024R1689"))
+        self.assertFalse(watch.is_relevant("02018R0858-20260802", "32024R1689"))
 
     def test_worksheet_covers_every_blocking_entry(self):
         sheet = (ROOT / "references" / "official-verification-worksheet.md").read_text(encoding="utf-8")

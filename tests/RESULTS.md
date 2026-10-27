@@ -3,9 +3,44 @@
 Ce document présente d'abord l'état de la **version courante**, puis l'historique. Les nombres
 indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 
-## Version 1.1.1 : état actuel (2026-10-27)
+## Version 1.2.0 : état actuel (2026-10-27)
 
 ### Synthèse
+
+| Contrôle | Résultat | Détail |
+|---|---|---|
+| Tests automatiques | **58 tests, 58 réussis** | `python3 tests/run_tests.py`, Python 3.13, Git, Linux, 2026-10-27 |
+| Relecture du texte officiel | **15 entrées sur 16 relues** | `python3 scripts/verify_official_extracts.py` : 2 documents officiels, empreintes identiques, **22 extraits vérifiés, 0 introuvable** ; CAL-016 reste bloquante (interprétation) |
+| Veille automatisée (service réel) | **Réussie** | `python3 scripts/check_legal_updates.py` : requête SPARQL exécutée, 27 actes remontés et revus ; second passage : aucun acte nouveau |
+| Intégration Claude Code (CLI 2.1.312) | **Réussi** | `tests/agent-runs/2026-10-27-v1.1.1/claude-code-cli-trigger.md` |
+| Intégration OpenAI Codex | **Non testé** | Codex non installé, aucun identifiant OpenAI disponible |
+| Validateur `skills-ref validate` | **Non exécuté** | Installation refusée par la politique de l'environnement ; frontmatter validé par PyYAML et par les tests |
+| Évaluation par agent à l'aveugle | **Conforme** (dernière série en version 1.1.0, quatre exécutions, trois modèles) | La version 1.2.0 ne modifie pas la méthodologie ; elle lève des réserves calendaires et précise des règles (art. 5, art. 6, art. 111) |
+| Essai sur un dépôt applicatif réel | **En cours** | Résultats ajoutés à la fin de l'exécution |
+
+### Ce que la relecture officielle a changé
+
+| Point | Avant (sources secondaires) | Texte officiel |
+|---|---|---|
+| Autorités publiques (art. 111, par. 2) | 2 août 2030 ou 28 janvier 2028 | **2 août 2030** |
+| Délai art. 50, par. 2 | 2 décembre 2026, localisation inconnue | 2 décembre 2026, **art. 111, par. 4**, contenus « audio, image, vidéo ou texte » |
+| Nouvelles interdictions (art. 5) | Contenu rapporté | Points b bis) et b ter), par. 1 bis (garde-fous raisonnables et adéquats) et 1 ter |
+| Composant de sécurité | « Définition modifiée » | Art. 3, point 14 remplacé ; art. 6, par. 1 bis à 1 quater ajoutés |
+| Art. 10, par. 5 | « Critère maintenu » | Supprimé, remplacé par l'art. 4 bis |
+| Machines | « Déplacées selon une source » | Annexe I, section A point 1 supprimé, section B point 21 ajouté |
+
+### Ce qui reste non vérifié
+
+- CAL-016 : date effective de l'obligation d'enregistrement de l'art. 49, par. 2 (interprétation).
+- Rectificatifs 32024R1689R(01) à R(04) : recensés, contenu non examiné.
+- Intégration Codex et validateur officiel `skills-ref`.
+- Variance des évaluations par agent.
+
+## Historique
+
+### Version 1.1.1 (2026-10-27)
+
+#### Synthèse
 
 | Contrôle | Résultat | Détail |
 |---|---|---|
@@ -17,7 +52,7 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 | Essai sur un dépôt applicatif réel | **En cours** | Résultats ajoutés à la fin de l'exécution |
 | Vérification juridique officielle | **Partielle** | 6 entrées confirmées par extraits officiels EUR-Lex ; 2 entrées bloquantes (CAL-013, CAL-016) ; aucune relecture intégrale |
 
-### Tests automatiques ajoutés depuis la version 1.1.0
+#### Tests automatiques ajoutés depuis la version 1.1.0
 
 | Groupe | Contrôles ajoutés |
 |---|---|
@@ -26,7 +61,7 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 | `TimelineScenarioTests` | Échéances confirmées par extrait non bloquantes ; CAL-013 et CAL-016 bloquantes |
 | `LegalWatchTests` | Veille automatisée : détection des seuls actes inconnus (réponse SPARQL fictive), codes de sortie, absence d'écriture dans `data/`, fiche de vérification couvrant toutes les entrées bloquantes |
 
-### Vérification juridique
+#### Vérification juridique
 
 | Entrée | Statut | Preuve |
 |---|---|---|
@@ -38,14 +73,12 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 Ces résultats ne valident pas le contenu juridique du skill : ils attestent la cohérence interne et
 la traçabilité des sources. Procédure de levée des réserves : `references/official-verification-worksheet.md`.
 
-### Ce qui reste non vérifié
+#### Ce qui reste non vérifié
 
 - Relecture intégrale du règlement 2026/1744 et de la version consolidée (accès direct refusé).
 - Intégration Codex et validateur officiel `skills-ref`.
 - Requête de veille SPARQL contre le service réel (seule l'analyse d'une réponse fictive est testée).
 - Variance des évaluations par agent (une exécution par couple fixture et modèle).
-
-## Historique
 
 ### Version 1.1.0 (2026-10-27) : revue externe et évaluation de contrôle
 

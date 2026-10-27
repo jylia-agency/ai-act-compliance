@@ -9,9 +9,9 @@ produit des livrables d'audit en français, exploitables dans des projets profes
 
 > **Ce skill n'est pas un outil de certification.** Il évalue des éléments observables dans un dépôt
 > et des obligations **potentiellement** applicables. Il ne remplace ni un juriste, ni une évaluation
-> de la conformité au sens de l'article 43 du règlement. Les références juridiques sont datées
-> (dernière vérification : **2026-10-27**) et certaines doivent encore être confirmées sur le Journal
-> officiel (voir [Sources juridiques](#sources-juridiques) et [Limites](#limites)).
+> de la conformité au sens de l'article 43 du règlement. Le calendrier juridique a été **relu sur le
+> texte officiel le 2026-10-27** (15 entrées sur 16 ; une date d'enregistrement reste à interpréter) :
+> voir [Sources juridiques](#sources-juridiques) et [Limites](#limites).
 
 ## Sommaire
 
@@ -70,6 +70,10 @@ produit des livrables d'audit en français, exploitables dans des projets profes
   - `scripts/scan_ai_signals.py` : inventaire des signaux d'IA et des chemins de sortie, secrets masqués ;
   - `scripts/obligation_timeline.py` : statut temporel des obligations à une date donnée ;
   - `scripts/diff_ai_signals.py` : comparaison de deux états Git (via `git show`, sans checkout).
+- **Maintenance juridique outillée** : `scripts/verify_official_extracts.py` (rejoue la relecture du
+  calendrier sur le texte officiel) et `scripts/check_legal_updates.py` avec le workflow
+  `.github/workflows/legal-watch.yml` (veille mensuelle des actes liés à l'AI Act, issues de revue
+  humaine, aucune règle modifiée automatiquement).
 
 ## Installation pour Claude Code
 
@@ -236,12 +240,12 @@ Le détail des versions, des niveaux de confiance (`[TI]` texte initial, `[O26]`
 2026/1744, `[AV]` à vérifier) et des divergences connues figure dans
 [`references/legal-sources.md`](references/legal-sources.md).
 
-**Transparence sur la vérification du 2026-10-27** : l'accès direct à EUR-Lex était refusé depuis
-l'environnement de rédaction. Le texte officiel (JO du 24.7.2026 et version consolidée
-02024R1689-20260727) a été consulté **par extraits**, chacun recopié avec son URL dans
-`data/ai-act-calendar.json` ; une revue externe a confirmé de manière concordante les trois
-échéances principales. Deux entrées restent bloquantes (« échéance à confirmer ») et une relecture
-intégrale reste à faire avec `references/official-verification-worksheet.md`.
+**Vérification du 2026-10-27** : le règlement (UE) 2026/1744 (JO du 24.7.2026) et la version
+consolidée 02024R1689-20260727 ont été **relus** à partir de Cellar (Office des publications).
+Chaque entrée du calendrier cite l'extrait exact relu ; les empreintes des documents figurent dans
+`data/official-sources.json`, et `python3 scripts/verify_official_extracts.py` rejoue la vérification
+(22 extraits, 0 introuvable). Seule l'entrée CAL-016 (date effective de l'enregistrement de
+l'art. 49, par. 2) reste « échéance à confirmer », pour une question d'interprétation.
 
 ## Limites
 
@@ -251,9 +255,9 @@ intégrale reste à faire avec `references/official-verification-worksheet.md`.
 - **Informations organisationnelles** (contrats, formation, finalités, dates de mise sur le marché)
   généralement hors dépôt : elles sont consignées comme éléments à vérifier.
 - **Références datées** : le droit, les lignes directrices, les codes de bonnes pratiques et les
-  normes harmonisées évoluent. Les dates principales issues de 2026/1744 sont confirmées par
-  extraits officiels ; l'art. 111, par. 2 (autorités publiques) et l'art. 49, par. 2 restent
-  « échéance à confirmer », et aucune relecture intégrale n'a encore été faite.
+  normes harmonisées évoluent. Le calendrier a été relu sur le texte officiel le 2026-10-27 ; des
+  points d'interprétation subsistent (`references/legal-sources.md`, section 5), et la version
+  consolidée n'a pas de valeur juridique propre (seul le JO fait foi).
 - **Périmètre** : AI Act uniquement. Les renvois à d'autres législations sont signalés sans être analysés.
 - **Résultats d'agent non déterministes** : la qualité de l'audit dépend du modèle et du contexte
   fourni ; relire chaque rapport.

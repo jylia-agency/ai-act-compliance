@@ -1,0 +1,27 @@
+{
+  "meta": {
+    "description": "Documents officiels consultés pour la vérification du calendrier (empreintes des fichiers récupérés). Les textes eux-mêmes ne sont pas versionnés dans ce dépôt.",
+    "retrieved_on": "2026-10-27",
+    "method": "Récupération depuis Cellar (Office des publications de l'Union européenne) par négociation de contenu (Accept: application/xhtml+xml, Accept-Language: fra) ; EUR-Lex servait une vérification anti-robot (HTTP 202)."
+  },
+  "documents": [
+    {
+      "celex": "32026R1744",
+      "description": "Règlement (UE) 2026/1744, JO L du 24.7.2026, version française faisant foi",
+      "resolver": "https://publications.europa.eu/resource/celex/32026R1744",
+      "cellar_manifestation": "https://publications.europa.eu/resource/cellar/b459c07f-86fb-11f1-bf5e-01aa75ed71a1.0009.03/DOC_1",
+      "eurlex": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:32026R1744",
+      "sha256": "9f4fcd8d6f274684d5c0fe0309fc020bcda60190dac6f074f676a3352ff442ad",
+      "bytes": 380425
+    },
+    {
+      "celex": "02024R1689-20260727",
+      "description": "Version consolidée du règlement (UE) 2024/1689 au 27.7.2026 (outil de documentation sans effet juridique)",
+      "resolver": "https://publications.europa.eu/resource/celex/02024R1689-20260727",
+      "cellar_manifestation": "https://publications.europa.eu/resource/cellar/b1730fb2-8f1c-11f1-9262-01aa75ed71a1.0011.02/DOC_1",
+      "eurlex": "https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727",
+      "sha256": "248c47ff5dd6583d98711347541047e7a2b83d5122174312558a8a17d90b81f8",
+      "bytes": 924085
+    }
+  ]
+}
