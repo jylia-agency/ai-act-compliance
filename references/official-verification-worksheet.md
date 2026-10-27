@@ -24,8 +24,11 @@ Reproduction : `python3 scripts/verify_official_extracts.py` (22 extraits vérif
 | CAL-015 | Confirmé : entrée en vigueur au 27.7.2026 | Règlement 2026/1744, art. 4 |
 | CAL-016 | Textes relus, date effective non fixée par le texte : **reste bloquante** | Art. 49, par. 2 (non modifié) ; annexe VIII, section B (art. 1, point 42) |
 
-Reste à faire : trancher l'interprétation de CAL-016 (avis juridique) ; examiner les rectificatifs
-32024R1689R(01) à R(04) ; relire les lignes directrices de la Commission.
+Rectificatifs examinés le 2026-10-27 : seul 32024R1689R(01) existe en français (coquille de
+l'art. 10, par. 2) ; R(02) à R(04) ne visent que d'autres langues. Sans effet.
+
+Reste à faire : trancher l'interprétation de CAL-016 (avis juridique) ; relire les lignes
+directrices de la Commission.
 
 ## 1. Mode opératoire
 

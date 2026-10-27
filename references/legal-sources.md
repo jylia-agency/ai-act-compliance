@@ -30,7 +30,7 @@
 
 | Texte | Version | Statut dans ce dépôt |
 |---|---|---|
-| Règlement (UE) 2024/1689 | Texte publié au JO le 12.7.2024 ; rectificatifs 32024R1689R(01) à R(04) recensés | Base. |
+| Règlement (UE) 2024/1689 | Texte publié au JO le 12.7.2024 ; rectificatifs 32024R1689R(01) à R(04) examinés (sans effet sur le texte français utilisé) | Base. |
 | Règlement (UE) 2026/1744 | Adopté le 8.7.2026, publié au JO L du 24.7.2026, en vigueur le 27.7.2026 (art. 4) | **Texte officiel relu le 2026-10-27** (version française). |
 | Version consolidée au 27.7.2026 | CELEX 02024R1689-20260727 ([FR](https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727)) | **Relue le 2026-10-27**. Outil de documentation sans effet juridique : en cas de doute, seul le JO fait foi. |
 | Actes d'exécution | Règlement d'exécution (UE) 2025/454 (groupe scientifique) ; règlement d'exécution (UE) 2026/1755 (procédures de la Commission) | Recensés par la veille ; sans obligation nouvelle pour les systèmes audités. |
@@ -88,7 +88,7 @@ ont été relus, mais la date effective de l'obligation d'enregistrement n'est p
 | Notion d'« importantes modifications de leurs conceptions » (art. 111, par. 2) | Texte relu ; notion non définie | `[AV]` : analyser chaque changement (modèle, finalité, logique de décision) |
 | Garde-fous « raisonnables et adéquats » (art. 5, par. 1 bis, a), ii)) | Texte relu ; appréciation au cas par cas | `[AV]` |
 | Art. 50, par. 2 et textes conversationnels | Texte relu : les textes sont visés (art. 50, par. 2 et art. 111, par. 4) | Pas d'exemption ; seules les modalités techniques relèvent des lignes directrices et du code de bonnes pratiques |
-| Rectificatifs 32024R1689R(01) à R(04) | Recensés, contenu par langue non examiné | À examiner lors de la prochaine revue |
+| Rectificatifs 32024R1689R(01) à R(04) | Examinés le 2026-10-27 : seul R(01) existe en français (coquille de l'art. 10, par. 2) ; R(02) à R(04) ne visent que d'autres langues | Sans effet sur le skill |
 
 ## 6. Documents d'orientation de la Commission à connaître (non contraignants)
 

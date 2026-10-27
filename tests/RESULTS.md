@@ -11,7 +11,7 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 |---|---|---|
 | Tests automatiques | **58 tests, 58 réussis** | `python3 tests/run_tests.py`, Python 3.13, Git, Linux, 2026-10-27 |
 | Relecture du texte officiel | **15 entrées sur 16 relues** | `python3 scripts/verify_official_extracts.py` : 2 documents officiels, empreintes identiques, **22 extraits vérifiés, 0 introuvable** ; CAL-016 reste bloquante (interprétation) |
-| Veille automatisée (service réel) | **Réussie** | `python3 scripts/check_legal_updates.py` : requête SPARQL exécutée, 27 actes remontés et revus ; second passage : aucun acte nouveau |
+| Veille automatisée (service réel) | **Réussie** | `python3 scripts/check_legal_updates.py` : requête SPARQL exécutée, 27 actes remontés et revus ; second passage : aucun acte nouveau ; rectificatifs R(01) à R(04) examinés, sans effet sur le texte français |
 | Intégration Claude Code (CLI 2.1.312) | **Réussi** | `tests/agent-runs/2026-10-27-v1.1.1/claude-code-cli-trigger.md` |
 | Intégration OpenAI Codex | **Non testé** | Codex non installé, aucun identifiant OpenAI disponible |
 | Validateur `skills-ref validate` | **Non exécuté** | Installation refusée par la politique de l'environnement ; frontmatter validé par PyYAML et par les tests |
@@ -32,7 +32,6 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 ### Ce qui reste non vérifié
 
 - CAL-016 : date effective de l'obligation d'enregistrement de l'art. 49, par. 2 (interprétation).
-- Rectificatifs 32024R1689R(01) à R(04) : recensés, contenu non examiné.
 - Intégration Codex et validateur officiel `skills-ref`.
 - Variance des évaluations par agent.
 
