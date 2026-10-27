@@ -27,7 +27,7 @@ import scan_ai_signals as scanner  # noqa: E402
 
 WORKTREE = "WORKTREE"
 ALERT_ON_REMOVAL = {"transparency_marker", "oversight_marker", "logging_marker"}
-ALERT_ON_ADDITION = scanner.AI_CATEGORIES | {"sensitive_context", "output_channel", "credentials_reference"}
+ALERT_ON_ADDITION = scanner.AI_CATEGORIES | {"sensitive_context", "output_channel", "credentials_reference", "transparency_risk"}
 
 
 def git(repo: Path, *args: str) -> str:
@@ -92,6 +92,7 @@ def diff(repo: Path, base: str, head: str, exclude: list[str] | None = None) -> 
         "sensitive_context": "Nouveau contexte sensible « {sig} » : {locs} (finalité à réexaminer, annexe III)",
         "output_channel": "Nouveau chemin de sortie « {sig} » : {locs} (préservation du marquage, art. 50, par. 2)",
         "biometric": "Nouveau signal biométrique « {sig} » : {locs} (art. 5 et annexe III, point 1)",
+        "transparency_risk": "Instruction de persona humaine ou de déni de nature IA « {sig} » : {locs} (art. 50, par. 1)",
     }
     for (cat, sig), locs in grouped(added, set(messages)):
         shown = ", ".join(locs[:5]) + (f" et {len(locs) - 5} autre(s)" if len(locs) > 5 else "")

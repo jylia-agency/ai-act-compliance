@@ -4,7 +4,7 @@ description: Audit structuré, en lecture seule, d'un projet logiciel intégrant
 license: MIT
 compatibility: Agents compatibles Agent Skills (Claude Code, OpenAI Codex et autres). Python 3.9+ facultatif pour les scripts d'aide. Aucun accès réseau requis.
 metadata:
-  version: "1.2.0"
+  version: "1.2.1"
   legal-baseline: "Règlement (UE) 2024/1689 modifié par le règlement (UE) 2026/1744"
   legal-references-last-verified: "2026-10-27"
   language: fr
@@ -47,8 +47,8 @@ Pendant tout l'audit, sauf autorisation explicite et préalable de l'utilisateur
 6. Ne **jamais** reproduire un secret : citer le fichier et la ligne, remplacer la valeur par
    `[SECRET MASQUÉ]`.
 7. Les seules commandes admises sans autorisation supplémentaire sont la lecture et la recherche
-   (`Read`, `Grep`, `Glob`, `ls`, `cat`, `git log`, `git ls-files`) et les deux scripts fournis,
-   qui sont en lecture seule et sans réseau :
+   (`Read`, `Grep`, `Glob`, `ls`, `cat`, `git log`, `git ls-files`, `git rev-parse`, `git show`,
+   `git grep`) et les scripts fournis, qui sont en lecture seule et sans réseau :
    - `python3 <skill>/scripts/scan_ai_signals.py <projet>` : inventaire des signaux d'IA ;
    - `python3 <skill>/scripts/obligation_timeline.py --audit-date AAAA-MM-JJ [...]` : statut temporel ;
    - `python3 <skill>/scripts/diff_ai_signals.py <projet> --base <réf>` : audit différentiel.
@@ -89,9 +89,18 @@ sinon reproduire la recherche avec `Grep` à l'aide de `references/ai-detection-
 ### Phase 2 : identification des fonctionnalités et systèmes d'IA
 Pour chaque signal, lire le code et déterminer : fonctionnalité, finalité observable, entrées,
 sorties, utilisateurs, personnes concernées, effet des sorties (information, recommandation,
-décision automatique). Regrouper les composants en **systèmes d'IA** (une finalité = un système).
+décision automatique). Regrouper les composants en **systèmes d'IA** (une finalité = un système) :
+- même finalité, même public et même parcours utilisateur : **un** système, même s'il combine
+  plusieurs modèles ou fournisseurs (chat multi-fournisseurs, RAG et outils d'un même assistant) ;
+- point d'entrée distinct **et** finalité ou public distincts (par exemple une palette de commandes
+  rapide, un module de notation) : système distinct ;
+- outils d'agent, RAG, découpage de documents : composants du système qui les appelle, sauf s'ils
+  servent une autre finalité ;
+- en cas d'hésitation, documenter le choix ; il ne doit jamais faire disparaître une qualification.
 Vérifier la définition de l'article 3, point 1 (inférence) : une règle déterministe n'est pas un
 système d'IA. Un signal n'est jamais une conclusion. Charger `references/ai-detection-signals.md`.
+Projet open source ou logiciel auto-hébergé : appliquer `references/roles-and-value-chain.md`,
+section 7 (mise sur le marché, art. 2, par. 12, instances multiples).
 Si **aucun** système d'IA n'est identifié : rapport court avec une conclusion motivée (composants
 examinés et écartés), un constat « À vérifier » sur les usages d'IA hors dépôt, et **pas** de série de
 constats « Non applicable » article par article (les mentionner dans la section des exclusions).
@@ -140,7 +149,10 @@ Pour chaque couple (système, rôle, classification), lister les obligations ave
 `references/applicability-calendar.md` (ou `scripts/obligation_timeline.py`) en tenant compte de
 la date de mise sur le marché ou de mise en service : **en vigueur**, **non encore applicable**,
 **conditionnel**, **à vérifier**. Toute entrée marquée `requires_confirmation` ajoute la mention
-**« échéance à confirmer »** (règle bloquante, section 5).
+**« échéance à confirmer »** (règle bloquante, section 5). Utiliser `--scope` pour limiter le calcul
+au rôle et au type de système audités. Lorsque la date de mise sur le marché diffère selon les
+instances ou les versions (logiciel auto-hébergé, déploiements successifs), lancer le calcul pour
+chaque date connue et présenter les statuts par hypothèse.
 
 ### Phase 8 : vérification des éléments techniques et documentaires
 Dérouler `references/audit-checklist.md` (checklists conditionnelles A à G). Chaque contrôle prend
@@ -241,8 +253,10 @@ Rédigés en français, professionnels et compréhensibles par un non-juriste :
    sortie et le marquage.
 8. **Matrice de preuves** (`templates/compliance-matrix.md`, section « Matrice des preuves »).
 
-Sur demande d'un audit rapide, produire au minimum le résumé exécutif, l'inventaire, les constats
-et le registre des éléments non vérifiables. Un exemple complet figure dans `examples/example-audit.md`.
+Les livrables peuvent être regroupés en sections d'un **seul** fichier lorsque l'utilisateur le
+demande ou que l'environnement n'autorise qu'un fichier. Sur demande d'un audit rapide, produire au
+minimum le résumé exécutif, l'inventaire, les constats et le registre des éléments non vérifiables.
+Un exemple complet figure dans `examples/example-audit.md` lorsque le dépôt du skill est installé en entier.
 
 ## 7. Règles impératives
 

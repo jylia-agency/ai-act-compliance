@@ -118,8 +118,13 @@ chemin concerné, pas une conclusion favorable sur le système.
 
 ## 6. Qualification des constats
 
-- Absence d'information pour un chatbot mis à disposition : fait « Constat technique avéré » +
-  « manquement potentiel à l'art. 50, par. 1 », gravité **Élevée**, à la date d'audit postérieure au 2026-08-02.
+- Absence d'information pour un chatbot mis à disposition (règle commune avec
+  `findings-methodology.md`, section 1) :
+  - « **Constat technique avéré** » lorsque l'obligation est en vigueur, que le débiteur est identifié
+    et qu'aucune exception n'est plausible (par exemple un prompt qui ordonne de nier être une IA) ;
+    l'analyse juridique « manquement potentiel à l'art. 50, par. 1 » est rédigée à part, gravité **Élevée** ;
+  - « **Risque potentiel** » lorsqu'une exception est plausible (caractère évident) ou que le débiteur
+    n'est pas établi, gravité Moyenne.
 - Absence de marquage pour un générateur antérieur au 2026-08-02, audité avant le 2026-12-02 :
   nature « **Non encore applicable** », gravité Moyenne, recommandation de préparation.
 - Présence de métadonnées sans test de robustesse : « Constat technique avéré » (mesure présente)

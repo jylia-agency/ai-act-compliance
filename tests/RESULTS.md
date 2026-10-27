@@ -3,9 +3,42 @@
 Ce document présente d'abord l'état de la **version courante**, puis l'historique. Les nombres
 indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 
-## Version 1.2.0 : état actuel (2026-10-27)
+## Version 1.2.1 : état actuel (2026-10-27)
 
 ### Synthèse
+
+| Contrôle | Résultat | Détail |
+|---|---|---|
+| Tests automatiques | **61 tests, 61 réussis** | `python3 tests/run_tests.py`, Python 3.13, Git, Linux, 2026-10-27 |
+| Relecture du texte officiel | **15 entrées sur 16 relues** | `python3 scripts/verify_official_extracts.py` : 22 extraits vérifiés, 0 introuvable ; CAL-016 bloquante (interprétation) |
+| Rectificatifs | **Examinés** | R(01) seul en français (coquille de l'art. 10, par. 2) ; R(02) à R(04) : autres langues ; sans effet |
+| Veille automatisée (service réel) | **Réussie** | Aucun acte nouveau depuis la revue des 27 actes remontés |
+| Essai sur un dépôt applicatif réel | **Réalisé** | chatbot-ui (commit `81328b6`), 2 systèmes, 10 constats, constats principaux vérifiés dans le code : `tests/agent-runs/2026-10-27-v1.2.0/real-repo-chatbot-ui.md` |
+| Scanner après correction (même dépôt) | **6 faux négatifs corrigés, faux positifs supprimés** | Persona « not an AI », transformers.js, pgvector, JWT, `Blob`, `tool_calls` détectés ; un seul secret signalé (masqué) |
+| Intégration Claude Code (CLI 2.1.312) | **Réussi** | `tests/agent-runs/2026-10-27-v1.1.1/claude-code-cli-trigger.md` |
+| Intégration OpenAI Codex | **Non testé** | Codex non installé, aucun identifiant OpenAI disponible |
+| Validateur `skills-ref validate` | **Non exécuté** | Installation refusée par la politique de l'environnement |
+| Évaluation par agent à l'aveugle (fixtures) | **Conforme** (série 1.1.0) | Non rejouée après les corrections 1.2.1 |
+
+### Enseignements de l'essai réel
+
+- Le skill produit des qualifications prudentes sur un dépôt inconnu (pas de haut risque par
+  mot-clé, rôles distingués, hypothèses temporelles par instance, aucune « échéance à confirmer »
+  injustifiée).
+- Les lacunes portaient sur les projets open source (désormais couverts), quelques ambiguïtés de
+  méthode (corrigées) et la précision du scanner (corrigée, tests de non-régression).
+
+### Ce qui reste non vérifié
+
+- CAL-016 : date effective de l'obligation d'enregistrement de l'art. 49, par. 2 (interprétation).
+- Intégration Codex et validateur officiel `skills-ref`.
+- Nouvelle évaluation à l'aveugle des fixtures après les corrections 1.2.1 ; variance entre exécutions.
+
+## Historique
+
+### Version 1.2.0 (2026-10-27)
+
+#### Synthèse
 
 | Contrôle | Résultat | Détail |
 |---|---|---|
@@ -16,9 +49,9 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 | Intégration OpenAI Codex | **Non testé** | Codex non installé, aucun identifiant OpenAI disponible |
 | Validateur `skills-ref validate` | **Non exécuté** | Installation refusée par la politique de l'environnement ; frontmatter validé par PyYAML et par les tests |
 | Évaluation par agent à l'aveugle | **Conforme** (dernière série en version 1.1.0, quatre exécutions, trois modèles) | La version 1.2.0 ne modifie pas la méthodologie ; elle lève des réserves calendaires et précise des règles (art. 5, art. 6, art. 111) |
-| Essai sur un dépôt applicatif réel | **En cours** | Résultats ajoutés à la fin de l'exécution |
+| Essai sur un dépôt applicatif réel | Réalisé (voir version 1.2.1) | |
 
-### Ce que la relecture officielle a changé
+#### Ce que la relecture officielle a changé
 
 | Point | Avant (sources secondaires) | Texte officiel |
 |---|---|---|
@@ -29,13 +62,11 @@ indiqués ici sont vérifiés par `tests/run_tests.py` (`ConsistencyTests`).
 | Art. 10, par. 5 | « Critère maintenu » | Supprimé, remplacé par l'art. 4 bis |
 | Machines | « Déplacées selon une source » | Annexe I, section A point 1 supprimé, section B point 21 ajouté |
 
-### Ce qui reste non vérifié
+#### Ce qui reste non vérifié
 
 - CAL-016 : date effective de l'obligation d'enregistrement de l'art. 49, par. 2 (interprétation).
 - Intégration Codex et validateur officiel `skills-ref`.
 - Variance des évaluations par agent.
-
-## Historique
 
 ### Version 1.1.1 (2026-10-27)
 

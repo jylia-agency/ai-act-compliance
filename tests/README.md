@@ -15,6 +15,9 @@ Bibliothèque standard et Git uniquement, sans réseau. Couverture :
 | `TimelineScenarioTests` | Scénarios de calendrier : chatbot, délai de l'art. 50, par. 2 selon la date de mise sur le marché, report du haut risque, art. 111, par. 2, autorités publiques, modèles GPAI antérieurs, nouvelles interdictions, date inconnue, mention « échéance à confirmer » |
 | `ScannerFixtureTests` | Détection attendue sur chaque fixture, chemins de sortie, absence de faux positifs sur `demo-no-ai`, masquage du secret, absence de modification des fichiers |
 | `DiffAuditTests` | Audit différentiel dans un dépôt Git temporaire : nouvel usage biométrique, mesures supprimées, changement de modèle, secret, lecture seule, absence d'alerte entre états identiques |
+| `ScannerRegressionTests` | Faux positifs et faux négatifs relevés sur un dépôt réel (persona « not an AI », transformers.js, pgvector, JWT, `Blob`, `tool_calls`, vocabulaire d'interface, références d'environnement) |
+| `LegalWatchTests` | Veille automatisée sur une réponse SPARQL fictive : actes inconnus seuls, bruit écarté, codes de sortie, aucune écriture dans `data/`, fiche de vérification complète |
+| `ConsistencyTests` | Version de `SKILL.md` = première entrée du CHANGELOG ; en-tête de `RESULTS.md` = version et nombre de tests courants |
 | `ExampleReportTests` | Champs obligatoires et natures des constats de l'exemple et du modèle |
 | `ExpectedFilesTests` | Sections obligatoires des `EXPECTED.md` |
 

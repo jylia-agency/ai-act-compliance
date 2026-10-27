@@ -13,9 +13,11 @@
 | Non applicable | Obligation exclue après analyse motivée | « Art. 53 : l'organisation n'est pas fournisseur de modèle GPAI. » |
 | Non encore applicable | Obligation identifiée dont la date d'application n'est pas atteinte | « Art. 14 : applicable au 2027-12-02 pour l'annexe III. » |
 
-Règle : lorsque le fait est avéré mais la qualification incertaine, la nature est « Risque
-potentiel » et le fait est cité dans « Preuve observée ». Le texte distingue explicitement
-« Fait observé » et « Analyse juridique ».
+Règle : lorsque le fait est avéré mais la qualification incertaine (exception plausible, débiteur
+non établi, interprétation `[AV]`), la nature est « Risque potentiel » et le fait est cité dans
+« Preuve observée ». Lorsque le fait est avéré, l'obligation en vigueur, le débiteur identifié et
+aucune exception plausible, la nature est « Constat technique avéré ». Dans les deux cas, le texte
+distingue explicitement « Fait observé » et « Analyse juridique ».
 
 ## 2. Gravité
 

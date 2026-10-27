@@ -4,6 +4,29 @@ Format inspiré de [Keep a Changelog](https://keepachangelog.com/fr/1.1.0/) ; ve
 [SemVer](https://semver.org/lang/fr/). Chaque version indique la base juridique et la date de
 vérification des références.
 
+## [1.2.1] - 2026-10-27
+
+Corrections issues du premier essai sur un dépôt applicatif réel (projet open source chatbot-ui) et
+de la revue des rectificatifs. Base juridique inchangée.
+
+### Ajouté
+- `references/roles-and-value-chain.md`, section 7 : projets open source et logiciels auto-hébergés
+  (art. 2, par. 12 et art. 3, points 9 à 11 cités d'après le texte officiel ; instances multiples).
+- Scanner : catégorie `transparency_risk` (persona humaine, déni de nature IA) ; signaux
+  `@xenova/transformers`, pgvector, `tool_calls`, `new Blob`, jetons JWT ; fichiers listés par signal.
+- `ScannerRegressionTests` (3 tests) ; audit différentiel : alerte sur l'ajout d'un `transparency_risk`.
+- `tests/agent-runs/2026-10-27-v1.2.0/real-repo-chatbot-ui.md` : synthèse de l'essai et vérification.
+
+### Modifié
+- `SKILL.md` : commandes Git en lecture (`rev-parse`, `show`, `grep`) autorisées ; critères de
+  regroupement en systèmes ; calcul du calendrier par date de mise sur le marché connue et usage de
+  `--scope` ; livrables regroupables en un seul fichier.
+- Règle commune entre `transparency.md` et `findings-methodology.md` pour la nature d'un constat
+  d'absence d'information (avéré ou risque potentiel).
+- Scanner : faux positifs supprimés (« orientation », « setSelectionRange », « overrides »,
+  références d'environnement prises pour des secrets).
+- Rectificatifs 32024R1689R(01) à R(04) examinés : sans effet sur le texte français utilisé.
+
 ## [1.2.0] - 2026-10-27
 
 Première version dont le calendrier juridique est **relu sur le texte officiel**.

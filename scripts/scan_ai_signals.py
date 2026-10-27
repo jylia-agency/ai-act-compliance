@@ -67,7 +67,7 @@ PATTERNS: dict[str, list[tuple[str, str]]] = {
         ("elevenlabs", r"\belevenlabs\b"),
     ],
     "local_model": [
-        ("transformers", r"(\bfrom transformers\b|\bimport transformers\b|^transformers[=<>~ ])"),
+        ("transformers", r"(\bfrom transformers\b|\bimport transformers\b|^transformers[=<>~ ]|@xenova/transformers|@huggingface/transformers|transformers\.js)"),
         ("pytorch", r"(\bimport torch\b|^torch[=<>~ ])"),
         ("tensorflow-keras", r"(\bimport tensorflow\b|\bfrom tensorflow\b|\bimport keras\b|\bfrom keras\b)"),
         ("onnx", r"\bonnxruntime\b"),
@@ -86,11 +86,11 @@ PATTERNS: dict[str, list[tuple[str, str]]] = {
         ("langchain", r"\blangchain\b|@langchain/"),
         ("llamaindex", r"\bllama_index\b|llamaindex"),
         ("agents-frameworks", r"\b(crewai|autogen|semantic_kernel|haystack|langgraph|smolagents)\b"),
-        ("tool-calling", r"(\btools\s*=\s*\[|tool_choice|function_call|\"type\"\s*:\s*\"function\")"),
+        ("tool-calling", r"(\btools\s*=\s*\[|\btools\s*:\s*\[|tool_choice|tool_calls|function_call|\"type\"\s*:\s*\"function\")"),
         ("mcp", r"(\bmcp\.server\b|modelcontextprotocol|from mcp\b)"),
     ],
     "rag_vector": [
-        ("vector-db", r"\b(chromadb|pinecone|weaviate|qdrant_client|qdrant|faiss|pgvector|milvus|lancedb)\b"),
+        ("vector-db", r"(\b(chromadb|pinecone|weaviate|qdrant_client|qdrant|faiss|pgvector|milvus|lancedb)\b|create extension (if not exists )?(\")?vector|\bvector\(\d+\)|<=>)"),
         ("embeddings", r"(embeddings\.create|\bembed_documents\b|text-embedding-|\bget_embedding\b)"),
     ],
     "media_generation": [
@@ -110,11 +110,11 @@ PATTERNS: dict[str, list[tuple[str, str]]] = {
         ("ai-api-key-env", r"\b(OPENAI_API_KEY|ANTHROPIC_API_KEY|GOOGLE_API_KEY|GEMINI_API_KEY|MISTRAL_API_KEY|COHERE_API_KEY|HF_TOKEN|HUGGINGFACEHUB_API_TOKEN|REPLICATE_API_TOKEN|ELEVENLABS_API_KEY)\b"),
     ],
     "sensitive_context": [
-        ("education", r"(\bgrade\b|\bgrading\b|\bnotation\b|\bnote finale\b|\bexam\b|\bexamen\b|proctor|surveillance d'examen|\badmission\b|\bstudent\b|étudiant|élève|apprenant|copies? d'examen|correction de copies|orientation|filière|conseil de classe)"),
+        ("education", r"(\bgrade\b|\bgrading\b|\bnotation\b|\bnote finale\b|\bexam\b|\bexamen\b|proctor|surveillance d'examen|\badmission\b|\bstudent\b|étudiant|élève|apprenant|copies? d'examen|correction de copies|orientation (scolaire|professionnelle|des élèves)|recommend_track|filière|conseil de classe)"),
         ("employment", r"(\brecruit|recrutement|\bhiring\b|\bcandidate|candidat|\bresume\b|\bcv\b|\bemployee\b|salarié|performance review|licenciement)"),
         ("essential-services", r"(credit[_ ]?scor|creditworth|solvabilit|\bloan\b|\bprêt\b|insurance|assurance vie|assurance santé|prestation sociale|\bbenefits? eligibility)"),
         ("health", r"(\bpatient\b|diagnos|\btriage\b|medical|médical)"),
-        ("law-enforcement-migration-justice", r"(\bpolice\b|recidiv|récidiv|\bcriminal\b|asylum|\basile\b|border control|tribunal|\bjudge\b|élection|election|\bvoter?\b)"),
+        ("law-enforcement-migration-justice", r"(\bpolice\b|recidiv|récidiv|\bcriminal\b|asylum|\basile\b|border control|tribunal|\bjudge\b|\bélections?\b|\belections?\b|\bvoters?\b)"),
         ("person-scoring", r"(\brisk_score\b|\btrust_score\b|social[_ ]scor|\bscoring\b|\brank_candidates\b|profiling|profilage|score_engagement|engagement_score|motivation|persévérance)"),
         ("emotion-inference", r"(\bemotions?\b|émotions?|\bstress\b|anxiété|anxiety|attention_score)"),
     ],
@@ -122,14 +122,17 @@ PATTERNS: dict[str, list[tuple[str, str]]] = {
         ("ai-disclosure", r"(généré par (l'|une )?ia|genere par ia|ai[- _]generated|generated (by|with) ai|contenu généré|assistant (d'|virtuel )?ia|vous (échangez|discutez|parlez) avec|you are (talking|chatting) (to|with) an ai|ai_disclosure|AI_DISCLOSURE)"),
         ("content-provenance", r"(c2pa|content[_ ]credentials|synthid|watermark|filigrane|trainedAlgorithmicMedia|DigitalSourceType|iptc)"),
     ],
+    "transparency_risk": [
+        ("ai-denial", r"(you are not an ai|you're not an ai|not an artificial intelligence|tu n'es pas une ia|ne dis jamais que tu es une (ia|intelligence)|never (say|reveal|admit)[^\n]{0,30}\b(ai|artificial)|pretend (to be|you are) (a )?human|tu es (un|une) (humain|enseignante?|professeure?|conseill))"),
+    ],
     "oversight_marker": [
-        ("human-review", r"(human[_ ]review|validation humaine|revue humaine|manual[_ ]review|requires_review|pending_review|needs_review|approve[d]?_by|reviewer_id|validated_by|override|annuler la décision|kill[_ ]switch)"),
+        ("human-review", r"(human[_ ]review|validation humaine|revue humaine|manual[_ ]review|requires_review|pending_review|needs_review|approve[d]?_by|reviewer_id|validated_by|override_reason|overridden_by|human[_ ]override|annuler la décision|kill[_ ]switch)"),
     ],
     "output_channel": [
         ("pdf-export", r"\b(reportlab|weasyprint|fpdf|pdfkit|xhtml2pdf)\b"),
         ("spreadsheet-export", r"(\bopenpyxl\b|\bxlsxwriter\b|\.to_csv\(|\.to_excel\(|csv\.writer|csv\.DictWriter)"),
         ("email", r"(\bsmtplib\b|send_mail\(|sendgrid|EmailMessage\()"),
-        ("file-write", r"(\.write_bytes\(|\.write_text\(|Image\.save\(|\.save\(output|FileResponse|StreamingResponse|Content-Disposition)"),
+        ("file-write", r"(\.write_bytes\(|\.write_text\(|Image\.save\(|\.save\(output|FileResponse|StreamingResponse|Content-Disposition|new Blob\(|URL\.createObjectURL|\bdownload=)"),
         ("clipboard", r"(navigator\.clipboard|pyperclip|copy_to_clipboard)"),
         ("svg-html", r"(\.svg['\"]|image/svg\+xml|render_template|HTMLResponse)"),
     ],
@@ -145,7 +148,8 @@ SECRET_PATTERNS = [
     re.compile(r"(?<![A-Za-z0-9])hf_[A-Za-z0-9]{20,}"),
     re.compile(r"(?<![A-Za-z0-9])r8_[A-Za-z0-9]{20,}"),
     re.compile(r"xox[baprs]-[A-Za-z0-9\-]{10,}"),
-    re.compile(r"(?i)((api[_-]?key|secret|token|password|passwd)\s*[:=]\s*)(['\"])[^'\"\s]{6,}\3"),
+    re.compile(r"(?<![A-Za-z0-9])eyJ[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}\.[A-Za-z0-9_\-]{10,}"),
+    re.compile(r"(?i)((api[_-]?key|secret|token|password|passwd)\s*[:=]\s*)(['\"])(?!env\(|\$\{|process\.env|os\.environ)(?=[^'\"\s]*\d)[^'\"\s]{6,}\3"),
 ]
 MASK = "[SECRET MASQUÉ]"
 
@@ -214,6 +218,7 @@ def scan_items(items, root_name: str, max_hits: int = 400) -> dict:
     hits: list[dict] = []
     summary: dict[str, dict[str, int]] = defaultdict(lambda: defaultdict(int))
     files_by_category: dict[str, set] = defaultdict(set)
+    files_by_signal: dict[str, set] = defaultdict(set)
     secret_locations: list[dict] = []
     files_scanned = 0
 
@@ -228,6 +233,7 @@ def scan_items(items, root_name: str, max_hits: int = 400) -> dict:
                     if rx.search(line):
                         summary[category][name] += 1
                         files_by_category[category].add(rel)
+                        files_by_signal[f"{category}/{name}"].add(rel)
                         if len(hits) < max_hits:
                             hits.append({
                                 "category": category,
@@ -244,6 +250,7 @@ def scan_items(items, root_name: str, max_hits: int = 400) -> dict:
         "ai_signals_detected": ai_detected,
         "summary": {cat: dict(sig) for cat, sig in sorted(summary.items())},
         "files_by_category": {cat: sorted(files) for cat, files in sorted(files_by_category.items())},
+        "files_by_signal": {key: sorted(files) for key, files in sorted(files_by_signal.items())},
         "possible_secrets": secret_locations,
         "hits": hits,
         "hits_truncated": sum(sum(s.values()) for s in summary.values()) > len(hits),
@@ -267,8 +274,8 @@ def to_markdown(report: dict) -> str:
         "|---|---|---|---|",
     ]
     for cat, signals in report["summary"].items():
-        files = ", ".join(report["files_by_category"].get(cat, [])[:5])
         for sig, count in sorted(signals.items()):
+            files = ", ".join(report["files_by_signal"].get(f"{cat}/{sig}", [])[:5])
             out.append(f"| {cat} | {sig} | {count} | {files} |")
     if report["possible_secrets"]:
         out += ["", "## Secrets potentiels (valeurs masquées)", ""]

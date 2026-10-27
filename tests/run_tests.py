@@ -461,6 +461,49 @@ class LegalWatchTests(unittest.TestCase):
                 self.assertIn(f"| {e['id']} |", sheet, f"{e['id']} absent de la fiche de vérification")
 
 
+class ScannerRegressionTests(unittest.TestCase):
+    """Non-régression issue de l'essai sur un dépôt réel (chatbot-ui, 2026-10-27)."""
+
+    @staticmethod
+    def summary_of(*lines: str) -> dict:
+        return scanner.scan_items([("sample.ts", "\n".join(lines))], "sample")
+
+    def test_false_negatives_now_detected(self):
+        r = self.summary_of(
+            "fullPrompt += `You are not an AI. You are ${name}.`",
+            'import { pipeline } from "@xenova/transformers"',
+            "create extension if not exists vector;",
+            "const toolCalls = message.tool_calls || []",
+            'const blob = new Blob([value], { type: "text/plain" })',
+            "service_key := 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoic2VydmljZSJ9.c2lnbmF0dXJlZmFrZQ';",
+        )
+        s = r["summary"]
+        self.assertIn("ai-denial", s["transparency_risk"])
+        self.assertIn("transformers", s["local_model"])
+        self.assertIn("vector-db", s["rag_vector"])
+        self.assertIn("tool-calling", s["orchestration_agent"])
+        self.assertIn("file-write", s["output_channel"])
+        self.assertEqual(len(r["possible_secrets"]), 1)
+        self.assertNotIn("eyJyb2xlIjoic2VydmljZSJ9", json.dumps(r))
+
+    def test_false_positives_removed(self):
+        r = self.summary_of(
+            'className="orientation-portrait"',
+            "input.setSelectionRange(0, 0)",
+            "type Overrides = { overrides?: string }",
+            'OPENAI_API_KEY: "openai_api_key",',
+            'secret = "env(SUPABASE_AUTH_SECRET)"',
+        )
+        self.assertNotIn("sensitive_context", r["summary"])
+        self.assertNotIn("oversight_marker", r["summary"])
+        self.assertEqual(r["possible_secrets"], [])
+
+    def test_files_listed_per_signal(self):
+        r = scanner.scan_items([("a.py", "import openai"), ("b.py", "import anthropic")], "x")
+        self.assertEqual(r["files_by_signal"]["provider_api/openai"], ["a.py"])
+        self.assertIn("| provider_api | anthropic | 1 | b.py |", scanner.to_markdown(r))
+
+
 class DiffAuditTests(unittest.TestCase):
     """Audit différentiel : version corrigée -> version vulnérable dans un dépôt Git temporaire."""
 

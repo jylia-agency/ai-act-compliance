@@ -85,3 +85,42 @@ modification mobilise une part significative de la puissance de calcul d'entraî
   point 3). Elle n'est pas, au vu du dépôt, fournisseur du modèle GPAI sous-jacent. »
 - Incorrect : « EduAssist utilise GPT-4o, elle est donc fournisseur GPAI. »
 - Incorrect : « EduAssist utilise une API, elle est donc simple déployeur. »
+
+## 7. Projets open source et logiciels auto-hébergés
+
+Texte officiel (version consolidée au 27.7.2026, relue le 2026-10-27) :
+
+- **Art. 3, point 9** : « mise sur le marché », la première mise à disposition d'un système d'IA ou
+  d'un modèle d'IA à usage général sur le marché de l'Union.
+- **Art. 3, point 10** : « mise à disposition sur le marché », la fourniture d'un système d'IA ou
+  d'un modèle d'IA à usage général destiné à être distribué ou utilisé sur le marché de l'Union
+  **dans le cadre d'une activité commerciale, à titre onéreux ou gratuit**.
+- **Art. 3, point 11** : « mise en service », la fourniture d'un système d'IA en vue d'une première
+  utilisation directement au déployeur ou **pour usage propre** dans l'Union.
+- **Art. 2, par. 12** : le règlement ne s'applique pas aux systèmes d'IA publiés dans le cadre de
+  licences libres et ouvertes, **sauf** s'ils sont mis sur le marché ou mis en service en tant que
+  systèmes d'IA à haut risque ou en tant que systèmes d'IA qui relèvent de l'article 5 ou de
+  l'article 50.
+
+Méthode :
+
+| Acteur | Analyse | Qualification par défaut |
+|---|---|---|
+| Mainteneur qui publie le code sous licence libre | La publication du code ne suffit pas à établir une mise sur le marché : rechercher une activité commerciale (version hébergée, offre payante, support commercial, marque exploitée) | Fournisseur **possible** ; « À vérifier » si l'activité commerciale n'est pas établie |
+| Exploitant d'une version hébergée (service en ligne) | Fourniture dans le cadre d'une activité commerciale, même gratuite | Fournisseur probable du système hébergé |
+| Organisation qui installe le logiciel pour ses salariés ou ses clients | Mise en service pour usage propre ou fourniture à ses utilisateurs ; souvent sous son nom | Déployeur, et fournisseur possible (art. 3, points 3 et 11 ; art. 25) |
+| Particulier qui l'installe pour lui-même | Usage personnel non professionnel (art. 2, par. 10) | Hors champ comme déployeur |
+
+Portée de l'exclusion de l'art. 2, par. 12 :
+
+- elle **ne joue pas** pour un système qui relève de l'art. 5 ou de l'art. 50 (assistant
+  conversationnel, générateur de contenus) ni pour un système à haut risque ;
+- lorsque l'exclusion est levée, l'application des **autres** dispositions (par exemple l'art. 4)
+  à ce système est une question d'interprétation `[AV]` : l'indiquer sans trancher ;
+- elle ne bénéficie pas à l'exploitant commercial d'une version hébergée au-delà de ce que prévoit
+  le texte, ni aux déployeurs professionnels pour leurs propres obligations.
+
+Dates de mise sur le marché : un logiciel auto-hébergé a autant de dates que d'instances ou de
+versions mises en service. Calculer le statut temporel pour chaque date connue (par exemple
+avant et après le 2 août 2026 pour l'art. 50, par. 2) et présenter les deux hypothèses.
+
