@@ -90,6 +90,9 @@ sorties, utilisateurs, personnes concernées, effet des sorties (information, re
 décision automatique). Regrouper les composants en **systèmes d'IA** (une finalité = un système).
 Vérifier la définition de l'article 3, point 1 (inférence) : une règle déterministe n'est pas un
 système d'IA. Un signal n'est jamais une conclusion. Charger `references/ai-detection-signals.md`.
+Si **aucun** système d'IA n'est identifié : rapport court avec une conclusion motivée (composants
+examinés et écartés), un constat « À vérifier » sur les usages d'IA hors dépôt, et **pas** de série de
+constats « Non applicable » article par article (les mentionner dans la section des exclusions).
 
 ### Phase 3 : fournisseurs de modèles et API tierces
 Identifier les modèles (identifiants, versions épinglées ou non), les fournisseurs, les modèles
@@ -185,6 +188,12 @@ Champs obligatoires (modèle dans `templates/audit-report.md`, méthode dans
 
 Un fait technique (« le code n'affiche aucune mention ») et une conclusion juridique (« manquement
 potentiel à l'article 50, paragraphe 1 ») sont formulés séparément, même dans un même constat.
+
+Réserver la nature « Non applicable » aux obligations dont l'applicabilité pouvait raisonnablement
+être envisagée (par exemple GPAI pour un intégrateur d'API) ; les autres exclusions figurent dans la
+section « Exclusions et exceptions examinées » du rapport. Une qualification dont la portée dépend
+d'un point juridique incertain (marqueur `[AV]`) prend la nature « À vérifier », même si la date
+d'application est future.
 
 ## 6. Livrables
 

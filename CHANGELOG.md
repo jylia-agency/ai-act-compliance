@@ -21,7 +21,14 @@ Références vérifiées le 2026-10-27 (texte officiel non relu en ligne : voir 
   `obligation_timeline.py` (statut temporel selon la date d'audit et la date de mise sur le marché).
 - Six modèles de livrables dans `templates/` et un rapport d'exemple complet.
 - Quatre fixtures de test avec `EXPECTED.md` et suite `tests/run_tests.py` (38 tests).
-- Évaluation par agent à l'aveugle documentée dans `tests/RESULTS.md`.
+- Évaluation par agent à l'aveugle sur les quatre fixtures (rapports bruts dans
+  `tests/agent-runs/2026-10-27/`, analyse dans `tests/RESULTS.md`).
+
+### Modifié (après l'évaluation par agent)
+- `SKILL.md` : traitement des projets sans IA, usage restreint de la nature « Non applicable »,
+  qualification « À vérifier » pour les portées juridiques incertaines.
+- `references/transparency.md` : métadonnées non standard et marquage des textes conversationnels.
+- Oracles `EXPECTED.md` de `demo-no-ai` et `demo-ai-secure` précisés.
 
 ### Textes et sources consultés
 - Règlement (UE) 2024/1689 (JO L, 2024/1689, 12.7.2024) : connaissance du texte publié, recoupée

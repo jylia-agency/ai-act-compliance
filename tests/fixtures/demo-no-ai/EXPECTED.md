@@ -13,7 +13,10 @@ Date d'audit de référence : 2026-10-27.
 
 ## Constats qui ne doivent pas apparaître
 
-- Aucun constat sur l'article 50, l'article 5, les exigences du chapitre III ou les obligations GPAI.
+- Aucun constat de risque, de manquement ou d'obligation applicable sur l'article 50, l'article 5, les
+  exigences du chapitre III ou les obligations GPAI. Des exclusions motivées sont admises dans la
+  section des exclusions ; une série de constats « Non applicable » article par article est un écart
+  mineur (bruit), pas une erreur de qualification.
 - Aucune qualification de `predict_due_date`, `loyalty_score` ou de la classe `Book` comme système d'IA.
 - Aucune affirmation selon laquelle le projet est « conforme à l'AI Act » ou « hors champ de manière
   certaine » pour l'organisation dans son ensemble.

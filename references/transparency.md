@@ -74,3 +74,9 @@ Commission a jugé, selon les sources, que le code du 10.6.2026 couvre adéquate
   nature « **Non encore applicable** », gravité Moyenne, recommandation de préparation.
 - Présence de métadonnées sans test de robustesse : « Constat technique avéré » (mesure présente)
   + « Risque potentiel » (efficacité non démontrée).
+- Métadonnées « maison » (clés texte PNG personnalisées, champs propriétaires) au lieu d'un format
+  standard lu par les outils de détection (XMP/IPTC, manifeste C2PA) : « Risque potentiel » sur
+  l'interopérabilité et la détectabilité.
+- Absence de marquage des **textes** produits par un assistant conversationnel : nature « À vérifier
+  juridiquement » (portée de l'art. 50, par. 2 pour ces textes et modalités issues des lignes
+  directrices `[AV]`), en indiquant l'échéance applicable si l'obligation est retenue.

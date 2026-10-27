@@ -187,6 +187,7 @@ ai-act-compliance/
     ├── README.md                # Procédure de test (automatique et par agent)
     ├── RESULTS.md               # Résultats réellement obtenus
     ├── run_tests.py
+    ├── agent-runs/2026-10-27/   # Rapports bruts des audits par agent à l'aveugle
     └── fixtures/
         ├── demo-ai-vulnerable/  # EduAssist avec défauts volontaires + EXPECTED.md
         ├── demo-ai-secure/      # EduAssist corrigé + docs + EXPECTED.md
