@@ -23,11 +23,11 @@ un modèle (`engagement`) : le système d'orientation, pris dans son ensemble, i
 |---|---|---|---|---|---|
 | X1 | Aucune information « vous échangez avec une IA » (`BANNER`) | Constat technique avéré ; manquement potentiel | Élevée | Art. 50, par. 1 et 5 | En vigueur |
 | X2 | Textes générés : marquage limité à un champ JSON non signé de l'API, perdu dans les exports PDF et CSV et au copier-coller | Constat technique avéré (perte de marquage par chemin de sortie) ; manquement potentiel à l'art. 50, par. 2 ; falsifiabilité | Élevée | Art. 50, par. 2 | **En vigueur** (mise en service après le 2026-08-02, base du texte initial, pas d'« échéance à confirmer » sur ce point) |
-| X3 | Décision d'orientation appliquée automatiquement si `confidence > 0.9`, en contradiction avec `docs/human-oversight.md` | Constat technique avéré (contradiction code / documentation) ; Risque potentiel pour les élèves | Critique ou Élevée | Art. 14 (futur) ; art. 6, par. 2, annexe III, point 3 | Exigences haut risque : non encore applicables, **échéance à confirmer** (2027-12-02) ; risque actuel |
+| X3 | Décision d'orientation appliquée automatiquement si `confidence > 0.9`, en contradiction avec `docs/human-oversight.md` | Constat technique avéré (contradiction code / documentation) ; Risque potentiel pour les élèves | Critique ou Élevée | Art. 14 (futur) ; art. 6, par. 2, annexe III, point 3 | Exigences haut risque : non encore applicables (2027-12-02) ; risque actuel |
 | X4 | Score d'engagement : profilage d'élèves par le modèle, réutilisé pour une autre finalité | Risque potentiel | Élevée | Art. 6, par. 3, dernier al. ; annexe III, point 3 | Classification immédiate ; exigences non encore applicables |
 | X5 | Documentation interne juridiquement erronée (dates, exemption des textes conversationnels, exclusion du haut risque par la présence humaine, détectabilité par `ai_generated`) | Constat technique avéré (contenu du document) ; dates et qualifications corrigées d'après le calendrier de référence | Moyenne | `references/applicability-calendar.md` | n.a. |
 | X6 | Affirmation « conforme à l'AI Act et certifié » dans le README | Constat technique avéré ; affirmation non étayée, à retirer ou justifier | Moyenne | Aucune certification prévue de cette nature ; art. 43 pour le haut risque | n.a. |
-| X7 | Conservation des journaux à 30 jours | Non encore applicable (au moins six mois pour les journaux des systèmes à haut risque, art. 19 et 26, par. 6) ; échéance à confirmer | Faible à Moyenne | Art. 19 ; art. 26, par. 6 | Non encore applicable |
+| X7 | Conservation des journaux à 30 jours | Non encore applicable (au moins six mois pour les journaux des systèmes à haut risque, art. 19 et 26, par. 6) | Faible à Moyenne | Art. 19 ; art. 26, par. 6 | Non encore applicable |
 | X8 | Rôle : QuizMentor fournisseur des systèmes, établissements déployeurs, Mistral fournisseur du modèle GPAI | Information | Information | Art. 3, points 3 et 4 | n.a. |
 
 Hypothèse supplémentaire **admise** : réutilisation du score d'engagement, construit lors des
@@ -57,4 +57,4 @@ disproportionné). Une qualification ferme de pratique interdite serait une erre
 
 - Faits techniques (absence de mention, auto-application, perte du marquage) : élevée.
 - Classification de l'orientation : moyenne (finalité exacte, usage par le conseil de classe à confirmer).
-- Dates du haut risque : moyenne, échéance à confirmer (règle bloquante).
+- Dates du haut risque : confirmées par extrait officiel d'un considérant (CAL-011) ; régime de l'art. 111, par. 2 : échéance à confirmer (CAL-013).

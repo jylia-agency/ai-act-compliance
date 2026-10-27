@@ -15,7 +15,7 @@
 | Commit audité | Fixture du dépôt du skill, version 1.1.0 (dans un audit réel : empreinte complète `git rev-parse HEAD`) |
 | Mode | Complet |
 | Base juridique | Règlement (UE) 2024/1689 tel que modifié par le règlement (UE) 2026/1744 |
-| Références vérifiées le | 2026-10-27 (texte officiel non relu en ligne ; voir `references/legal-sources.md`) |
+| Références vérifiées le | 2026-10-27 (texte officiel consulté par extraits, sans relecture intégrale ; voir `references/legal-sources.md`) |
 | Contexte fourni | `README.md` : éditeur EduAssist SAS (France), commercialisation sous sa marque auprès de lycées et universités de l'Union, mise sur le marché de tous les modules le 2026-03-01, modèles via l'API d'OpenAI |
 | Méthode | Lecture du code, `scripts/scan_ai_signals.py`, `scripts/obligation_timeline.py --audit-date 2026-10-27 --placed-on-market 2026-03-01` ; aucune exécution du code audité |
 | Audit précédent | Aucun |
@@ -31,14 +31,13 @@
 - **Obligation en vigueur probablement non respectée** : le tuteur ne s'identifie pas comme une IA
   et son prompt système lui impose de le nier (art. 50, par. 1, en vigueur depuis le 2026-08-02, AIA-002).
 - **Échéance proche** : marquage des images générées (art. 50, par. 2) exigible le **2026-12-02**
-  pour ce système antérieur au 2026-08-02 (AIA-003, confiance moyenne sur la date).
+  pour ce système antérieur au 2026-08-02 (AIA-003 ; date confirmée par extrait officiel).
 - **Haut risque à préparer** : la correction automatique est un système à haut risque probable
   (annexe III, point 3, b)) ; exigences non encore applicables (2027-12-02), régime transitoire de
   l'article 111, paragraphe 2 à analyser (AIA-004, AIA-009).
 - **Incertitudes principales** : documents organisationnels absents du dépôt, statut public de
-  certains établissements clients, dates issues du règlement 2026/1744 à confirmer sur le JO.
-- **Constats dont l'échéance est à confirmer** (base juridique non relue sur le texte officiel) :
-  AIA-003, AIA-004, AIA-006, AIA-007, AIA-008, AIA-009, AIA-011 (CAL-003, CAL-010, CAL-011, CAL-013).
+  certains établissements clients, échéance de l'art. 111, par. 2 pour les autorités publiques à confirmer sur le JO.
+- **Constats dont l'échéance est à confirmer** (entrée calendaire bloquante) : AIA-009 (CAL-013).
 
 | Nature | Critique | Élevée | Moyenne | Faible | Information |
 |---|---|---|---|---|---|
@@ -110,9 +109,9 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 | Interdiction de la reconnaissance des émotions dans l'enseignement | SYS-04 | Fournisseur | En vigueur | 2025-02-02 | CAL-002 | Élevée |
 | Maîtrise de l'IA | Tous | Fournisseur | En vigueur | 2025-02-02 / 2026-07-27 | CAL-002, CAL-003 | Élevée / Moyenne |
 | Information sur l'interaction avec une IA | SYS-01 | Fournisseur | En vigueur | 2026-08-02 | CAL-009 | Élevée |
-| Marquage des contenus synthétiques (images et textes) | SYS-03, SYS-01 | Fournisseur | Non encore applicable, échéance à confirmer | 2026-12-02 | CAL-010 | Moyenne |
-| Exigences du haut risque (art. 9 à 15, 16, 17, 43, 47 à 49) | SYS-02 | Fournisseur | Non encore applicable / conditionnel, échéance à confirmer | 2027-12-02 | CAL-011, CAL-013 | Moyenne / Faible |
-| Obligations des déployeurs à haut risque (art. 26, 27) | SYS-02 | Établissements | Non encore applicable, échéance à confirmer | 2027-12-02 | CAL-011 | Moyenne |
+| Marquage des contenus synthétiques (images et textes) | SYS-03, SYS-01 | Fournisseur | Non encore applicable | 2026-12-02 | CAL-010 | Élevée |
+| Exigences du haut risque (art. 9 à 15, 16, 17, 43, 47 à 49) | SYS-02 | Fournisseur | Non encore applicable / conditionnel (CAL-013 : échéance à confirmer) | 2027-12-02 | CAL-011, CAL-013 | Moyenne / Faible |
+| Obligations des déployeurs à haut risque (art. 26, 27) | SYS-02 | Établissements | Non encore applicable | 2027-12-02 | CAL-011 | Moyenne |
 | Obligations des fournisseurs de modèles GPAI | n.a. | n.a. | Non applicable | n.a. | CAL-005 | Élevée |
 
 ## 8. Constats
@@ -153,13 +152,13 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Système d'IA concerné** : SYS-03 Illustrations de cours
 - **Nature du constat** : Non encore applicable
 - **Gravité** : Moyenne
-- **Niveau de confiance** : Élevée (faits) / Moyenne (date)
+- **Niveau de confiance** : Élevée
 - **Preuve observée** : Fait observé : l'image renvoyée par l'API est décodée et écrite telle quelle, sans ajout de métadonnées de provenance ni de mention ; la préservation d'un éventuel marquage appliqué par le fournisseur du modèle n'est pas vérifiée.
 - **Fichier(s) et lignes** : `app/illustrations.py:12-15`
 - **Rôle réglementaire concerné** : Fournisseur
 - **Classification du système** : Non à haut risque ; soumis à l'art. 50, par. 2
-- **Référence juridique** : Art. 50, par. 2 `[TI]` ; délai introduit par le règlement (UE) 2026/1744 `[O26]`, à confirmer sur le JO
-- **Date d'application** : 2026-12-02 pour ce système mis sur le marché le 2026-03-01 (CAL-010) ; non encore applicable au 2026-10-27 (dans 36 jours) ; **échéance à confirmer** (délai transitoire issu du règlement 2026/1744, non relu sur le texte officiel)
+- **Référence juridique** : Art. 50, par. 2 `[TI]` ; délai introduit par le règlement (UE) 2026/1744 `[O26]` (extrait officiel, CAL-010)
+- **Date d'application** : 2026-12-02 pour ce système mis sur le marché le 2026-03-01 (CAL-010, confirmé par extrait officiel de la version consolidée) ; non encore applicable au 2026-10-27 (dans 36 jours)
 - **Conditions et exceptions** : Exceptions « assistance à la mise en forme standard » et « absence de modification substantielle » sans objet (génération à partir d'un texte). Art. 50, par. 4 (hypertrucages, déployeurs) à vérifier selon les contenus générés.
 - **Explication** : Les fournisseurs de systèmes générant des images doivent faire en sorte que ces images soient marquées dans un format lisible par machine et détectables comme artificielles. Pour ce module, l'obligation devient exigible le 2 décembre 2026. Une simple mention visible ne suffirait pas.
 - **Recommandation** : Avant le 2026-12-02 : ajouter des métadonnées de provenance (C2PA, IPTC `trainedAlgorithmicMedia`), préserver le marquage amont, tester la robustesse au ré-encodage, documenter la méthode de détection ; s'appuyer sur le code de bonnes pratiques du 10.6.2026.
@@ -175,7 +174,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Rôle réglementaire concerné** : Fournisseur ; déployeurs (art. 26, par. 2, futur)
 - **Classification du système** : Haut risque probable (annexe III, point 3, b))
 - **Référence juridique** : Art. 6, par. 2 et annexe III, point 3, b) `[TI]` ; art. 14, par. 4, d) `[TI]` ; art. 113 modifié `[O26]`
-- **Date d'application** : Exigences du haut risque au 2027-12-02 (CAL-011), non encore applicables, **échéance à confirmer** ; régime transitoire à vérifier (CAL-013)
+- **Date d'application** : Exigences du haut risque au 2027-12-02 (CAL-011), non encore applicables ; régime transitoire à vérifier (CAL-013, échéance à confirmer)
 - **Conditions et exceptions** : Dérogation de l'art. 6, par. 3 écartée (la sortie constitue la décision). La supervision humaine n'est pas un critère d'exclusion du haut risque.
 - **Explication** : L'évaluation des acquis des élèves par une IA est un usage à haut risque. Les exigences correspondantes, dont la possibilité pour un humain d'ignorer ou de corriger le résultat, ne s'appliquent qu'à partir de décembre 2027 ; mais le risque d'erreur affectant des élèves existe dès aujourd'hui.
 - **Recommandation** : Transformer la note en proposition soumise à l'enseignant (approuver, modifier avec motif, rejeter) ; bloquer la publication sans validation ; afficher la justification et les critères.
@@ -191,7 +190,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Rôle réglementaire concerné** : Fournisseur
 - **Classification du système** : Selon le système (voir inventaire)
 - **Référence juridique** : Aucune obligation autonome de l'AI Act à la date d'audit (bonne pratique de sécurité) ; pertinent pour l'art. 15 (cybersécurité) lorsque les exigences du haut risque s'appliqueront à SYS-02 `[TI]`
-- **Date d'application** : n.a. (art. 15 : 2027-12-02, CAL-011, échéance à confirmer)
+- **Date d'application** : n.a. (art. 15 : 2027-12-02, CAL-011)
 - **Conditions et exceptions** : Valeur fictive dans cette fixture ; dans un projet réel, considérer la clé comme compromise.
 - **Explication** : Une clé d'API stockée dans le code peut être exposée à toute personne ayant accès au dépôt et permettre un usage frauduleux du service.
 - **Recommandation** : Révoquer la clé, la stocker dans un gestionnaire de secrets ou une variable d'environnement, purger l'historique Git si nécessaire, ajouter un contrôle de secrets en intégration continue.
@@ -207,7 +206,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Rôle réglementaire concerné** : Fournisseur ; déployeurs (art. 26, par. 6, futur)
 - **Classification du système** : Haut risque probable (SYS-02)
 - **Référence juridique** : Art. 12, art. 19 et art. 26, par. 6 `[TI]`, applicables avec le chapitre III ; bonne pratique immédiate
-- **Date d'application** : 2027-12-02 (CAL-011), non encore applicable, **échéance à confirmer** ; conditionnel (CAL-013)
+- **Date d'application** : 2027-12-02 (CAL-011), non encore applicable ; conditionnel (CAL-013, échéance à confirmer)
 - **Conditions et exceptions** : Obligation future ; la recommandation immédiate relève de la bonne pratique.
 - **Explication** : Sans journal, il est impossible d'expliquer ou de contester une note, de détecter une dérive après un changement de modèle ou de répondre à une demande d'autorité.
 - **Recommandation** : Journal d'audit append-only : identifiant, horodatage, version du modèle servie, version du prompt et de la grille, paramètres, note proposée, décision humaine ; durée de conservation définie (au moins six mois pour les journaux au titre des obligations futures).
@@ -223,7 +222,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Rôle réglementaire concerné** : Fournisseur
 - **Classification du système** : Haut risque probable
 - **Référence juridique** : Art. 15 (exactitude, robustesse) et art. 9 (essais) `[TI]`, applicables avec le chapitre III ; bonne pratique immédiate
-- **Date d'application** : 2027-12-02 (CAL-011), non encore applicable, **échéance à confirmer**
+- **Date d'application** : 2027-12-02 (CAL-011), non encore applicable
 - **Conditions et exceptions** : n.a.
 - **Explication** : Une même copie peut recevoir des notes différentes à chaque correction, et une réponse mal formée peut provoquer une erreur ou une note aberrante.
 - **Recommandation** : Température basse, validation stricte de la sortie, campagne d'évaluation sur un jeu de copies notées par des enseignants, mesure par sous-groupes.
@@ -239,7 +238,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Rôle réglementaire concerné** : Fournisseur
 - **Classification du système** : Selon le système
 - **Référence juridique** : Art. 4 `[TI]`, rédaction `[O26]` ; art. 11 et annexe IV `[TI]` (futur pour SYS-02)
-- **Date d'application** : Art. 4 en vigueur (CAL-002) ; nouvelle rédaction : échéance à confirmer (CAL-003) ; art. 11 au 2027-12-02 (CAL-011, échéance à confirmer)
+- **Date d'application** : Art. 4 en vigueur (CAL-002) ; nouvelle rédaction en vigueur depuis le 2026-07-27 (CAL-003) ; art. 11 au 2027-12-02 (CAL-011)
 - **Conditions et exceptions** : Art. 4 : obligation de prendre des mesures, sans niveau déterminé selon la nouvelle rédaction `[O26]`.
 - **Explication** : Le règlement demande aux fournisseurs de prendre des mesures pour développer la maîtrise de l'IA de leur personnel ; ces mesures sont organisationnelles et ne se voient pas dans le code.
 - **Recommandation** : Fournir le plan de formation et le registre associé ; préparer l'analyse de classification écrite de chaque système et la documentation technique de SYS-02.
@@ -281,13 +280,13 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 - **Système d'IA concerné** : SYS-01 Tuteur conversationnel
 - **Nature du constat** : Non encore applicable
 - **Gravité** : Moyenne
-- **Niveau de confiance** : Élevée (faits) / Moyenne (date)
+- **Niveau de confiance** : Élevée
 - **Preuve observée** : Fait observé : le texte renvoyé par le modèle est transmis tel quel, sans métadonnée ni marquage de provenance, quel que soit le chemin de sortie (seul chemin observé : retour de fonction vers l'interface, non incluse dans la fixture).
 - **Fichier(s) et lignes** : `app/tutor_chat.py:17-18`
 - **Rôle réglementaire concerné** : Fournisseur
 - **Classification du système** : Non à haut risque ; soumis à l'art. 50
 - **Référence juridique** : Art. 50, par. 2 `[TI]` (contenus synthétiques textuels expressément visés) ; délai transitoire `[O26]`
-- **Date d'application** : 2026-12-02 pour ce système mis sur le marché le 2026-03-01 (CAL-010) ; **échéance à confirmer**
+- **Date d'application** : 2026-12-02 pour ce système mis sur le marché le 2026-03-01 (CAL-010)
 - **Conditions et exceptions** : Exceptions examinées et écartées : le tuteur ne se limite pas à une assistance à la mise en forme standard et génère un contenu nouveau. L'incertitude sur les modalités de marquage d'un texte (lignes directrices du 20.7.2026) n'est pas une exemption : elle est consignée en NV-05.
 - **Explication** : Les réponses rédigées par l'IA sont des contenus synthétiques textuels. Leur fournisseur doit prévoir un marquage lisible par machine permettant de les détecter, y compris dans une conversation. Pour ce système antérieur au 2 août 2026, l'obligation devient exigible le 2 décembre 2026.
 - **Recommandation** : Définir le mécanisme de marquage des réponses pour chaque chemin de sortie (métadonnées de réponse d'API, attributs dans l'interface, gestion du copier-coller, exports) en s'appuyant sur le code de bonnes pratiques et les lignes directrices ; documenter les limites.
@@ -311,7 +310,7 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 | P1 | AIA-001 | Désactiver l'inférence d'émotions ; analyse juridique | Art. 5, par. 1, f) | Immédiate | S |
 | P1 | AIA-002 | Information IA dans le tuteur, suppression de la persona | Art. 50, par. 1 | Immédiate | S |
 | P1 | AIA-005 | Révocation et externalisation de la clé | Bonne pratique de sécurité | Immédiate | S |
-| P2 | AIA-003, AIA-011 | Marquage des images et des textes, tests de robustesse par chemin de sortie | Art. 50, par. 2 | 2026-12-02 (à confirmer) | M |
+| P2 | AIA-003, AIA-011 | Marquage des images et des textes, tests de robustesse par chemin de sortie | Art. 50, par. 2 | 2026-12-02 | M |
 | P2 | AIA-004 | Validation humaine obligatoire des notes | Art. 14 (futur) ; risque actuel | 2027-12-02 | M |
 | P3 | AIA-006, AIA-007 | Journal d'audit, épinglage, évaluation | Art. 9, 12, 15 (futurs) | 2027-12-02 | M |
 | P3 | AIA-008, AIA-009 | Documentation, avis juridique sur l'art. 111 | Art. 4, 11 | Selon avis | L |
@@ -331,6 +330,6 @@ par. 12 ne bénéficie pas à un système relevant de l'article 5.
 ## 12. Limites de l'audit
 
 - Analyse statique d'une fixture fictive ; aucune interface utilisateur ni configuration de production observée.
-- Textes officiels non relus en ligne le 2026-10-27 ; dates issues du règlement 2026/1744 de confiance moyenne ; CAL-013 de confiance faible.
+- Texte officiel consulté par extraits le 2026-10-27, sans relecture intégrale ; CAL-013 (art. 111, par. 2) et CAL-016 restent à confirmer.
 - Lignes directrices de la Commission sur l'article 50 et code de bonnes pratiques non relus directement.
 - Projet de lignes directrices sur la classification à haut risque non définitif.

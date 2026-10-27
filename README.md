@@ -236,11 +236,12 @@ Le détail des versions, des niveaux de confiance (`[TI]` texte initial, `[O26]`
 2026/1744, `[AV]` à vérifier) et des divergences connues figure dans
 [`references/legal-sources.md`](references/legal-sources.md).
 
-**Transparence sur la vérification du 2026-10-27** : EUR-Lex et l'AI Act Explorer étaient
-inaccessibles depuis l'environnement de rédaction. Les dispositions du texte initial reposent sur la
-connaissance du texte publié au JO ; les modifications de 2026/1744 sur des sources secondaires
-concordantes. Les entrées concernées sont marquées de confiance « moyenne » ou « faible » et doivent
-être confirmées sur le texte officiel (procédure dans `references/maintenance.md`).
+**Transparence sur la vérification du 2026-10-27** : l'accès direct à EUR-Lex était refusé depuis
+l'environnement de rédaction. Le texte officiel (JO du 24.7.2026 et version consolidée
+02024R1689-20260727) a été consulté **par extraits**, chacun recopié avec son URL dans
+`data/ai-act-calendar.json` ; une revue externe a confirmé de manière concordante les trois
+échéances principales. Deux entrées restent bloquantes (« échéance à confirmer ») et une relecture
+intégrale reste à faire avec `references/official-verification-worksheet.md`.
 
 ## Limites
 
@@ -250,7 +251,9 @@ concordantes. Les entrées concernées sont marquées de confiance « moyenne »
 - **Informations organisationnelles** (contrats, formation, finalités, dates de mise sur le marché)
   généralement hors dépôt : elles sont consignées comme éléments à vérifier.
 - **Références datées** : le droit, les lignes directrices, les codes de bonnes pratiques et les
-  normes harmonisées évoluent ; les dates issues de 2026/1744 sont à confirmer sur le JO.
+  normes harmonisées évoluent. Les dates principales issues de 2026/1744 sont confirmées par
+  extraits officiels ; l'art. 111, par. 2 (autorités publiques) et l'art. 49, par. 2 restent
+  « échéance à confirmer », et aucune relecture intégrale n'a encore été faite.
 - **Périmètre** : AI Act uniquement. Les renvois à d'autres législations sont signalés sans être analysés.
 - **Résultats d'agent non déterministes** : la qualité de l'audit dépend du modèle et du contexte
   fourni ; relire chaque rapport.

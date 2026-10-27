@@ -78,14 +78,15 @@ paragraphe 1 `[AV]`. Un rapport d'audit ne chiffre **jamais** une amende.
 
 ## 5. Ce que le règlement 2026/1744 a changé (synthèse) `[O26]`
 
-Selon les sources consultées (voir `legal-sources.md`), sans relecture du texte officiel :
+Synthèse ; le statut de vérification de chaque date figure dans `legal-sources.md`, section 4 bis
+(extraits officiels relevés le 2026-10-27 pour les dates principales) :
 
 - Report des exigences du haut risque : annexe III au 2027-12-02, annexe I au 2028-08-02.
 - Délai jusqu'au 2026-12-02 pour l'article 50, paragraphe 2, pour les systèmes mis sur le marché
   avant le 2026-08-02.
 - Nouvelles interdictions à l'article 5 (contenus intimes non consentis, matériel pédopornographique),
   applicables le 2026-12-02.
-- Article 4 réécrit : obligation de prendre des mesures pour soutenir la maîtrise de l'IA, sans
+- Article 4 réécrit : obligation de prendre des mesures pour favoriser le développement de la maîtrise de l'IA, sans
   exigence d'un niveau déterminé ; rôle d'appui de la Commission et des États membres.
 - Article 111, paragraphe 2 : date de référence alignée sur l'application du chapitre III ;
   appréciation au niveau du type et du modèle.

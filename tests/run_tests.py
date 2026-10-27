@@ -65,6 +65,7 @@ NATURES = {
     "Non applicable", "Non encore applicable",
 }
 D = dt.date.fromisoformat
+OFFICIAL_STATUSES = {"officielle_relue", "officielle_extraits"}
 
 
 def parse_frontmatter(text: str) -> dict:
@@ -174,8 +175,19 @@ class CalendarDataTests(unittest.TestCase):
 
     def test_omnibus_entries_are_not_high_confidence(self):
         for e in self.cal["entries"]:
-            if e["source_text"] == "2026/1744":
-                self.assertNotEqual(e["confidence"], "elevee", f"{e['id']} : 2026/1744 non relu, confiance élevée injustifiée")
+            official = e["legal_basis"]["verification_status"] in OFFICIAL_STATUSES
+            if e["source_text"] == "2026/1744" and not official:
+                self.assertNotEqual(e["confidence"], "elevee", f"{e['id']} : 2026/1744 non vérifié, confiance élevée injustifiée")
+
+    def test_official_extracts_are_quoted_and_sourced(self):
+        for e in self.cal["entries"]:
+            basis = e["legal_basis"]
+            if basis["verification_status"] == "officielle_extraits":
+                self.assertTrue(basis.get("official_extracts"), f"{e['id']} : aucun extrait officiel cité")
+                D(basis["official_extracts_collected_on"])
+                for extract in basis["official_extracts"]:
+                    self.assertGreater(len(extract["text"]), 40, f"{e['id']} : extrait trop court pour être vérifiable")
+                    self.assertRegex(extract["source_url"], r"^https://eur-lex\.europa\.eu/")
 
     def test_every_entry_has_complete_legal_basis(self):
         required = ("provision", "amending_act", "effective_date", "transitional_conditions",
@@ -205,9 +217,9 @@ class CalendarDataTests(unittest.TestCase):
         for e in self.cal["entries"]:
             basis = e["legal_basis"]
             from_omnibus = "2026/1744" in (basis["amending_act"] or "")
-            if from_omnibus and basis["verification_status"] != "officielle_relue":
+            if from_omnibus and basis["verification_status"] not in OFFICIAL_STATUSES:
                 self.assertTrue(timeline.requires_confirmation(e), f"{e['id']} : échéance non vérifiée non bloquante")
-            if e["confidence"] != "elevee" and basis["verification_status"] != "officielle_relue":
+            if e["confidence"] != "elevee" and basis["verification_status"] not in OFFICIAL_STATUSES:
                 self.assertTrue(timeline.requires_confirmation(e), f"{e['id']} : confiance {e['confidence']} non bloquante")
 
     def test_markdown_calendar_in_sync(self):
@@ -285,11 +297,16 @@ class TimelineScenarioTests(unittest.TestCase):
         self.assertEqual(status_of("CAL-016", "2026-10-27")["status"], timeline.STATUS_UNKNOWN)
 
     def test_blocking_rule_labels_unverified_deadlines(self):
-        r = status_of("CAL-011", "2026-10-27")
-        self.assertTrue(r["requires_confirmation"])
+        r = status_of("CAL-013", "2026-10-27", "2026-03-01", public=True)
+        self.assertTrue(r["requires_confirmation"], "échéance des autorités publiques non confirmée : bloquante")
         self.assertIn("échéance à confirmer", r["status_label"])
-        r = status_of("CAL-010", "2026-10-27", "2026-03-01")
-        self.assertTrue(r["requires_confirmation"], "délai transitoire issu de 2026/1744 : bloquant")
+        self.assertTrue(status_of("CAL-016", "2026-10-27")["requires_confirmation"])
+
+    def test_officially_extracted_deadlines_not_blocked(self):
+        for entry_id, args in (("CAL-011", ()), ("CAL-012", ()), ("CAL-004", ()), ("CAL-010", ("2026-03-01",))):
+            r = status_of(entry_id, "2026-10-27", *args)
+            self.assertFalse(r["requires_confirmation"], f"{entry_id} : confirmé par extrait officiel")
+            self.assertNotIn("échéance à confirmer", r["status_label"])
 
     def test_initial_text_base_date_not_blocked(self):
         r = status_of("CAL-010", "2026-10-27", "2026-09-15")

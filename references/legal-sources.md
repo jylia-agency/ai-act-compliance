@@ -31,61 +31,77 @@
 | Texte | Version | Statut dans ce dépôt |
 |---|---|---|
 | Règlement (UE) 2024/1689 | Texte publié au JO le 12.7.2024 | Base. Dispositions non modifiées : confiance élevée. |
-| Règlement (UE) 2026/1744 | Adopté le 8.7.2026, publié au JO le 24.7.2026, en vigueur le 27.7.2026 (selon les sources consultées) | Intégré. Confiance moyenne tant que le texte officiel n'a pas été relu. |
-| Version consolidée EUR-Lex intégrant 2026/1744 | Non consultée | À consulter dès que possible ; selon une source, aucune version consolidée n'était encore publiée. |
-| Propositions non adoptées | Exclues | Ne jamais intégrer une proposition comme droit applicable. |
+| Règlement (UE) 2026/1744 | Adopté le 8.7.2026, publié au JO L du 24.7.2026, en vigueur le 27.7.2026 (art. 4 : entrée en vigueur le troisième jour suivant la publication ; extrait officiel) | Intégré. Dates principales confirmées par extraits officiels (voir section 4 bis). |
+| Version consolidée du règlement 2024/1689 au 27.7.2026 | CELEX 02024R1689-20260727 ([FR](https://eur-lex.europa.eu/legal-content/FR/TXT/HTML/?uri=CELEX:02024R1689-20260727), [EN](https://eur-lex.europa.eu/legal-content/EN/TXT/HTML/?uri=CELEX:02024R1689-20260727)) | Publiée sur EUR-Lex ; consultée par extraits le 2026-10-27. Les versions consolidées n'ont pas de valeur juridique propre : seul le JO fait foi. |
+| Proposition COM(2025) 836 | Proposition de la Commission du 19.11.2025 | Exclue : plusieurs dates diffèrent du texte adopté (par exemple délai de l'art. 50, par. 2 proposé au 2 février 2027, retenu au 2 décembre 2026). |
 
 ## 3. Conditions de vérification du 2026-10-27 (transparence)
 
-- EUR-Lex, l'AI Act Explorer de la Commission et artificialintelligenceact.eu étaient
-  **inaccessibles depuis l'environnement de rédaction** (refus de la politique réseau). Aucun
-  texte officiel n'a pu être relu en ligne ce jour-là.
+- L'accès **direct** à EUR-Lex, à l'AI Act Explorer et à artificialintelligenceact.eu était refusé
+  par la politique réseau de l'environnement de rédaction.
+- Le texte officiel a été consulté **par extraits** : recherche restreinte au domaine
+  `eur-lex.europa.eu`, qui a restitué des passages du règlement 2026/1744 (JO, versions FR et EN) et
+  de la version consolidée 02024R1689-20260727. Chaque extrait utilisé est recopié dans
+  `data/ai-act-calendar.json` (`official_extracts`) avec son URL. Il ne s'agit pas d'une relecture
+  intégrale de l'acte.
+- Une **revue externe** (assistant ChatGPT, transmise par l'utilisateur le 2026-10-27) indique avoir
+  consulté le règlement 2026/1744 sur EUR-Lex et y avoir trouvé les échéances du 2 décembre 2026
+  (art. 50, par. 2), du 2 décembre 2027 (annexe III) et du 2 août 2028 (annexe I). Elle est
+  consignée comme confirmation concordante (`external_confirmations`), pas comme preuve autonome.
 - Les dispositions du **texte initial** reposent sur la connaissance du texte publié au JO,
   recoupée par recherche web.
-- Les modifications du **règlement 2026/1744** reposent sur des **sources secondaires
-  concordantes** obtenues par recherche web, notamment : White & Case, Freshfields, Cooley,
-  Gibson Dunn, Cuatrecasas, Future of Privacy Forum, Lewis Silkin, Cloud Security Alliance,
-  artificialintelligenceact.eu (page « Digital Omnibus »), ainsi que l'extrait du service desk de
-  la Commission sur l'article 5 et le communiqué du Conseil du 29 juin 2026.
-- Conséquence : toute disposition marquée `[O26]` ou `[AV]` doit être confirmée sur le JO avant
-  un usage engageant. Ce point figure dans les limites de chaque rapport.
+- Sources secondaires consultées pour le repérage : White & Case, Freshfields, Cooley, Gibson Dunn,
+  Cuatrecasas, Future of Privacy Forum, Lewis Silkin, Cloud Security Alliance,
+  artificialintelligenceact.eu (page « Digital Omnibus »), service desk de la Commission, Conseil.
 
-## 4. Marqueurs de confiance utilisés dans les références
+## 4. Marqueurs utilisés dans les références
 
 | Marqueur | Signification | Usage dans un constat |
 |---|---|---|
-| `[TI]` | Texte initial 2024/1689, non modifié à notre connaissance. Confiance élevée. | Citer directement. |
-| `[O26]` | Modifié ou introduit par 2026/1744, rapporté de manière concordante. Confiance moyenne. | Citer en précisant « selon le règlement 2026/1744, à confirmer sur le JO ». |
-| `[AV]` | Sources divergentes, localisation incertaine ou point non vérifié. Confiance faible. | Ne fonder qu'un constat « À vérifier juridiquement ». |
+| `[TI]` | Texte initial 2024/1689, non modifié à notre connaissance. | Citer directement. |
+| `[O26]` | Introduit ou modifié par 2026/1744. Le statut de vérification de chaque date est celui de son entrée `CAL-NNN`. | Citer avec la référence calendaire ; ajouter « échéance à confirmer » si l'entrée est bloquante. |
+| `[AV]` | Sources divergentes, localisation incertaine ou point non vérifié. | Ne fonder qu'un constat « À vérifier juridiquement ». |
 
 ## 4 bis. Statut de vérification et règle bloquante
 
 Chaque entrée de `data/ai-act-calendar.json` porte un objet `legal_basis` : disposition exacte,
-acte modificatif, date d'effet, conditions transitoires, URL officielle, `verification_status` et
-`official_text_checked_on`.
+acte modificatif, date d'effet, conditions transitoires, URL officielle, `verification_status`,
+`official_text_checked_on` et, le cas échéant, `official_extracts` et `external_confirmations`.
 
 | `verification_status` | Signification | Effet dans un audit |
 |---|---|---|
-| `officielle_relue` | Relue sur EUR-Lex ou le JO à la date `official_text_checked_on` | Conclusion temporelle sans réserve |
+| `officielle_relue` | Relue intégralement sur EUR-Lex ou le JO à la date `official_text_checked_on` | Conclusion temporelle sans réserve |
+| `officielle_extraits` | Confirmée par un extrait textuel officiel cité (`official_extracts`), sans relecture intégrale | Conclusion admise, extrait et source cités |
 | `texte_initial_non_relu` | Texte initial stable, non relu en ligne lors de la dernière vérification | Conclusion admise, source citée |
-| `sources_secondaires` | Issue de 2026/1744 via des commentaires concordants | **Bloquante** : « échéance à confirmer », conclusion temporelle conditionnelle |
+| `sources_secondaires` | Issue de 2026/1744 sans extrait officiel textuel | **Bloquante** : « échéance à confirmer », conclusion temporelle conditionnelle |
 | `incertaine` | Sources divergentes ou disposition non localisée | **Bloquante** : idem |
 
-Au 2026-10-27, **aucune** entrée n'a le statut `officielle_relue` (textes officiels inaccessibles).
-Les tests (`tests/run_tests.py`) refusent qu'une entrée soit marquée `officielle_relue` sans date de
-relecture, ou qu'une entrée issue de 2026/1744 échappe à la règle bloquante sans relecture officielle.
+État au 2026-10-27 :
+
+| Entrée | Statut | Fondement |
+|---|---|---|
+| CAL-003 (art. 4, nouvelle rédaction) | `officielle_extraits` | Extrait FR et EN du règlement 2026/1744 |
+| CAL-004 (nouvelles interdictions, 2.12.2026) | `officielle_extraits` | Extrait EN de l'art. 113, troisième alinéa, point a), modifié |
+| CAL-010 (délai de l'art. 50, par. 2 au 2.12.2026) | `officielle_extraits` | Extrait FR de la version consolidée ; revue externe concordante |
+| CAL-011 (annexe III, 2.12.2027) et CAL-012 (annexe I, 2.8.2028) | `officielle_extraits` (confiance moyenne) | Extrait FR d'un considérant ; disposition opérationnelle (art. 113 modifié) non citée textuellement ; revue externe concordante |
+| CAL-015 (entrée en vigueur, 27.7.2026) | `officielle_extraits` | Extrait FR de l'art. 4 du règlement 2026/1744 |
+| CAL-013 (art. 111, par. 2) | `sources_secondaires`, **bloquante** | Condition de modification importante confirmée par extrait ; échéance du 2.8.2030 pour les autorités publiques sans extrait textuel |
+| CAL-016 (art. 49, par. 2) | `incertaine`, **bloquante** | Aucun extrait officiel |
+
+Aucune entrée n'a encore le statut `officielle_relue`. Les tests refusent une entrée
+`officielle_relue` sans date de relecture, une entrée `officielle_extraits` sans extrait cité, et
+toute entrée issue de 2026/1744 qui échapperait à la règle bloquante sans l'un de ces deux statuts.
 
 ## 5. Points de divergence ou d'incertitude connus (2026-10-27)
 
-| Sujet | Divergence | Traitement |
+| Sujet | État | Traitement |
 |---|---|---|
-| Art. 111, par. 2 : échéance pour les systèmes destinés aux autorités publiques | 2 août 2030 (plusieurs sources) contre 28 janvier 2028 (une source) | `[AV]` ; retenir 2030 avec confiance faible et signaler. |
-| Art. 111, par. 2 : date de référence pour les systèmes antérieurs | Devient la date d'application du chapitre III (2.12.2027 annexe III, 2.8.2028 annexe I) selon une source | `[AV]`. |
-| Numérotation des nouvelles interdictions de l'art. 5 | Points (ba) et (bb) selon une source | `[O26]` pour le contenu, `[AV]` pour la numérotation. |
-| Art. 49, par. 2 : enregistrement des systèmes annexe III jugés non à haut risque | Maintenu avec procédure simplifiée selon les sources ; date effective non établie | `[AV]`. |
-| Art. 50, par. 2 appliqué aux textes conversationnels | Dépend des lignes directrices de la Commission du 20.7.2026 (C(2026) 5054 selon les sources) | `[AV]` sur les modalités. |
-| Annexe I : déplacement des machines de la section A vers la section B | Rapporté par une source | `[AV]`. |
-| Art. 4 : date d'application de la nouvelle rédaction | Entrée en vigueur du règlement 2026/1744 présumée | `[O26]`. |
+| Art. 111, par. 2 : échéance pour les systèmes destinés aux autorités publiques | 2 août 2030 rapporté par une recherche sur EUR-Lex et par plusieurs sources, sans extrait textuel ; la date du 28 janvier 2028 citée par une source n'a pas été retrouvée | `[AV]`, bloquant |
+| Art. 111, par. 2 : date de référence pour les systèmes antérieurs | Condition « importantes modifications de leurs conceptions » confirmée par extrait ; rattachement à la date d'application du chapitre III rapporté | `[AV]` sur la date de référence |
+| Nouvelles interdictions de l'art. 5 | Points (ba) et (bb) et par. 1 bis et 1 ter confirmés par extrait (art. 113 modifié) ; conditions côté fournisseur et côté déployeur rapportées par la version consolidée | Libellé exact des par. 1 bis et 1 ter à relire |
+| Art. 49, par. 2 : enregistrement des systèmes annexe III jugés non à haut risque | Maintenu avec contenu réduit selon des sources secondaires ; aucun extrait officiel | `[AV]`, bloquant |
+| Art. 50, par. 2 appliqué aux textes conversationnels | Le paragraphe vise les textes ; seules les modalités dépendent des lignes directrices du 20.7.2026 | Pas d'exemption ; modalités `[AV]` |
+| Annexe I : déplacement des machines de la section A vers la section B | Rapporté par une source | `[AV]` |
 
 ## 6. Documents d'orientation de la Commission à connaître (non contraignants)
 

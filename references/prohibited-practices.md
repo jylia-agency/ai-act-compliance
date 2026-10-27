@@ -32,16 +32,24 @@
 
 ## 3. Nouvelles interdictions introduites par le règlement 2026/1744 `[O26]`
 
-Applicables le **2026-12-02** selon les sources. Contenu rapporté par le service desk de la
-Commission et les commentateurs ; numérotation (points ba) et bb)) `[AV]` :
+Applicables le **2026-12-02** : art. 113, troisième alinéa, point a), tel que modifié (extrait
+officiel : « with the exception of Article 5(1), first subparagraph, points (ba) and (bb), and
+Article 5(1a) and (1b) which shall apply from 2 December 2026 » ; voir CAL-004).
 
-- systèmes d'IA générant ou manipulant des images, vidéos, sons ou contenus similaires **réalistes**
-  représentant les parties intimes de **personnes physiques identifiables** ou leur participation à
-  des activités sexuellement explicites, **sans leur consentement** ;
-- systèmes d'IA générant ou manipulant du **matériel pédopornographique**.
+- **Point (ba)** : mise sur le marché, mise en service ou utilisation d'un système d'IA qui génère ou
+  manipule des images, vidéos, sons ou contenus similaires **réalistes** représentant les parties
+  intimes d'une **personne physique identifiable** ou sa participation à des activités sexuellement
+  explicites, **sans son consentement** (extrait officiel du point (ba), version anglaise) ;
+- **Point (bb)** : systèmes d'IA générant ou manipulant du **matériel pédopornographique** ; selon
+  les considérants, un moyen de défense « sans droit » prévu par le droit national (art. 5,
+  par. 1, de la directive 2011/93/UE) n'est pas affecté.
+- **Paragraphes 1 bis et 1 ter** (selon la version consolidée, libellé exact à relire `[AV]`) :
+  côté **fournisseur**, l'interdiction ne joue que si la génération de tels contenus est la
+  destination du système ou un **résultat raisonnablement prévisible et reproductible** ; côté
+  **déployeur**, que s'il utilise le système pour générer ou manipuler de tels contenus.
 
-Selon une source, l'interdiction peut concerner des fournisseurs de systèmes génératifs généralistes
-qui n'ont pas mis en place de garde-fous raisonnables `[AV]`. Contrôles d'audit : filtres de
+Un système génératif généraliste peut donc être concerné si un tel résultat est raisonnablement
+prévisible et reproductible, notamment en l'absence de garde-fous. Contrôles d'audit : filtres de
 prompts et de sorties, politique d'usage, détection de personnes réelles, signalement. Avant le
 2026-12-02, un défaut de garde-fou est « Non encore applicable » au titre de l'article 5 (il peut
 relever d'autres législations, hors périmètre).
