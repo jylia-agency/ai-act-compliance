@@ -57,18 +57,20 @@ produit des livrables d'audit en français, exploitables dans des projets profes
 
 ## Installation pour Claude Code
 
-Le dossier du skill doit s'appeler comme son `name` (`ia-compliance`).
+Le skill est autonome : il ne dépend d'aucun service, compte ou outil propriétaire et s'utilise sur
+n'importe quel projet. Remplacez `<URL_DU_DEPOT>` par l'adresse du dépôt (ou de votre fork), ou copiez
+simplement le dossier. Le dossier du skill doit s'appeler comme son `name` (`ia-compliance`).
 
 Installation personnelle (tous vos projets) :
 
 ```bash
-git clone https://github.com/jylia-agency/ai-act-compliance.git ~/.claude/skills/ia-compliance
+git clone <URL_DU_DEPOT> ~/.claude/skills/ia-compliance
 ```
 
 Installation au niveau d'un projet (partagée avec l'équipe via Git) :
 
 ```bash
-git clone https://github.com/jylia-agency/ai-act-compliance.git .claude/skills/ia-compliance
+git clone <URL_DU_DEPOT> .claude/skills/ia-compliance
 ```
 
 Claude Code découvre automatiquement le skill et le charge lorsque la demande correspond à sa
@@ -83,12 +85,12 @@ Emplacements couramment documentés :
 
 ```bash
 # Skill personnel
-git clone https://github.com/jylia-agency/ai-act-compliance.git ~/.agents/skills/ia-compliance
+git clone <URL_DU_DEPOT> ~/.agents/skills/ia-compliance
 # ou, pour les versions antérieures
-git clone https://github.com/jylia-agency/ai-act-compliance.git ~/.codex/skills/ia-compliance
+git clone <URL_DU_DEPOT> ~/.codex/skills/ia-compliance
 
 # Skill de dépôt
-git clone https://github.com/jylia-agency/ai-act-compliance.git .agents/skills/ia-compliance
+git clone <URL_DU_DEPOT> .agents/skills/ia-compliance
 ```
 
 Codex sélectionne le skill d'après sa description ; vous pouvez aussi le mentionner explicitement
